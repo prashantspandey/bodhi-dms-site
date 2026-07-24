@@ -1,0 +1,481 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Bodhi DMS — The modern operating system for automobile dealerships</title>
+<meta name="description" content="Bodhi Dealership Management System: sales, service, accounts, GST returns, HR & payroll, insurance and true-value — one modern, secure platform built by Bodhi AI." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --ivory: #faf9f5;
+    --ivory-2: #f2efe7;
+    --ink: #1f1e1c;
+    --ink-2: #52514c;
+    --ink-3: #8a877e;
+    --line: #e5e1d6;
+    --clay: #d97757;
+    --clay-deep: #b85c3e;
+    --clay-soft: #f5e3da;
+    --moss: #6a7d5c;
+    --moss-soft: #e8ecdf;
+    --slate: #5a6b7a;
+    --slate-soft: #e3e9ee;
+    --radius: 18px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: var(--ivory);
+    color: var(--ink);
+    line-height: 1.6;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .serif { font-family: 'Fraunces', Georgia, serif; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+
+  /* ---------- nav ---------- */
+  nav {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(250, 249, 245, 0.85); backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-in { display: flex; align-items: center; gap: 28px; height: 64px; }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 17px; letter-spacing: -0.01em; text-decoration: none; color: var(--ink); }
+  .brand-mark {
+    width: 30px; height: 30px; border-radius: 9px;
+    background: radial-gradient(120% 120% at 20% 15%, #e79973 0%, var(--clay) 45%, var(--clay-deep) 100%);
+    display: grid; place-items: center; color: #fff;
+    font-family: 'Fraunces', serif; font-size: 16px; font-weight: 600;
+  }
+  .nav-links { display: flex; gap: 22px; margin-left: auto; }
+  .nav-links a { color: var(--ink-2); text-decoration: none; font-size: 14px; font-weight: 500; }
+  .nav-links a:hover { color: var(--ink); }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--ink); color: var(--ivory);
+    padding: 11px 22px; border-radius: 999px;
+    font-size: 14px; font-weight: 600; text-decoration: none;
+    transition: transform .15s ease, background .15s ease;
+  }
+  .btn:hover { background: #000; transform: translateY(-1px); }
+  .btn.clay { background: var(--clay); }
+  .btn.clay:hover { background: var(--clay-deep); }
+  .btn.ghost { background: transparent; color: var(--ink); border: 1.5px solid var(--line); }
+  .btn.ghost:hover { border-color: var(--ink-3); background: transparent; }
+  .nav .btn { padding: 9px 18px; }
+
+  /* ---------- hero ---------- */
+  header { position: relative; overflow: hidden; }
+  header::before {
+    content: ''; position: absolute; inset: 0;
+    background:
+      radial-gradient(52% 42% at 78% 8%, rgba(217, 119, 87, 0.13), transparent 70%),
+      radial-gradient(40% 36% at 12% 90%, rgba(106, 125, 92, 0.10), transparent 70%);
+    pointer-events: none;
+  }
+  .hero { position: relative; padding: 96px 0 72px; text-align: center; }
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 13px; font-weight: 600; letter-spacing: 0.04em;
+    color: var(--clay-deep); background: var(--clay-soft);
+    border: 1px solid #ecd2c5; padding: 6px 14px; border-radius: 999px;
+    margin-bottom: 26px;
+  }
+  h1 {
+    font-family: 'Fraunces', Georgia, serif; font-weight: 500;
+    font-size: clamp(40px, 6vw, 64px); line-height: 1.08; letter-spacing: -0.02em;
+    max-width: 820px; margin: 0 auto 22px;
+  }
+  h1 em { font-style: italic; color: var(--clay-deep); }
+  .sub { font-size: 19px; color: var(--ink-2); max-width: 640px; margin: 0 auto 36px; }
+  .hero-cta { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  .hero-note { margin-top: 18px; font-size: 13px; color: var(--ink-3); }
+
+  /* ---------- stats ---------- */
+  .stats { border-block: 1px solid var(--line); background: #fff; }
+  .stats-in { display: grid; grid-template-columns: repeat(5, 1fr); }
+  .stat { padding: 30px 18px; text-align: center; border-left: 1px solid var(--line); }
+  .stat:first-child { border-left: none; }
+  .stat b { display: block; font-family: 'Fraunces', serif; font-size: 34px; font-weight: 500; letter-spacing: -0.02em; }
+  .stat span { font-size: 13px; color: var(--ink-3); }
+  @media (max-width: 800px) { .stats-in { grid-template-columns: repeat(2, 1fr); } .stat { border: none; } }
+
+  /* ---------- sections ---------- */
+  section { padding: 88px 0; }
+  .kicker { font-size: 13px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--clay-deep); margin-bottom: 14px; }
+  h2 { font-family: 'Fraunces', Georgia, serif; font-weight: 500; font-size: clamp(30px, 4vw, 42px); line-height: 1.15; letter-spacing: -0.02em; max-width: 640px; margin-bottom: 16px; }
+  .lede { font-size: 17px; color: var(--ink-2); max-width: 620px; margin-bottom: 48px; }
+
+  /* module grid */
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  @media (max-width: 900px) { .grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 600px) { .grid { grid-template-columns: 1fr; } }
+  .card {
+    background: #fff; border: 1px solid var(--line); border-radius: var(--radius);
+    padding: 26px 24px; transition: transform .18s ease, box-shadow .18s ease;
+  }
+  .card:hover { transform: translateY(-3px); box-shadow: 0 14px 34px rgba(31, 30, 28, 0.07); }
+  .card .ic {
+    width: 40px; height: 40px; border-radius: 12px; display: grid; place-items: center;
+    font-size: 19px; margin-bottom: 16px; background: var(--ivory-2);
+  }
+  .card h3 { font-size: 16.5px; font-weight: 650; margin-bottom: 8px; letter-spacing: -0.01em; }
+  .card p { font-size: 14px; color: var(--ink-2); }
+  .card .tags { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 6px; }
+  .tag { font-size: 11.5px; font-weight: 600; color: var(--ink-2); background: var(--ivory-2); border: 1px solid var(--line); padding: 3px 9px; border-radius: 999px; }
+
+  /* alt band */
+  .band { background: #fff; border-block: 1px solid var(--line); }
+
+  /* two-col features */
+  .split { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+  @media (max-width: 860px) { .split { grid-template-columns: 1fr; } }
+  .checklist { list-style: none; display: grid; gap: 14px; }
+  .checklist li { display: flex; gap: 12px; font-size: 15px; color: var(--ink-2); }
+  .checklist li b { color: var(--ink); font-weight: 600; }
+  .check {
+    flex: none; width: 22px; height: 22px; margin-top: 1px; border-radius: 999px;
+    background: var(--moss-soft); color: var(--moss);
+    display: grid; place-items: center; font-size: 12px; font-weight: 800;
+  }
+
+  /* mock window */
+  .window {
+    background: #fff; border: 1px solid var(--line); border-radius: 16px;
+    box-shadow: 0 24px 60px rgba(31, 30, 28, 0.10); overflow: hidden;
+  }
+  .window-bar { display: flex; gap: 6px; padding: 12px 14px; border-bottom: 1px solid var(--line); background: var(--ivory); }
+  .dot { width: 10px; height: 10px; border-radius: 999px; background: var(--line); }
+  .dot:first-child { background: #e8a598; }
+  .window-body { padding: 22px; font-size: 13px; }
+  .rowline { display: flex; justify-content: space-between; align-items: center; padding: 10px 12px; border-radius: 10px; }
+  .rowline + .rowline { margin-top: 6px; }
+  .rowline:nth-child(odd) { background: var(--ivory); }
+  .pill { font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 999px; }
+  .pill.ok { background: var(--moss-soft); color: var(--moss); }
+  .pill.wait { background: #f7ecd8; color: #a07617; }
+  .pill.no { background: #f7e0dc; color: #b0472f; }
+  .mono { font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: 12px; }
+
+  /* security */
+  .sec-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  @media (max-width: 900px) { .sec-grid { grid-template-columns: 1fr; } }
+  .sec-card { background: var(--ivory); border: 1px solid var(--line); border-radius: var(--radius); padding: 26px 24px; }
+  .sec-card .n { font-family: 'Fraunces', serif; font-size: 15px; color: var(--clay-deep); font-weight: 600; margin-bottom: 10px; }
+  .sec-card h3 { font-size: 16.5px; font-weight: 650; margin-bottom: 8px; }
+  .sec-card p { font-size: 14px; color: var(--ink-2); }
+
+  /* dark band */
+  .dark { background: var(--ink); color: var(--ivory); }
+  .dark .kicker { color: #e79973; }
+  .dark h2 { color: var(--ivory); }
+  .dark .lede { color: #b8b5ac; }
+  .int-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  @media (max-width: 860px) { .int-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 560px) { .int-grid { grid-template-columns: 1fr; } }
+  .int {
+    border: 1px solid rgba(250, 249, 245, 0.14); border-radius: 14px; padding: 18px 20px;
+    background: rgba(250, 249, 245, 0.04);
+  }
+  .int b { display: block; font-size: 14.5px; margin-bottom: 4px; }
+  .int span { font-size: 13px; color: #b8b5ac; }
+
+  /* modern strip */
+  .modern-list { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+  @media (max-width: 900px) { .modern-list { grid-template-columns: 1fr 1fr; } }
+  .modern-item { padding: 22px; border-radius: var(--radius); background: #fff; border: 1px solid var(--line); }
+  .modern-item h3 { font-size: 15px; font-weight: 650; margin-bottom: 6px; }
+  .modern-item p { font-size: 13.5px; color: var(--ink-2); }
+
+  /* migration */
+  .quote {
+    border-left: 3px solid var(--clay); padding: 6px 0 6px 24px;
+    font-family: 'Fraunces', serif; font-size: 21px; font-style: italic; color: var(--ink-2);
+    max-width: 720px;
+  }
+
+  /* CTA */
+  .cta { text-align: center; padding: 96px 0; }
+  .cta h2 { margin-inline: auto; }
+  .cta .lede { margin-inline: auto; }
+
+  footer { border-top: 1px solid var(--line); padding: 38px 0; }
+  .foot { display: flex; justify-content: space-between; align-items: center; gap: 18px; flex-wrap: wrap; font-size: 13.5px; color: var(--ink-3); }
+  .foot a { color: var(--ink-2); text-decoration: none; }
+  .foot a:hover { color: var(--ink); }
+
+  .reveal { opacity: 0; transform: translateY(16px); transition: opacity .6s ease, transform .6s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } html { scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap nav-in">
+    <a class="brand" href="#top"><span class="brand-mark">B</span> Bodhi <span style="font-weight:500;color:var(--ink-3)">DMS</span></a>
+    <div class="nav-links">
+      <a href="#modules">Modules</a>
+      <a href="#workflow">Workflow</a>
+      <a href="#security">Security</a>
+      <a href="#modern">Technology</a>
+      <a href="#integrations">Integrations</a>
+    </div>
+    <a class="btn" href="#contact">Request a demo</a>
+  </div>
+</nav>
+
+<header id="top">
+  <div class="wrap hero">
+    <div class="eyebrow">● &nbsp;Built by Bodhi AI · Proven on real dealership data</div>
+    <h1>The modern operating system for <em>automobile dealerships</em></h1>
+    <p class="sub">Sales, service, accounts, GST, payroll, insurance and used cars — every counter of your dealership on one fast, secure, beautifully-built platform.</p>
+    <div class="hero-cta">
+      <a class="btn clay" href="#contact">Request a demo</a>
+      <a class="btn ghost" href="#modules">Explore the platform</a>
+    </div>
+    <p class="hero-note">Migrates cleanly from legacy DMS systems — data, workflows and screen-level parity included.</p>
+  </div>
+</header>
+
+<div class="stats">
+  <div class="wrap stats-in">
+    <div class="stat"><b>25</b><span>business modules</span></div>
+    <div class="stat"><b>833</b><span>legacy screens covered</span></div>
+    <div class="stat"><b>75+</b><span>built-in reports</span></div>
+    <div class="stat"><b>56M+</b><span>rows battle-tested</span></div>
+    <div class="stat"><b>130+</b><span>API resources</span></div>
+  </div>
+</div>
+
+<section id="modules">
+  <div class="wrap">
+    <p class="kicker reveal">One platform, every counter</p>
+    <h2 class="reveal">Everything a dealership runs on — nothing bolted on</h2>
+    <p class="lede reveal">Each module is a complete workflow, not a form over a table: maker–checker approvals, documents, registers and analytics are built into every one.</p>
+    <div class="grid">
+      <div class="card reveal">
+        <div class="ic">🚗</div>
+        <h3>New Car Sales</h3>
+        <p>Enquiry → quotation → booking → cost sheet → FIFO allotment → invoice, with server-enforced discount limits and e-invoice IRN.</p>
+        <div class="tags"><span class="tag">Cost sheets</span><span class="tag">FIFO allotment</span><span class="tag">Refunds</span><span class="tag">Cancellations</span></div>
+      </div>
+      <div class="card reveal">
+        <div class="ic">📒</div>
+        <h3>Accounts & GST</h3>
+        <p>Trial balance, P&L and balance sheet that tie to the paisa. GSTR-1 and GSTR-3B generated straight from the sale register, portal-ready.</p>
+        <div class="tags"><span class="tag">GSTR-1 / 3B</span><span class="tag">BRS</span><span class="tag">TDS</span><span class="tag">Petty cash</span></div>
+      </div>
+      <div class="card reveal">
+        <div class="ic">🔧</div>
+        <h3>Workshop & Bodyshop</h3>
+        <p>Job cards from estimate to gate pass, insurance claims through a 15-stage lifecycle, proforma / cash / debit memos and parts requisitions.</p>
+        <div class="tags"><span class="tag">Job cards</span><span class="tag">Claims</span><span class="tag">Memos</span><span class="tag">Service offers</span></div>
+      </div>
+      <div class="card reveal">
+        <div class="ic">👥</div>
+        <h3>HR & Payroll</h3>
+        <p>Attendance, leave, payroll runs with PF/ESI/PT/LWF, income-tax under both regimes, exits & full-and-final, recruitment and org hierarchy.</p>
+        <div class="tags"><span class="tag">Statutory</span><span class="tag">F&F</span><span class="tag">Incentives</span><span class="tag">Loans & travel</span></div>
+      </div>
+      <div class="card reveal">
+        <div class="ic">🛡️</div>
+        <h3>Insurance & CRE</h3>
+        <p>Policy register, renewal telecalling workbench with CRE assignment, targets, conversion tracking and per-lead conveyance.</p>
+        <div class="tags"><span class="tag">Renewals</span><span class="tag">CRE targets</span><span class="tag">Web policy</span></div>
+      </div>
+      <div class="card reveal">
+        <div class="ic">🔁</div>
+        <h3>True Value / Used Cars</h3>
+        <p>Evaluation to sale with purchase-price approvals, refurbishment cost buckets and margin-scheme GST computed on every deal.</p>
+        <div class="tags"><span class="tag">Evaluation</span><span class="tag">Refurb</span><span class="tag">Margin GST</span></div>
+      </div>
+      <div class="card reveal">
+        <div class="ic">⚙️</div>
+        <h3>Spares & Procurement</h3>
+        <p>Parts counter with live stock, purchase entry, suggestive reorders below minimum stock, and requisition → PO → GRN procure-to-pay.</p>
+        <div class="tags"><span class="tag">Counter sale</span><span class="tag">Reorder</span><span class="tag">P2P</span></div>
+      </div>
+      <div class="card reveal">
+        <div class="ic">📦</div>
+        <h3>Assets & Admin</h3>
+        <p>Asset register with issue, two-step branch transfer, service and AMC-expiry tracking. Masters, field rules and a full approval matrix.</p>
+        <div class="tags"><span class="tag">AMC</span><span class="tag">Transfers</span><span class="tag">Masters</span></div>
+      </div>
+      <div class="card reveal">
+        <div class="ic">📊</div>
+        <h3>Reports & Analytics</h3>
+        <p>75+ registers and reports with CSV and print, 12 analytics dashboards, MIS, exception reports and a read-only SQL analyzer for power users.</p>
+        <div class="tags"><span class="tag">Dashboards</span><span class="tag">MIS</span><span class="tag">CSV / Print</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="band" id="workflow">
+  <section>
+    <div class="wrap split">
+      <div>
+        <p class="kicker reveal">Four-eyes on every rupee</p>
+        <h2 class="reveal">Maker–checker, everywhere money moves</h2>
+        <p class="lede reveal" style="margin-bottom:28px">Refunds, discounts, cancellations, petty cash, loans, payouts — nothing money-shaped posts on one person's say-so.</p>
+        <ul class="checklist">
+          <li class="reveal"><span class="check">✓</span><span><b>Configurable approval matrix</b> — multi-level, amount-banded, branch-aware routing per module.</span></li>
+          <li class="reveal"><span class="check">✓</span><span><b>Self-approval blocked</b> — the maker of a record can never be its checker.</span></li>
+          <li class="reveal"><span class="check">✓</span><span><b>Safe by default</b> — unconfigured money-out modules <i>require</i> a checker instead of auto-approving.</span></li>
+          <li class="reveal"><span class="check">✓</span><span><b>One shared inbox</b> — every pending approval across all modules in a single queue, with a live process-flow timeline per record.</span></li>
+        </ul>
+      </div>
+      <div class="window reveal">
+        <div class="window-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+        <div class="window-body">
+          <p style="font-weight:650;margin-bottom:10px">Approvals inbox</p>
+          <div class="rowline"><span>Booking refund · <span class="mono">RF-2701</span> · ₹ 45,000</span><span class="pill wait">PENDING L1</span></div>
+          <div class="rowline"><span>Discount request · <span class="mono">DR-1189</span> · ₹ 22,500</span><span class="pill ok">APPROVED</span></div>
+          <div class="rowline"><span>Petty cash · <span class="mono">PC-0341</span> · ₹ 4,800</span><span class="pill wait">PENDING</span></div>
+          <div class="rowline"><span>Invoice cancellation · <span class="mono">SC-0067</span></span><span class="pill no">REJECTED</span></div>
+          <div class="rowline"><span>Used-car purchase · <span class="mono">TV-0912</span> · ₹ 3,10,000</span><span class="pill ok">APPROVED</span></div>
+          <p style="margin-top:14px;font-size:12px;color:var(--ink-3)">Submitted → Level 1 → Level 2 → Posted · full timeline on every record</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<section id="security">
+  <div class="wrap">
+    <p class="kicker reveal">Security</p>
+    <h2 class="reveal">Three layers of authorization, enforced on the server</h2>
+    <p class="lede reveal">Legacy DMS security stops at hiding menu items. Bodhi DMS enforces every rule at the API — the screen is just a convenience.</p>
+    <div class="sec-grid">
+      <div class="sec-card reveal">
+        <div class="n">Layer 1 — Identity</div>
+        <h3>Token-based authentication</h3>
+        <p>Short-lived JWT sessions with refresh rotation. Passwords stored as salted hashes — never plaintext, never recoverable, never returned by any API.</p>
+      </div>
+      <div class="sec-card reveal">
+        <div class="n">Layer 2 — Module rights</div>
+        <h3>The rights matrix, actually enforced</h3>
+        <p>Every API resource maps to the page that owns it. A user outside a module gets 403 from the server — not just a hidden menu. Configured per user with a visual rights editor.</p>
+      </div>
+      <div class="sec-card reveal">
+        <div class="n">Layer 3 — Field rules</div>
+        <h3>Down to the individual field</h3>
+        <p>Admins declare which fields are mandatory and which roles may write sensitive fields. Enforced globally on every create and update.</p>
+      </div>
+      <div class="sec-card reveal">
+        <div class="n">Secrets</div>
+        <h3>Encrypted credential vault</h3>
+        <p>GST, banking, OEM and messaging credentials live in a per-dealer vault, encrypted at rest with Fernet. The UI shows masked previews — raw secrets never leave the server.</p>
+      </div>
+      <div class="sec-card reveal">
+        <div class="n">Accountability</div>
+        <h3>Audit trails built in</h3>
+        <p>Who made it, who checked it, when, from where. E-invoice actions log user, IP and GSTIN per IRN. Issued documents are point-in-time snapshots that can never silently change.</p>
+      </div>
+      <div class="sec-card reveal">
+        <div class="n">Containment</div>
+        <h3>Read-only by construction</h3>
+        <p>The built-in SQL analyzer opens the database read-only at the engine level, allow-lists tables, and masks password columns — power without exposure.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="dark" id="integrations">
+  <section>
+    <div class="wrap">
+      <p class="kicker reveal">Integrations</p>
+      <h2 class="reveal">The workflow is built. Credentials just switch it on.</h2>
+      <p class="lede reveal">Every integration ships with its complete internal workflow — capture, validation, queue, register. Add the provider credentials to the vault and the transmit goes live. No code change, no waiting on a vendor.</p>
+      <div class="int-grid">
+        <div class="int reveal"><b>OEM sales feed (GD-FDI)</b><span>Bookings, cancellations and dispatch synced from the manufacturer feed.</span></div>
+        <div class="int reveal"><b>GST e-invoicing (IRN)</b><span>INV-01 payloads, IRN generation and QR — sandbox to live per dealer GSTIN.</span></div>
+        <div class="int reveal"><b>GSTR portal export</b><span>GSTR-1 in the government offline-tool JSON, ready to import and file.</span></div>
+        <div class="int reveal"><b>Vahan / RTO</b><span>Registration milestones, fee tracking and Vahan reconciliation imports.</span></div>
+        <div class="int reveal"><b>WhatsApp & SMS</b><span>Template-based customer messaging with a full queue and delivery log.</span></div>
+        <div class="int reveal"><b>Banking & KYC</b><span>Payment queues with UTR capture, PAN / Aadhaar verification workflows.</span></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<section id="modern">
+  <div class="wrap">
+    <p class="kicker reveal">Technology</p>
+    <h2 class="reveal">Modern where it matters, boring where it counts</h2>
+    <p class="lede reveal">A contemporary stack your team will enjoy using — on infrastructure choices that stay dependable for a decade.</p>
+    <div class="modern-list">
+      <div class="modern-item reveal"><h3>Fast, focused UI</h3><p>A single-page Vue 3 app with instant navigation, live search on every register, and keyboard-friendly forms.</p></div>
+      <div class="modern-item reveal"><h3>Analytics everywhere</h3><p>Interactive ECharts dashboards for sales, service, HR and collections — composed from the same engine as the reports.</p></div>
+      <div class="modern-item reveal"><h3>Print-perfect documents</h3><p>Invoices, cost sheets, receipts, memos, payslips and gate passes render A4-ready with amounts in words.</p></div>
+      <div class="modern-item reveal"><h3>Mobile PWA</h3><p>Attendance punch, leave requests and payslips from any phone — installable, no app store required.</p></div>
+      <div class="modern-item reveal"><h3>Proven backend</h3><p>Django + REST — the framework behind Instagram-scale workloads — with a clean, documented API surface.</p></div>
+      <div class="modern-item reveal"><h3>Multi-tenant ready</h3><p>Per-dealer databases and per-GSTIN credentials — one deployment, many dealerships, zero data bleed.</p></div>
+      <div class="modern-item reveal"><h3>Config over code</h3><p>Reports, dashboards, imports, masters and approval routes are configuration — new ones ship in hours, not releases.</p></div>
+      <div class="modern-item reveal"><h3>AI-ready</h3><p>Designed for an assistant layer on top: structured workflows, consolidated APIs and maker-checker as the safety gate.</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="band">
+  <section>
+    <div class="wrap">
+      <p class="kicker reveal">Migration</p>
+      <h2 class="reveal">Switching costs are the real lock-in. We broke them.</h2>
+      <div class="split" style="margin-top:40px">
+        <div class="quote reveal">
+          “Every screen your team knows, every register they rely on, every approval they expect — present on day one. Old bookmarks and habits keep working; the platform underneath is simply better.”
+        </div>
+        <ul class="checklist">
+          <li class="reveal"><span class="check">✓</span><span><b>Full data migration</b> — masters, ledgers, invoices, policies, payroll history. Proven on 56M+ rows across 890+ legacy tables.</span></li>
+          <li class="reveal"><span class="check">✓</span><span><b>Screen-level parity</b> — 833 legacy pages mapped to modern equivalents, verified by an automated parity gate.</span></li>
+          <li class="reveal"><span class="check">✓</span><span><b>Books that reconcile</b> — trial balance, P&L and GST totals tied back to the source register before go-live.</span></li>
+          <li class="reveal"><span class="check">✓</span><span><b>Bulk import framework</b> — CSV and Excel onboarding for every master, with per-row validation results.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</div>
+
+<section class="cta" id="contact">
+  <div class="wrap">
+    <p class="kicker reveal">Get started</p>
+    <h2 class="reveal">See your dealership running on Bodhi DMS</h2>
+    <p class="lede reveal" style="margin-bottom:36px">A live walkthrough with your workflows, your documents and — if you'd like — a sample of your own data.</p>
+    <div class="hero-cta reveal">
+      <a class="btn clay" href="mailto:prashant@bodhiai.in?subject=Bodhi%20DMS%20demo">Request a demo</a>
+      <a class="btn ghost" href="mailto:prashant@bodhiai.in?subject=Bodhi%20DMS%20migration">Ask about migration</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot">
+    <span><b style="color:var(--ink)">Bodhi DMS</b> · a Bodhi AI product</span>
+    <span>
+      <a href="#modules">Modules</a> &nbsp;·&nbsp;
+      <a href="#security">Security</a> &nbsp;·&nbsp;
+      <a href="#integrations">Integrations</a> &nbsp;·&nbsp;
+      <a href="mailto:prashant@bodhiai.in">prashant@bodhiai.in</a>
+    </span>
+    <span>© 2026 Bodhi AI. All rights reserved.</span>
+  </div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver((entries) => {
+    for (const e of entries) if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target) }
+  }, { threshold: 0.12 })
+  document.querySelectorAll('.reveal').forEach((el, i) => {
+    el.style.transitionDelay = `${(i % 6) * 60}ms`
+    io.observe(el)
+  })
+</script>
+</body>
+</html>

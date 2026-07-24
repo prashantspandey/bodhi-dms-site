@@ -1,0 +1,448 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Bodhi DMS × Auric — Your dealership, from day one</title>
+<meta name="description" content="A guided walkthrough for Auric: how a Maruti dealership goes live on Bodhi DMS — what you set up first, where data starts, and how every desk runs." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Source+Sans+3:wght@300..700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --ivory:#faf9f5; --ivory-2:#f2efe7; --ink:#1f1e1c; --ink-2:#52514c; --ink-3:#8a877e;
+    --line:#e5e1d6; --clay:#d97757; --clay-deep:#b85c3e; --clay-soft:#f5e3da;
+    --moss:#6a7d5c; --moss-soft:#e8ecdf; --radius:18px;
+  }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  html { scroll-behavior:smooth; }
+  body { font-family:'Source Sans 3',sans-serif; background:var(--ivory); color:var(--ink); line-height:1.65; font-size:16.5px; -webkit-font-smoothing:antialiased; }
+  .wrap { max-width:960px; margin:0 auto; padding:0 24px; }
+  .serif { font-family:'Fraunces',Georgia,serif; }
+
+  /* progress rail */
+  #rail { position:fixed; top:0; left:0; height:3px; background:var(--clay); width:0%; z-index:60; transition:width .1s linear; }
+
+  nav { position:sticky; top:0; z-index:50; background:rgba(250,249,245,.88); backdrop-filter:blur(12px); border-bottom:1px solid var(--line); }
+  .nav-in { display:flex; align-items:center; gap:16px; height:60px; }
+  .brand { display:flex; align-items:center; gap:10px; font-weight:700; font-size:16px; color:var(--ink); text-decoration:none; }
+  .brand-mark { width:28px; height:28px; border-radius:8px; background:radial-gradient(120% 120% at 20% 15%, #e79973, var(--clay) 45%, var(--clay-deep)); display:grid; place-items:center; color:#fff; font-family:'Fraunces',serif; font-size:15px; }
+  .nav-for { margin-left:auto; font-size:13px; color:var(--ink-3); }
+  .nav-for b { color:var(--clay-deep); }
+
+  header { position:relative; overflow:hidden; }
+  header::before { content:''; position:absolute; inset:0; pointer-events:none;
+    background: radial-gradient(50% 40% at 80% 5%, rgba(217,119,87,.13), transparent 70%),
+                radial-gradient(40% 35% at 10% 95%, rgba(106,125,92,.10), transparent 70%); }
+  .hero { position:relative; padding:88px 0 64px; }
+  .eyebrow { display:inline-flex; gap:8px; font-size:13px; font-weight:600; letter-spacing:.04em; color:var(--clay-deep); background:var(--clay-soft); border:1px solid #ecd2c5; padding:6px 14px; border-radius:999px; margin-bottom:24px; }
+  h1 { font-family:'Fraunces',serif; font-weight:500; font-size:clamp(36px,5.5vw,56px); line-height:1.1; letter-spacing:-.02em; max-width:760px; margin-bottom:20px; }
+  h1 em { font-style:italic; color:var(--clay-deep); }
+  .sub { font-size:19px; font-weight:300; color:var(--ink-2); max-width:640px; }
+
+  /* journey map */
+  .map { margin-top:44px; display:grid; grid-template-columns:repeat(4,1fr); gap:12px; }
+  @media (max-width:760px){ .map{ grid-template-columns:1fr 1fr; } }
+  .map a { text-decoration:none; color:inherit; background:#fff; border:1px solid var(--line); border-radius:14px; padding:16px 18px; transition:transform .15s, box-shadow .15s; }
+  .map a:hover { transform:translateY(-2px); box-shadow:0 10px 26px rgba(31,30,28,.08); }
+  .map b { display:block; font-size:14.5px; margin:2px 0 3px; }
+  .map span { font-size:12.5px; color:var(--ink-3); }
+  .map .ph { font-family:'Fraunces',serif; font-style:italic; font-size:13px; color:var(--clay-deep); }
+
+  section { padding:64px 0 10px; }
+  .kicker { font-size:12.5px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--clay-deep); margin-bottom:10px; }
+  h2 { font-family:'Fraunces',serif; font-weight:500; font-size:clamp(26px,3.6vw,36px); letter-spacing:-.02em; line-height:1.18; margin-bottom:12px; }
+  .lede { font-size:17px; color:var(--ink-2); max-width:680px; margin-bottom:30px; }
+  .lede b { color:var(--ink); }
+
+  /* step flow */
+  .steps { counter-reset:step; display:grid; gap:0; border:1px solid var(--line); border-radius:var(--radius); background:#fff; overflow:hidden; }
+  .step { display:grid; grid-template-columns:64px 1fr; border-top:1px solid var(--line); }
+  .step:first-child { border-top:none; }
+  .step-n { counter-increment:step; display:grid; place-items:center; border-right:1px solid var(--line); background:var(--ivory); }
+  .step-n::before { content:counter(step,decimal-leading-zero); font-family:'Fraunces',serif; font-size:19px; color:var(--clay-deep); }
+  .step-b { padding:18px 22px; }
+  .step-b h3 { font-size:16.5px; font-weight:650; margin-bottom:4px; letter-spacing:-.01em; display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+  .who { font-size:11px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-2); background:var(--ivory-2); border:1px solid var(--line); border-radius:999px; padding:2px 10px; }
+  .sys { font-size:11px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--clay-deep); background:var(--clay-soft); border:1px solid #ecd2c5; border-radius:999px; padding:2px 10px; }
+  .step-b p { font-size:14.5px; color:var(--ink-2); }
+  .step-b p b { color:var(--ink); }
+
+  .why { display:flex; gap:14px; background:var(--moss-soft); border:1px solid #d6dfc9; border-radius:14px; padding:16px 20px; margin:18px 0 8px; }
+  .why .wi { flex:none; font-family:'Fraunces',serif; font-style:italic; color:var(--moss); font-size:15px; padding-top:1px; }
+  .why p { font-size:14.5px; color:#41503a; }
+  .why p b { color:#2e3a29; }
+
+  .callout { background:#fff; border:1px solid var(--line); border-left:3px solid var(--clay); border-radius:12px; padding:14px 20px; font-size:14.5px; color:var(--ink-2); margin:18px 0 8px; }
+  .callout b { color:var(--ink); }
+
+  .divider { border:none; border-top:1px solid var(--line); margin:56px 0 0; }
+
+  /* proof */
+  .proof { background:var(--ink); color:var(--ivory); border-radius:22px; padding:44px 40px; margin-top:24px; }
+  .proof .kicker { color:#e79973; }
+  .proof h2 { color:var(--ivory); }
+  .proof p.lede { color:#b8b5ac; }
+  .proof-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-top:26px; }
+  @media (max-width:760px){ .proof-grid{ grid-template-columns:1fr 1fr; } }
+  .proof-grid div { border:1px solid rgba(250,249,245,.14); border-radius:12px; padding:14px 16px; }
+  .proof-grid b { display:block; font-family:'Fraunces',serif; font-weight:500; font-size:26px; letter-spacing:-.02em; }
+  .proof-grid span { font-size:12.5px; color:#b8b5ac; }
+
+  /* 90 day plan */
+  .plan { display:grid; gap:12px; }
+  .plan-row { display:grid; grid-template-columns:150px 1fr; gap:18px; background:#fff; border:1px solid var(--line); border-radius:14px; padding:18px 22px; }
+  @media (max-width:640px){ .plan-row{ grid-template-columns:1fr; gap:6px; } }
+  .plan-when { font-family:'Fraunces',serif; font-style:italic; color:var(--clay-deep); font-size:16px; }
+  .plan-row p { font-size:14.5px; color:var(--ink-2); }
+  .plan-row p b { color:var(--ink); }
+
+  .cta { text-align:center; padding:80px 0 90px; }
+  .btn { display:inline-flex; align-items:center; gap:8px; background:var(--clay); color:var(--ivory); padding:13px 28px; border-radius:999px; font-size:15px; font-weight:600; text-decoration:none; transition:background .15s, transform .15s; }
+  .btn:hover { background:var(--clay-deep); transform:translateY(-1px); }
+  .btn.ghost { background:transparent; color:var(--ink); border:1.5px solid var(--line); }
+
+  footer { border-top:1px solid var(--line); padding:30px 0 40px; font-size:13px; color:var(--ink-3); }
+
+  .reveal { opacity:0; transform:translateY(14px); transition:opacity .55s ease, transform .55s ease; }
+  .reveal.in { opacity:1; transform:none; }
+  @media (prefers-reduced-motion:reduce){ .reveal{ opacity:1; transform:none; transition:none; } html{ scroll-behavior:auto; } }
+  @media print { nav,#rail,.cta .btn{ display:none; } section{ padding:28px 0 6px; } .proof{ background:#fff; color:var(--ink); border:1px solid var(--line);} .proof h2{color:var(--ink);} }
+</style>
+</head>
+<body>
+<div id="rail"></div>
+<nav>
+  <div class="wrap nav-in">
+    <a class="brand" href="#top"><span class="brand-mark">B</span> Bodhi <span style="font-weight:500;color:var(--ink-3)">DMS</span></a>
+    <span class="nav-for">Prepared for <b>Auric</b> · a guided walkthrough</span>
+  </div>
+</nav>
+
+<header id="top">
+  <div class="wrap hero">
+    <div class="eyebrow">● &nbsp;For the Auric team · Maruti Suzuki dealership</div>
+    <h1>Imagine you signed today. Here is <em>exactly</em> how your dealership goes live.</h1>
+    <p class="sub">This isn't a feature list. It's your first 90 days on Bodhi DMS — what your team sets up first, where the data starts flowing, and why each step is in that order. Read it top to bottom; it follows a car through your showroom.</p>
+    <div class="map">
+      <a href="#foundation"><span class="ph">Phase 1 · Week 1</span><b>Foundation</b><span>Branches, users, rights, masters</span></a>
+      <a href="#opening"><span class="ph">Phase 2 · Week 2</span><b>Opening position</b><span>Stock, ledgers, parts, people</span></a>
+      <a href="#sales"><span class="ph">Phase 3 · Weeks 3–8</span><b>Live, desk by desk</b><span>Sales → Service → Accounts → HR</span></a>
+      <a href="#command"><span class="ph">Phase 4 · Day 90</span><b>Full command</b><span>Reports, dashboards, GST returns</span></a>
+    </div>
+  </div>
+</header>
+
+<!-- ═══════════════════ PHASE 1 ═══════════════════ -->
+<section id="foundation">
+  <div class="wrap">
+    <p class="kicker reveal">Phase 1 · Week 1 · your admin + our team, together</p>
+    <h2 class="reveal">Foundation: teach the system your dealership</h2>
+    <p class="lede reveal">Nothing transactional yet. First the system learns <b>who you are, who works for you, and who is allowed to do what</b> — because every booking, invoice and voucher that follows will reference this skeleton.</p>
+    <div class="steps reveal">
+      <div class="step"><div class="step-n"></div><div class="step-b">
+        <h3>Company & branches <span class="who">Admin</span></h3>
+        <p>Your legal entity with GSTIN, then every showroom, workshop and stockyard as a <b>branch</b>. Why first: every record — a receipt, a job card, an approval — is stamped with its branch, so branch-wise P&L works from day one.</p>
+      </div></div>
+      <div class="step"><div class="step-n"></div><div class="step-b">
+        <h3>Users & the rights matrix <span class="who">Admin</span> <span class="sys">enforced server-side</span></h3>
+        <p>Every employee gets a login. Then you tick, per user, exactly which modules they may open — a sales DSE never sees payroll; a cashier never sees discounts. Unlike your current setup, this is enforced by the server, not just hidden menus.</p>
+      </div></div>
+      <div class="step"><div class="step-n"></div><div class="step-b">
+        <h3>The approval matrix <span class="who">Dealer principal + Accounts head</span></h3>
+        <p>You decide: refunds above ₹25,000 need the GM; discounts above scheme limit need two levels; petty cash needs the accountant. This is the <b>maker–checker</b> spine — from now on, nothing money-shaped posts on one person's say-so, and the maker of a record can never approve it himself.</p>
+      </div></div>
+      <div class="step"><div class="step-n"></div><div class="step-b">
+        <h3>Masters: models, financiers, insurers, price lists <span class="who">Sales back-office</span></h3>
+        <p>Your Maruti model/variant/colour catalogue with GST rates, the financiers you work with (and their payout rates), insurers, payment modes, discount schemes with <b>maximum limits</b>. Why: when a cost sheet is built next week, every line comes from these masters — no typed-in prices, no "adjusted" discounts.</p>
+      </div></div>
+      <div class="step"><div class="step-n"></div><div class="step-b">
+        <h3>Credential vault <span class="who">Admin</span> <span class="sys">encrypted</span></h3>
+        <p>Your GSTIN e-invoice credentials, MSIL dealer code for the GD-FDI feed, WhatsApp/SMS provider — stored encrypted, per dealership. The workflows are already built; when a credential lands, that integration simply switches on. No code, no vendor wait.</p>
+      </div></div>
+    </div>
+    <div class="why reveal"><span class="wi">why this order</span><p>Skip this week and every later entry becomes a free-text guess. Do it right and <b>the system starts refusing bad data on your behalf</b> — wrong branch, over-limit discount, unauthorized user — automatically, forever.</p></div>
+  </div>
+</section>
+
+<!-- ═══════════════════ PHASE 2 ═══════════════════ -->
+<section id="opening">
+  <div class="wrap">
+    <p class="kicker reveal">Phase 2 · Week 2 · bulk imports, not typing</p>
+    <h2 class="reveal">Opening position: start where your old books end</h2>
+    <p class="lede reveal">Now the system learns <b>what you own and what you're owed</b>. Everything here is a CSV/Excel import with per-row validation — you see exactly which rows loaded and which need fixing.</p>
+    <div class="steps reveal">
+      <div class="step"><div class="step-n"></div><div class="step-b">
+        <h3>Vehicle stock <span class="who">Stock in-charge</span></h3>
+        <p>Every chassis in your yard — VIN, model, colour, purchase date, purchase value, which stockyard. Why: your very first invoice next week must pull a real chassis, and <b>stock aging starts counting</b> from these dates (you'll see why that matters at allotment).</p>
+      </div></div>
+      <div class="step"><div class="step-n"></div><div class="step-b">
+        <h3>Ledger opening balances <span class="who">Accounts head / your CA</span></h3>
+        <p>Customer and vendor ledgers with closing balances from your current system, bank balances, group structure. Why: <b>your trial balance on Bodhi day one equals your trial balance on the old system's last day</b> — the auditor's first question, answered before it's asked.</p>
+      </div></div>
+      <div class="step"><div class="step-n"></div><div class="step-b">
+        <h3>Spare parts stock <span class="who">Parts manager</span></h3>
+        <p>Part numbers, HSN, MRP, current quantity and minimum levels. The minimums power automatic reorder suggestions later.</p>
+      </div></div>
+      <div class="step"><div class="step-n"></div><div class="step-b">
+        <h3>Employees & salary structures <span class="who">HR</span></h3>
+        <p>Staff master with department, branch, CTC and component-wise salary structure, PF/ESI numbers. Payroll goes live in month 3, but attendance can start recording from today.</p>
+      </div></div>
+      <div class="step"><div class="step-n"></div><div class="step-b">
+        <h3>Insurance policy book <span class="who">Insurance desk</span></h3>
+        <p>Your existing policies with expiry dates. Why now: the renewal engine immediately starts building your <b>renewal pipeline</b> — the easiest revenue you're currently leaking.</p>
+      </div></div>
+    </div>
+    <div class="callout reveal"><b>Real reference:</b> for Motorcraft Sales Pvt. Ltd (MAPL), we migrated <b>56 million rows across 893 legacy tables</b> — invoices, ledgers, 90,000 policies, 47,000 payslips — and the opening trial balance tied to <b>₹2,134 crore</b> before go-live.</div>
+  </div>
+</section>
+
+<!-- ═══════════════════ PHASE 3 — SALES ═══════════════════ -->
+<section id="sales">
+  <div class="wrap">
+    <p class="kicker reveal">Phase 3 · Desk 1 · the sales floor — live from week 3</p>
+    <h2 class="reveal">Follow one car: enquiry to delivery</h2>
+    <p class="lede reveal">This is a normal Tuesday at Auric, one month in. A customer walks into your showroom. Watch what each person touches — and what the system does around them.</p>
+    <div class="steps reveal">
+      <div class="step"><div class="step-n"></div><div class="step-b">
+        <h3>Enquiry & quotation <span class="who">DSE</span></h3>
+        <p>Your DSE logs the walk-in — name, phone, model interest, budget. Follow-ups get a timeline; no lead lives in a personal diary anymore. One click builds a <b>quotation</b>: ex-showroom from the price master, insurance, RTO, accessories — a printed on-road price in the customer's hand in two minutes.</p>
+      </div></div>
+      <div class="step"><div class="step-n"></div><div class="step-b">
+        <h3>Booking <span class="who">DSE</span> <span class="sys">MSIL feed auto-syncs</span></h3>
+        <p>Customer says yes → booking with advance receipt. Bookings from the <b>MSIL GD-FDI feed</b> flow in automatically and de-duplicate — your Maruti order book and your DMS stop being two different truths.</p>
+      </div></div>
+      <div class="step"><div class="step-n"></div><div class="step-b">
+        <h3>Cost sheet <span class="who">DSE → Accounts checker</span> <span class="sys">maker–checker</span></h3>
+        <p>The deal's financial DNA: ex-showroom, insurance, RTO, accessories, warranty, TCS, every discount component. The DSE <i>makes</i> it, accounts <i>checks</i> it. Receipts recorded against it auto-reduce the balance; it closes itself at zero.</p>
+      </div></div>
+      <div class="step"><div class="step-n"></div><div class="step-b">
+        <h3>Discounts <span class="who">DSE requests · manager approves</span> <span class="sys">limit enforced</span></h3>
+        <p>Consumer offer, exchange bonus, corporate — each requested by component. If the total crosses the scheme's maximum, <b>the server refuses it</b> until the configured approver signs off. At MAPL's scale this single control is worth lakhs a month.</p>
+      </div></div>
+      <div class="step"><div class="step-n"></div><div class="step-b">
+        <h3>Allotment <span class="who">Stock in-charge</span> <span class="sys">FIFO enforced</span></h3>
+        <p>Which chassis goes to this customer? The system recommends the <b>oldest matching stock first</b> — skip an older chassis and it demands an approval. Your stock aging stops silently rotting in the yard.</p>
+      </div></div>
+      <div class="step"><div class="step-n"></div><div class="step-b">
+        <h3>Invoice <span class="who">Billing</span> <span class="sys">GST + e-invoice IRN</span></h3>
+        <p>One click: GST splits computed from the model master (28% + cess, CGST/SGST vs IGST), the chassis flips to SOLD, the booking to INVOICED — and the <b>e-invoice IRN with QR</b> generates against your GSTIN. Cancellation after IRN? Blocked, with an approval trail.</p>
+      </div></div>
+      <div class="step"><div class="step-n"></div><div class="step-b">
+        <h3>RTO & delivery <span class="who">RTO desk</span></h3>
+        <p>Eight registration milestones tracked per car, Vahan reconciliation by chassis, fees logged. Delivery day: gate pass printed, the customer drives out, and your dashboard already shows this sale in this branch's numbers.</p>
+      </div></div>
+      <div class="step"><div class="step-n"></div><div class="step-b">
+        <h3>If it goes sideways: refunds & cancellations <span class="who">Anyone requests · matrix approves</span></h3>
+        <p>Booking cancelled? The refund computes <b>booking + additional − cancellation charges</b>, routes through the approval matrix, and only on final approval posts the voucher and releases the chassis back to stock. No verbal refunds, ever.</p>
+      </div></div>
+    </div>
+    <div class="why reveal"><span class="wi">what changed for you</span><p>Every rupee of this deal — advance, discount, refund, payout — moved through a gate someone <b>else</b> approved. Every chassis moved oldest-first. And you watched it live from the dashboard, not from a Monday-morning Excel.</p></div>
+  </div>
+</section>
+
+<!-- SERVICE -->
+<section>
+  <div class="wrap">
+    <p class="kicker reveal">Phase 3 · Desk 2 · workshop & bodyshop — live from month 2</p>
+    <h2 class="reveal">The service lane: job card to gate pass</h2>
+    <p class="lede reveal">Sales sells the first car; <b>service sells every next one</b>. Same discipline, applied to the workshop.</p>
+    <div class="steps reveal">
+      <div class="step"><div class="step-n"></div><div class="step-b">
+        <h3>Job card opens <span class="who">Service advisor</span></h3>
+        <p>Reg no, km, service type (PMS / running repair / warranty / accessories), customer complaints, the <b>accessory checklist</b> (spare wheel, tools, stereo — signed before the car enters), pick-and-drop details.</p>
+      </div></div>
+      <div class="step"><div class="step-n"></div><div class="step-b">
+        <h3>Estimate approved <span class="who">Customer</span></h3>
+        <p>The advisor records the estimate and the customer's approval <i>before</i> work starts — the end of "nobody told me it would cost this much".</p>
+      </div></div>
+      <div class="step"><div class="step-n"></div><div class="step-b">
+        <h3>Labour & parts <span class="who">Advisor / technician</span> <span class="sys">stock auto-deducts</span></h3>
+        <p>Each labour line and part added to the card. Parts pull from the spares inventory live — <b>overselling a part is impossible</b>, and stock is always the truth.</p>
+      </div></div>
+      <div class="step"><div class="step-n"></div><div class="step-b">
+        <h3>Offers & documents <span class="who">Advisor</span></h3>
+        <p>A service coupon (say, monsoon-check ₹500 off) applies before GST with its own limits. Then the paperwork, each a numbered document: <b>proforma invoice</b> (estimate), <b>cash memo</b> (retail), <b>debit memo</b> (billed to insurer), <b>parts requisition</b> — snapshots that can never silently change after issue.</p>
+      </div></div>
+      <div class="step"><div class="step-n"></div><div class="step-b">
+        <h3>Invoice & gate pass <span class="who">Billing</span></h3>
+        <p>18% GST computed, invoice numbered, vehicle delivered with a gate pass. The advisor's revenue and labour share land on the workshop dashboard by name.</p>
+      </div></div>
+      <div class="step"><div class="step-n"></div><div class="step-b">
+        <h3>Bodyshop claims <span class="who">Bodyshop coordinator</span></h3>
+        <p>Insurance jobs run a <b>15-stage lifecycle</b> — estimate, surveyor, DO, repair, BI/BR invoices — with the insurer-vs-customer split tracked to the rupee. A live register shows exactly what each insurer still owes you.</p>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SPARES + INSURANCE + TV -->
+<section>
+  <div class="wrap">
+    <p class="kicker reveal">Phase 3 · Desks 3–5 · the revenue you're leaking today</p>
+    <h2 class="reveal">Spares counter · Insurance renewals · True Value</h2>
+    <div class="steps reveal">
+      <div class="step"><div class="step-n"></div><div class="step-b">
+        <h3>Spares: counter sale & reorder <span class="who">Parts manager</span></h3>
+        <p>Retail counter billing with GST, purchase GRN updating stock, and a <b>suggestive order</b> screen: every part at or below minimum, with suggested quantity and order value — export and send to your supplier. No more stock-outs discovered mid-service.</p>
+      </div></div>
+      <div class="step"><div class="step-n"></div><div class="step-b">
+        <h3>Insurance: the renewal engine <span class="who">CRE team</span> <span class="sys">targets & conveyance</span></h3>
+        <p>Every policy nearing expiry becomes a case. The manager <b>assigns cases to CREs</b>, sets monthly targets, and watches conversion live — renewed premium, lost reasons, ₹-per-renewal conveyance. At MAPL this engine sits on a book of <b>90,000 policies</b>.</p>
+      </div></div>
+      <div class="step"><div class="step-n"></div><div class="step-b">
+        <h3>True Value: used cars with discipline <span class="who">Evaluator → approver</span></h3>
+        <p>Evaluation → <b>purchase price approved</b> (maker–checker) → refurb costs tracked in buckets (bodyshop / workshop / other) → sale with margin-scheme GST computed correctly. Every deal shows its true net P&L; no more "we think we made money on that Swift".</p>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ACCOUNTS -->
+<section>
+  <div class="wrap">
+    <p class="kicker reveal">Phase 3 · Desk 6 · accounts — live from week 4</p>
+    <h2 class="reveal">Accounts: books that close themselves</h2>
+    <p class="lede reveal">Most of your accounting has <b>already happened</b> — invoices, receipts and refunds posted their own entries. What's left is the accountant's real work.</p>
+    <div class="steps reveal">
+      <div class="step"><div class="step-n"></div><div class="step-b">
+        <h3>Day book & vouchers <span class="who">Accountant maker → checker</span></h3>
+        <p>Journal entries with live Dr/Cr balancing — an unbalanced voucher cannot be saved, an unapproved one cannot post to ledgers.</p>
+      </div></div>
+      <div class="step"><div class="step-n"></div><div class="step-b">
+        <h3>Daily cash & petty cash <span class="who">Cashier</span></h3>
+        <p>Denomination-wise cash sheet (2000s down to coins) with computed shortage; petty cash requests routed through approval with a disbursement step.</p>
+      </div></div>
+      <div class="step"><div class="step-n"></div><div class="step-b">
+        <h3>Bank reconciliation <span class="who">Accountant</span></h3>
+        <p>Paste the bank statement CSV, tick off matches, see the unreconciled gap shrink to zero.</p>
+      </div></div>
+      <div class="step"><div class="step-n"></div><div class="step-b">
+        <h3>TDS & outstanding <span class="who">Accounts head</span></h3>
+        <p>Vendor TDS computed by section (194C, 194J…) with thresholds, deposit tracking and a section-wise register. Receivables and payables aged 0–30–60–90 by party.</p>
+      </div></div>
+      <div class="step"><div class="step-n"></div><div class="step-b">
+        <h3>GST returns <span class="who">Your CA</span> <span class="sys">portal-ready JSON</span></h3>
+        <p><b>GSTR-1 and GSTR-3B generated from the sale register itself</b> — B2B, B2C, HSN summary, document range — and exported in the government offline-tool JSON your CA uploads directly. The totals reconcile to the register to the paisa, because they come from it.</p>
+      </div></div>
+      <div class="step"><div class="step-n"></div><div class="step-b">
+        <h3>Financial statements <span class="who">Dealer principal</span></h3>
+        <p>Trial balance, P&L and balance sheet on demand, drilled by group — not quarter-end archaeology. At MAPL these tie to <b>₹2,134 crore</b> against the migrated ledgers.</p>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<!-- HR -->
+<section>
+  <div class="wrap">
+    <p class="kicker reveal">Phase 3 · Desk 7 · people — live from month 3</p>
+    <h2 class="reveal">HR & payroll: from punch to payslip</h2>
+    <div class="steps reveal">
+      <div class="step"><div class="step-n"></div><div class="step-b">
+        <h3>Attendance & leave <span class="who">Everyone</span></h3>
+        <p>Daily attendance (with a <b>mobile punch</b> from any phone), leave requests with approvals, mispunch corrections through maker–checker.</p>
+      </div></div>
+      <div class="step"><div class="step-n"></div><div class="step-b">
+        <h3>Payroll run <span class="who">HR</span> <span class="sys">statutory built-in</span></h3>
+        <p>One click computes the month from structures + attendance: <b>PF 12%, ESI, professional tax, TDS under both regimes</b> — payslips generated, bank-transfer sheet exported.</p>
+      </div></div>
+      <div class="step"><div class="step-n"></div><div class="step-b">
+        <h3>Incentives <span class="who">HR → Accounts</span></h3>
+        <p>Sales and workshop incentives with a dual approval chain (HR then accounts) before payout — MAPL runs <b>7,874</b> of these through it.</p>
+      </div></div>
+      <div class="step"><div class="step-n"></div><div class="step-b">
+        <h3>Exits, loans, recruitment <span class="who">HR</span></h3>
+        <p>Staged exit (self → HOD → HR → CEO) with automatic full-and-final math; staff loans with EMI schedules; a candidate pipeline that onboards straight into the employee master.</p>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ PHASE 4 ═══════════════════ -->
+<section id="command">
+  <div class="wrap">
+    <p class="kicker reveal">Phase 4 · Day 90 · the owner's view</p>
+    <h2 class="reveal">Full command: you see everything, they see their lane</h2>
+    <p class="lede reveal">By day 90, every desk feeds one nervous system — and you read it from anywhere.</p>
+    <div class="steps reveal">
+      <div class="step"><div class="step-n"></div><div class="step-b">
+        <h3>75+ reports, 12 dashboards <span class="who">You</span></h3>
+        <p>Model-wise, branch-wise, advisor-wise, financier-wise — every register with CSV and print. Analytics dashboards for sales, service, HR, collections, true value. One approvals inbox shows everything waiting, on whom, since when.</p>
+      </div></div>
+      <div class="step"><div class="step-n"></div><div class="step-b">
+        <h3>Three layers of security <span class="who">Enforced for everyone</span></h3>
+        <p><b>Identity</b> (token auth, hashed passwords) → <b>module rights</b> (server rejects what the user can't open) → <b>field rules</b> (mandatory fields + who may edit sensitive ones). Plus the encrypted credential vault and audit trails on every approval and IRN.</p>
+      </div></div>
+      <div class="step"><div class="step-n"></div><div class="step-b">
+        <h3>It grows with you <span class="who">Config, not code</span></h3>
+        <p>New report, new master, new import, new approval route — configuration, shipped in hours. New branch? Add it and its users; everything else already works.</p>
+      </div></div>
+    </div>
+
+    <div class="proof reveal">
+      <p class="kicker">The proof — a named reference</p>
+      <h2 class="serif">Built and proven on Motorcraft Sales (MAPL)</h2>
+      <p class="lede">A multi-branch Maruti Suzuki dealer group in Ghaziabad, migrated from a 15-year-old legacy DMS onto Bodhi — data, workflows and screen-level parity included.</p>
+      <div class="proof-grid">
+        <div><b>56M+</b><span>rows migrated, 893 tables</span></div>
+        <div><b>199</b><span>users across 27 branches</span></div>
+        <div><b>₹2,134 Cr</b><span>trial balance, tied to the paisa</span></div>
+        <div><b>833</b><span>legacy screens covered — zero gaps</span></div>
+        <div><b>90,000</b><span>insurance policies live</span></div>
+        <div><b>47,050</b><span>payslips of history preserved</span></div>
+        <div><b>75+</b><span>reports · 12 dashboards</span></div>
+        <div><b>0</b><span>rupees post without an approver</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 90 DAY PLAN -->
+<section>
+  <div class="wrap">
+    <p class="kicker reveal">Your calendar</p>
+    <h2 class="reveal">Auric's 90-day plan, on one page</h2>
+    <div class="plan reveal">
+      <div class="plan-row"><span class="plan-when">Week 1</span><p><b>Foundation.</b> Branches, users & rights, approval matrix, model/financier/insurer/price masters, credential vault.</p></div>
+      <div class="plan-row"><span class="plan-when">Week 2</span><p><b>Opening position.</b> Vehicle stock, ledger balances, parts stock, employees, policy book — all by validated import.</p></div>
+      <div class="plan-row"><span class="plan-when">Weeks 3–4</span><p><b>Sales + accounts go live.</b> Bookings, cost sheets, invoices with e-invoice IRN, receipts, vouchers, daily cash. Old system goes read-only.</p></div>
+      <div class="plan-row"><span class="plan-when">Month 2</span><p><b>Service, spares, insurance, True Value.</b> Job cards, bodyshop claims, counter sales, renewal engine, used-car desk.</p></div>
+      <div class="plan-row"><span class="plan-when">Month 3</span><p><b>People + integrations.</b> Attendance, first payroll run, incentives; MSIL feed, WhatsApp, Vahan switched on from the vault. First GSTR filed from the system.</p></div>
+      <div class="plan-row"><span class="plan-when">Day 90</span><p><b>Review with us.</b> Every desk live, dashboards in your hand, and a punch-list of anything your team wants tuned — config, not code.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap">
+    <p class="kicker reveal">Next step</p>
+    <h2 class="reveal serif">See it live with your own numbers</h2>
+    <p class="lede reveal" style="margin:0 auto 32px">A working system, not slides — we'll walk these exact flows on the live demo, and if you share a sample of your data, on <i>your</i> data.</p>
+    <div class="reveal">
+      <a class="btn" href="mailto:prashant@bodhiai.in?subject=Bodhi%20DMS%20×%20Auric%20—%20next%20step">Book the live walkthrough</a>
+      &nbsp;&nbsp;<a class="btn ghost" href="mailto:prashant@bodhiai.in?subject=Auric%20sample%20data">Ask about data migration</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap" style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px">
+    <span><b style="color:var(--ink)">Bodhi DMS</b> · a Bodhi AI product · prepared for Auric</span>
+    <span>prashant@bodhiai.in · © 2026 Bodhi AI</span>
+  </div>
+</footer>
+
+<script>
+  const rail = document.getElementById('rail')
+  addEventListener('scroll', () => {
+    const h = document.documentElement
+    rail.style.width = (h.scrollTop / (h.scrollHeight - h.clientHeight) * 100) + '%'
+  }, { passive: true })
+  const io = new IntersectionObserver((es) => {
+    for (const e of es) if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target) }
+  }, { threshold: 0.1 })
+  document.querySelectorAll('.reveal').forEach((el, i) => { el.style.transitionDelay = `${(i % 4) * 70}ms`; io.observe(el) })
+</script>
+</body>
+</html>
