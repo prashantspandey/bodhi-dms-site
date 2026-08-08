@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Legal Network Analysis — Pramod Kumar Pandey | Rajasthan HC</title>
+<style>
+  :root {
+    --primary: #1a3a5c; --accent: #c0392b; --gold: #d4a017;
+    --green: #1b6b35; --light: #f4f7fb; --border: #dce4ef; --text: #1e2d3d; --muted: #6b7f96;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--light); color: var(--text); line-height: 1.6; }
+
+  .header { background: linear-gradient(135deg, #0d2137 0%, #1a3a5c 70%); color: #fff; padding: 36px 32px 28px; }
+  .header h1 { font-size: 24px; font-weight: 700; }
+  .header .sub { color: #8fb4d6; font-size: 13px; margin-top: 6px; }
+  .header .pills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+  .pill { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 20px; padding: 3px 12px; font-size: 11px; color: #c5daf0; }
+  .pill strong { color: #fff; }
+
+  .container { max-width: 1200px; margin: 0 auto; padding: 28px 20px; }
+
+  .tabs { display: flex; gap: 4px; margin-bottom: 24px; flex-wrap: wrap; }
+  .tab { padding: 9px 18px; border: 1px solid var(--border); border-radius: 6px 6px 0 0; cursor: pointer; font-size: 13px; font-weight: 600; background: #fff; color: var(--muted); transition: all 0.15s; }
+  .tab.active { background: var(--primary); color: #fff; border-color: var(--primary); }
+  .tab:hover:not(.active) { background: var(--light); color: var(--primary); }
+
+  .panel { display: none; }
+  .panel.active { display: block; }
+
+  .section { margin-bottom: 28px; }
+  .section-title { font-size: 12px; font-weight: 700; letter-spacing: 1.8px; text-transform: uppercase; color: var(--primary); border-bottom: 2px solid var(--primary); padding-bottom: 8px; margin-bottom: 16px; }
+
+  .stats-row { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 24px; }
+  .stat-box { background: var(--primary); color: #fff; border-radius: 8px; padding: 16px 20px; flex: 1; min-width: 120px; text-align: center; }
+  .stat-box.green { background: var(--green); }
+  .stat-box.red { background: var(--accent); }
+  .stat-box.gold { background: #7d6010; }
+  .stat-num { font-size: 28px; font-weight: 800; color: var(--gold); line-height: 1; }
+  .stat-box.green .stat-num, .stat-box.red .stat-num, .stat-box.gold .stat-num { color: #ffe082; }
+  .stat-label { font-size: 11px; color: #8fb4d6; margin-top: 4px; }
+  .stat-box.green .stat-label, .stat-box.red .stat-label, .stat-box.gold .stat-label { color: rgba(255,255,255,0.7); }
+
+  .table-wrap { background: #fff; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,0.06); margin-bottom: 20px; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  thead tr { background: var(--primary); color: #fff; }
+  thead th { padding: 10px 12px; text-align: left; font-size: 11px; text-transform: uppercase; letter-spacing: 0.8px; font-weight: 600; }
+  tbody tr { border-bottom: 1px solid var(--border); }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: #f0f5fb; }
+  tbody td { padding: 10px 12px; vertical-align: top; }
+  .case-no { font-family: monospace; font-size: 11px; color: var(--primary); font-weight: 700; }
+  .badge { display: inline-block; padding: 2px 7px; border-radius: 10px; font-size: 10px; font-weight: 700; }
+  .badge-disposed { background: #e8f5e9; color: #1b5e20; }
+  .badge-pending { background: #e3f2fd; color: #0d47a1; }
+  .badge-pet { background: #e8eaf6; color: #283593; }
+  .badge-res { background: #fce4ec; color: #880e4f; }
+
+  .adv-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 22px; margin-bottom: 20px; position: relative; overflow: hidden; }
+  .adv-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; }
+  .adv-card.pet::before { background: var(--primary); }
+  .adv-card.res::before { background: var(--accent); }
+  .adv-name { font-size: 20px; font-weight: 700; margin-bottom: 4px; }
+  .adv-meta { font-size: 12px; color: var(--muted); margin-bottom: 14px; }
+  .adv-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; margin-top: 12px; }
+  .adv-stat { background: var(--light); border: 1px solid var(--border); border-radius: 6px; padding: 10px 14px; }
+  .adv-stat .label { font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); font-weight: 600; }
+  .adv-stat .value { font-size: 16px; font-weight: 700; color: var(--primary); margin-top: 2px; }
+
+  .year-bar { display: flex; align-items: flex-end; gap: 4px; height: 80px; margin: 12px 0; }
+  .yr-col { display: flex; flex-direction: column; align-items: center; flex: 1; }
+  .yr-bar { background: var(--primary); border-radius: 3px 3px 0 0; width: 100%; min-height: 3px; transition: height 0.3s; }
+  .yr-bar.recent { background: var(--accent); }
+  .yr-label { font-size: 9px; color: var(--muted); margin-top: 3px; }
+  .yr-count { font-size: 9px; font-weight: 700; color: var(--primary); }
+
+  .judge-card { background: #fff; border: 1px solid var(--border); border-radius: 8px; padding: 18px; margin-bottom: 14px; display: grid; grid-template-columns: auto 1fr auto; gap: 16px; align-items: start; }
+  .judge-avatar { width: 48px; height: 48px; border-radius: 50%; background: linear-gradient(135deg, var(--primary), #2e6da4); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
+  .judge-name { font-size: 16px; font-weight: 700; }
+  .judge-meta { font-size: 12px; color: var(--muted); margin-top: 2px; }
+  .judge-bench { font-size: 11px; background: var(--light); border: 1px solid var(--border); border-radius: 4px; padding: 3px 8px; color: var(--primary); font-weight: 600; margin-top: 6px; display: inline-block; }
+  .judge-stats { text-align: right; }
+  .judge-stat-num { font-size: 22px; font-weight: 800; color: var(--primary); }
+  .judge-stat-label { font-size: 10px; color: var(--muted); }
+
+  .highlight { background: #fff3e0; border-left: 4px solid var(--gold); padding: 10px 14px; border-radius: 0 6px 6px 0; margin: 12px 0; font-size: 13px; }
+
+  .client-list { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+  .client-tag { background: var(--light); border: 1px solid var(--border); border-radius: 4px; padding: 3px 10px; font-size: 12px; color: var(--text); }
+
+  @media (max-width: 600px) {
+    .judge-card { grid-template-columns: auto 1fr; }
+    .judge-stats { grid-column: 2; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:#aac4e0;margin-bottom:10px">Rajasthan High Court · Legal Network Intelligence · Jaipur Bench</div>
+  <h1>Judges & Advocates — Pramod Kumar Pandey Cases</h1>
+  <div class="sub">5-Year Analysis: 2020–2026 · Case History · Practice Patterns · Disposal Records</div>
+  <div class="pills">
+    <div class="pill">Target: <strong>Pramod Kumar Pandey</strong></div>
+    <div class="pill">Bench: <strong>Jaipur</strong></div>
+    <div class="pill">Subject: <strong>DS-Forest (Service Matters)</strong></div>
+    <div class="pill">Period: <strong>2018–2026</strong></div>
+    <div class="pill">Advocates Profiled: <strong>4</strong></div>
+    <div class="pill">Judges Profiled: <strong>6</strong></div>
+    <div class="pill">Cases Analysed: <strong>1,069+</strong></div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="tabs">
+    <div class="tab active" onclick="showTab('overview')">Overview</div>
+    <div class="tab" onclick="showTab('advocates')">Advocates (4)</div>
+    <div class="tab" onclick="showTab('judges')">Judges (6)</div>
+    <div class="tab" onclick="showTab('rishabh')">Rishabh — 207 Cases</div>
+    <div class="tab" onclick="showTab('gill')">Gill — 810 Cases</div>
+    <div class="tab" onclick="showTab('avasthi')">Avasthi — 52 Cases</div>
+    <div class="tab" onclick="showTab('pramod')">Pramod's Cases (10)</div>
+  </div>
+
+  <!-- OVERVIEW -->
+  <div class="panel active" id="tab-overview">
+    <div class="section">
+      <div class="section-title">Network at a Glance</div>
+      <div class="stats-row">
+        <div class="stat-box"><div class="stat-num">10</div><div class="stat-label">Pramod's Active Cases</div></div>
+        <div class="stat-box"><div class="stat-num">207</div><div class="stat-label">Rishabh's Total Cases</div></div>
+        <div class="stat-box red"><div class="stat-num">810</div><div class="stat-label">Gill's Total Cases</div></div>
+        <div class="stat-box gold"><div class="stat-num">52</div><div class="stat-label">Avasthi's Total Cases</div></div>
+        <div class="stat-box green"><div class="stat-num">6</div><div class="stat-label">Judges on Record</div></div>
+        <div class="stat-box"><div class="stat-num">24+</div><div class="stat-label">Judicial Disposals Tracked</div></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Key Findings</div>
+      <div class="highlight">⚖ <strong>Pramod's advocate Rishabh Khandelwal</strong> has 207 cases in Jaipur Bench — active since 2018, with a major surge in 2025 (52 cases) and 2026 (39 cases already). He primarily handles DS (Departmental Service) matters for government employees.</div>
+      <div class="highlight">📈 <strong>Guru Charan Singh Gill</strong> (State's advocate on Pramod's 2025 case) has the largest practice — 810 cases total, with explosive growth: 116 cases in 2023, 128 in 2024, 249 in 2025, 142 in 2026 (to date). He is a senior State-side counsel handling JDA, local self-government, and service matters.</div>
+      <div class="highlight">🧓 <strong>Banwari Lal Avasthi</strong> (State's advocate on Pramod's 2018 case, enrolled 1979) has handled 52 cases across 15+ years. He appeared in Pramod's salary case (RJHC021134882018) — that case is still pending after 8 years.</div>
+      <div class="highlight">🏛 <strong>Justice Sanjeev Prakash Sharma</strong> (current Acting CJ) was on Single Bench [1576] in 2020 and disposed 4 cases that year. He is now on Division Bench [1964] with Justice Baljinder Singh Sandhu (2025–26 roster). DS service matters like Pramod's are heard by Single Benches under the current roster.</div>
+      <div class="highlight">⏳ <strong>Pattern:</strong> Pramod's oldest case (2018, salary during suspension) has been pending 8 years across multiple benches. None of his 6 substantive petitions appear in the disposal_proc_filing table — all are unresolved. The Forest Department has successfully delayed resolution through multiple adjournments.</div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Timeline of Judicial Involvement</div>
+      <table class="table-wrap" style="border:none">
+        <thead><tr><th>Period</th><th>Judge/Bench</th><th>Bench ID</th><th>Type</th><th>Pramod's Case Status</th></tr></thead>
+        <tbody>
+          <tr><td>Jan 2020</td><td>Justice Sanjeev Prakash Sharma</td><td>1576</td><td>Single Bench VI</td><td>Case 205200261232018 already pending (filed Nov 2018)</td></tr>
+          <tr><td>Jan 2020</td><td>Justice Mahendra Maheshwari</td><td>1560</td><td>Single Bench I</td><td>Primary single bench for DS matters</td></tr>
+          <tr><td>Jan 2020</td><td>Maheshwari + Bardhar (DB)</td><td>1667</td><td>Division Bench</td><td>Appeals bench</td></tr>
+          <tr><td>Jan 2020</td><td>Lodha + Goyal (DB)</td><td>1683</td><td>Division Bench I</td><td>Main division bench</td></tr>
+          <tr><td>2020–2024</td><td>(Gap in roster data)</td><td>—</td><td>—</td><td>2023 case filed (RJHC020719612023)</td></tr>
+          <tr><td>Nov 2025</td><td>Sharma + Sandhu (DB)</td><td>1964</td><td>Division Bench</td><td>5 new Pramod cases filed in 2025</td></tr>
+          <tr><td>Jul 2026</td><td>Current roster</td><td>—</td><td>Single Bench (DS)</td><td>Pension case filed; 3 hearings Aug–Oct 2026</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ADVOCATES -->
+  <div class="panel" id="tab-advocates">
+    <div class="adv-card pet">
+      <div class="adv-name">Rishabh Khandelwal</div>
+      <div class="adv-meta">Code: 62904 · Reg: R16072009 · DOB: 09 Sep 1985 · Mobile: 9549365775 / 7300350469 · Email: RISHABHKHANDELWAL585@GMAIL.COM</div>
+      <div class="adv-meta">📍 T-02, 3rd Floor, Mayur Apartments, Rajbhawan Road, Civil Lines, Jaipur</div>
+      <div style="margin-top:8px"><span class="badge badge-pet">Petitioner's Advocate</span> — ALL 10 of Pramod's cases</div>
+      <div class="adv-grid">
+        <div class="adv-stat"><div class="label">Total Cases (Jaipur)</div><div class="value">207</div></div>
+        <div class="adv-stat"><div class="label">Since 2020</div><div class="value">~183</div></div>
+        <div class="adv-stat"><div class="label">2025 Cases</div><div class="value">52</div></div>
+        <div class="adv-stat"><div class="label">2026 Cases (YTD)</div><div class="value">39</div></div>
+        <div class="adv-stat"><div class="label">Enrolled</div><div class="value">2009</div></div>
+        <div class="adv-stat"><div class="label">Practice Span</div><div class="value">15+ years</div></div>
+      </div>
+      <div style="margin-top:16px">
+        <div class="section-title" style="margin-bottom:8px">Year-by-Year Case Volume</div>
+        <div class="year-bar">
+          <div class="yr-col"><div class="yr-bar" style="height:5px"></div><div class="yr-label">14</div><div class="yr-count">1</div></div>
+          <div class="yr-col"><div class="yr-bar" style="height:5px"></div><div class="yr-label">16</div><div class="yr-count">1</div></div>
+          <div class="yr-col"><div class="yr-bar" style="height:18px"></div><div class="yr-label">18</div><div class="yr-count">7</div></div>
+          <div class="yr-col"><div class="yr-bar" style="height:33px"></div><div class="yr-label">19</div><div class="yr-count">13</div></div>
+          <div class="yr-col"><div class="yr-bar" style="height:48px"></div><div class="yr-label">20</div><div class="yr-count">19</div></div>
+          <div class="yr-col"><div class="yr-bar" style="height:30px"></div><div class="yr-label">21</div><div class="yr-count">12</div></div>
+          <div class="yr-col"><div class="yr-bar" style="height:50px"></div><div class="yr-label">22</div><div class="yr-count">20</div></div>
+          <div class="yr-col"><div class="yr-bar" style="height:55px"></div><div class="yr-label">23</div><div class="yr-count">22</div></div>
+          <div class="yr-col"><div class="yr-bar" style="height:53px"></div><div class="yr-label">24</div><div class="yr-count">21</div></div>
+          <div class="yr-col"><div class="yr-bar recent" style="height:80px"></div><div class="yr-label">25</div><div class="yr-count">52</div></div>
+          <div class="yr-col"><div class="yr-bar recent" style="height:60px"></div><div class="yr-label">26</div><div class="yr-count">39</div></div>
+        </div>
+      </div>
+      <div style="margin-top:14px">
+        <div class="section-title" style="margin-bottom:8px">Notable Clients (Sample)</div>
+        <div class="client-list">
+          <span class="client-tag">PRAMOD KUMAR PANDEY (DS-Forest)</span>
+          <span class="client-tag">Bhilwara-Jaipur Toll Road Pvt. Ltd.</span>
+          <span class="client-tag">Andeli India Pvt. Ltd.</span>
+          <span class="client-tag">M/S Chandrawati Hospitality</span>
+          <span class="client-tag">Dr. Anand Bihari Sharma</span>
+          <span class="client-tag">Dr. Mahendra Singh Shekhawat</span>
+          <span class="client-tag">Vijay Vaishnav (v/s NHM)</span>
+          <span class="client-tag">Darshita Gupta</span>
+          <span class="client-tag">Suneel Kumar (DS-Medical)</span>
+          <span class="client-tag">Himanshu Chahal</span>
+          <span class="client-tag">Surya Prakash Kalwar</span>
+          <span class="client-tag">SMT. Indra Devi</span>
+        </div>
+      </div>
+      <div style="margin-top:14px">
+        <div class="section-title" style="margin-bottom:8px">Case Types (from Subjects)</div>
+        <div class="client-list">
+          <span class="client-tag">DS-FOREST (Pramod's cases)</span>
+          <span class="client-tag">DS-FOOD &amp; CIVIL SUPPLY</span>
+          <span class="client-tag">DS-MEDICAL</span>
+          <span class="client-tag">Indian Succession Act</span>
+          <span class="client-tag">Company/Commercial matters</span>
+          <span class="client-tag">Service matters (quashing orders)</span>
+          <span class="client-tag">Government employment disputes</span>
+        </div>
+      </div>
+      <div class="highlight" style="margin-top:14px">
+        🔍 <strong>Analysis:</strong> Rishabh's caseload has nearly tripled from 2022 to 2025, indicating rapid practice growth. He handles DS (Departmental Service) matters predominantly — government employees challenging departmental actions — which is exactly Pramod's case type. His involvement in ALL 10 of Pramod's petitions across 8 years shows a long-standing client relationship.
+      </div>
+    </div>
+
+    <div class="adv-card res">
+      <div class="adv-name">Guru Charan Singh Gill</div>
+      <div class="adv-meta">Code: 50250 · Reg: R521978 · DOB: 01 Aug 1953 · Mobile: 7300001111 · Email: gshergill55@gmail.com</div>
+      <div class="adv-meta">📍 95, Heera Nagar, Ajmer Road, Jaipur · Enrolled 1978 (46 years at bar)</div>
+      <div style="margin-top:8px"><span class="badge badge-res">Respondent's Advocate</span> — Pramod's 2025 increment-stoppage case</div>
+      <div class="adv-grid">
+        <div class="adv-stat"><div class="label">Total Cases (Jaipur)</div><div class="value">810</div></div>
+        <div class="adv-stat"><div class="label">2025 Cases</div><div class="value">249</div></div>
+        <div class="adv-stat"><div class="label">2026 Cases (YTD)</div><div class="value">142</div></div>
+        <div class="adv-stat"><div class="label">2023 Cases</div><div class="value">116</div></div>
+        <div class="adv-stat"><div class="label">2024 Cases</div><div class="value">128</div></div>
+        <div class="adv-stat"><div class="label">Practice Span</div><div class="value">46 years</div></div>
+      </div>
+      <div style="margin-top:16px">
+        <div class="section-title" style="margin-bottom:8px">Year-by-Year Case Volume</div>
+        <div class="year-bar">
+          <div class="yr-col"><div class="yr-bar" style="height:3px"></div><div class="yr-label">18</div><div class="yr-count">33</div></div>
+          <div class="yr-col"><div class="yr-bar" style="height:5px"></div><div class="yr-label">19</div><div class="yr-count">29</div></div>
+          <div class="yr-col"><div class="yr-bar" style="height:5px"></div><div class="yr-label">20</div><div class="yr-count">21</div></div>
+          <div class="yr-col"><div class="yr-bar" style="height:9px"></div><div class="yr-label">21</div><div class="yr-count">35</div></div>
+          <div class="yr-col"><div class="yr-bar" style="height:10px"></div><div class="yr-label">22</div><div class="yr-count">41</div></div>
+          <div class="yr-col"><div class="yr-bar" style="height:30px"></div><div class="yr-label">23</div><div class="yr-count">116</div></div>
+          <div class="yr-col"><div class="yr-bar" style="height:32px"></div><div class="yr-label">24</div><div class="yr-count">128</div></div>
+          <div class="yr-col"><div class="yr-bar recent" style="height:80px"></div><div class="yr-label">25</div><div class="yr-count">249</div></div>
+          <div class="yr-col"><div class="yr-bar recent" style="height:46px"></div><div class="yr-label">26</div><div class="yr-count">142</div></div>
+        </div>
+      </div>
+      <div style="margin-top:14px">
+        <div class="section-title" style="margin-bottom:8px">Case Types He Handles</div>
+        <div class="client-list">
+          <span class="client-tag">DS-LOCAL SELF GOVT (sweepers, municipal)</span>
+          <span class="client-tag">DS-FOREST (like Pramod's)</span>
+          <span class="client-tag">JDA (Jaipur Development Authority) matters</span>
+          <span class="client-tag">Police service matters</span>
+          <span class="client-tag">Municipal Act 73-B disputes</span>
+          <span class="client-tag">Suspension quashing</span>
+          <span class="client-tag">Town planner appointment disputes</span>
+          <span class="client-tag">State-side defence (government counsel)</span>
+        </div>
+      </div>
+      <div class="highlight" style="margin-top:14px">
+        🔍 <strong>Analysis:</strong> Gill is a heavyweight State/Government-side counsel with 810 cases — 4× more than Rishabh. His caseload exploded in 2023–2026 (491 cases in 3 years vs 121 in prior years). He appears primarily as RESPONDENT's advocate, defending government departments against service matter petitions. His 1978 enrollment makes him one of the most senior practising advocates on record.
+      </div>
+    </div>
+
+    <div class="adv-card res">
+      <div class="adv-name">Banwari Lal Avasthi</div>
+      <div class="adv-meta">Code: 29683 · Reg: R5401979 · DOB: 08 Oct 1949 · Mobile: not registered</div>
+      <div class="adv-meta">📍 30, Janakpuri-II Ext., Ahead Imliwala Phatak, Jaipur · Enrolled 1979 (45 years at bar)</div>
+      <div style="margin-top:8px"><span class="badge badge-res">Respondent's Advocate</span> — Pramod's 2018 salary case (RJHC021134882018)</div>
+      <div class="adv-grid">
+        <div class="adv-stat"><div class="label">Total Cases</div><div class="value">52</div></div>
+        <div class="adv-stat"><div class="label">2018 Cases</div><div class="value">19</div></div>
+        <div class="adv-stat"><div class="label">2025–26 Cases</div><div class="value">15</div></div>
+        <div class="adv-stat"><div class="label">Enrolled</div><div class="value">1979</div></div>
+      </div>
+      <div style="margin-top:14px">
+        <div class="section-title" style="margin-bottom:8px">Notable Cases</div>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Case No</th><th>Year</th><th>Petitioner</th><th>Subject</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td class="case-no">205200261232018</td><td>2018</td><td>PRAMOD KUMAR PANDEY</td><td>DS-Forest / Release salary during suspension</td><td><span class="badge badge-pending">Pending (8 yrs)</span></td></tr>
+            <tr><td class="case-no">205200127102021</td><td>2021</td><td>COL. HARENDRA SINGH (RETD.)</td><td>DS-Revenue / Quash communication 23.07.2021</td><td><span class="badge badge-pending">Pending</span></td></tr>
+            <tr><td class="case-no">205200130152019</td><td>2019</td><td>RAMJI LAL VERMA</td><td>DS-Secretariat / Quash punishment order 28.02.2019</td><td><span class="badge badge-pending">Pending</span></td></tr>
+            <tr><td class="case-no">205200213972018</td><td>2018</td><td>STATE OF RAJASTHAN</td><td>DS-Information / RTI Act / Quash order 30.05.2018</td><td><span class="badge badge-pending">Pending</span></td></tr>
+            <tr><td class="case-no">205200134732018</td><td>2018</td><td>RAJESH KUMAR KASANA</td><td>DS-RPSC / RAS &amp; RTS / NGE Category</td><td><span class="badge badge-pending">Pending</span></td></tr>
+            <tr><td class="case-no">203900056692025</td><td>2025</td><td>SHAH RUKH KHAN S/O MEER TAJ MOHAMMED</td><td>—</td><td><span class="badge badge-disposed">Disposed Sep 2025</span></td></tr>
+            <tr><td class="case-no">207400089852025</td><td>2025</td><td>MANISH DUSAD</td><td>—</td><td><span class="badge badge-disposed">Disposed Nov 2025</span></td></tr>
+            <tr><td class="case-no">201800091242026</td><td>2026</td><td>RAM KISHOR MEENA</td><td>—</td><td><span class="badge badge-disposed">Disposed May 2026</span></td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div class="highlight">🔍 <strong>Analysis:</strong> Senior advocate (45 years), handling primarily State-side DS matters. He appeared for the State in Pramod's 2018 salary case — which remains pending 8 years later, suggesting the State's delaying strategy. His 2018 caseload was heavy (19 cases), then declined sharply, picking up again in 2025–26. His pattern: long-duration, complex departmental disputes.</div>
+    </div>
+
+    <div class="adv-card res">
+      <div class="adv-name">K S Chandel</div>
+      <div class="adv-meta">Code: 24627 · Reg: R4001982 · DOB: 01 Sep 1957 · Mobile: 9828017219</div>
+      <div class="adv-meta">📍 B-128, Anandpuri, Moti Doongari Road, Jaipur · Enrolled 1982 (42 years at bar)</div>
+      <div style="margin-top:8px"><span class="badge badge-res">Respondent's Advocate</span> — Pramod's 2023 inquiry case (RJHC020719612023)</div>
+      <div class="adv-grid">
+        <div class="adv-stat"><div class="label">Total Cases (Jaipur)</div><div class="value">—</div></div>
+        <div class="adv-stat"><div class="label">Enrolled</div><div class="value">1982</div></div>
+        <div class="adv-stat"><div class="label">Practice Span</div><div class="value">42 years</div></div>
+      </div>
+      <div class="highlight" style="margin-top:14px">🔍 Senior State-side counsel, enrolled 1982. Represents State of Rajasthan in Pramod's 2023 inquiry/absence case. Specialises in departmental/service matters.</div>
+    </div>
+  </div>
+
+  <!-- JUDGES -->
+  <div class="panel" id="tab-judges">
+    <div class="section-title">Judges — Bench Assignments & Disposal Records</div>
+
+    <div class="judge-card">
+      <div class="judge-avatar">⚖</div>
+      <div>
+        <div class="judge-name">Hon'ble Mr. Justice Sanjeev Prakash Sharma</div>
+        <div class="judge-meta">Acting Chief Justice, Rajasthan High Court · Jaipur Bench</div>
+        <div class="judge-bench">SB-VI [1576] — Jan 2020 &nbsp;|&nbsp; DB [1964] with Sandhu — Nov 2025 onwards</div>
+        <div style="margin-top:10px;font-size:13px">
+          <strong>Disposals (2020):</strong> 4 cases disposed as Single Bench [1576]<br>
+          URNs: RJHC020124812012, RJHC021121652019, RJHC021131672019, RJHC020675202020<br>
+          <strong>Current:</strong> Division Bench with Justice Sandhu [bench 1964] — all DB hearings in 2025–26<br>
+          <strong>Relevance to Pramod:</strong> DS matters like Pramod's go to Single Bench. Sharma was on SB in 2020 when Pramod's 2018 case was being heard.
+        </div>
+      </div>
+      <div class="judge-stats">
+        <div class="judge-stat-num">4</div>
+        <div class="judge-stat-label">Disposals (2020)</div>
+      </div>
+    </div>
+
+    <div class="judge-card">
+      <div class="judge-avatar">⚖</div>
+      <div>
+        <div class="judge-name">Hon'ble Mr. Justice Baljinder Singh Sandhu</div>
+        <div class="judge-meta">Judge, Division Bench — Jaipur</div>
+        <div class="judge-bench">DB [1964] with Justice Sharma — Nov 2025 onwards</div>
+        <div style="margin-top:10px;font-size:13px">
+          <strong>Disposals:</strong> 0 recorded (new bench, Nov 2025)<br>
+          <strong>Current:</strong> Division Bench with Acting CJ Sharma for all DB matters Nov 2025–present<br>
+          <strong>Relevance:</strong> Pramod's cases are Single Bench; Sandhu would only hear if a DB order is sought.
+        </div>
+      </div>
+      <div class="judge-stats">
+        <div class="judge-stat-num">0</div>
+        <div class="judge-stat-label">Disposals (new)</div>
+      </div>
+    </div>
+
+    <div class="judge-card">
+      <div class="judge-avatar">⚖</div>
+      <div>
+        <div class="judge-name">Hon'ble Mr. Justice Mahendra Maheshwari</div>
+        <div class="judge-meta">Single Bench I · Division Bench (with Bardhar) — Jaipur 2020</div>
+        <div class="judge-bench">SB-I [1560] · DB [1667] with Bardhar — Jan 2020</div>
+        <div style="margin-top:10px;font-size:13px">
+          <strong>Disposals:</strong> 1 case disposed as SB [1560] (URN: RJHC021125452017)<br>
+          Sat as DB with Justice Bardhar [1667] from Jan 20, 2020<br>
+          <strong>Relevance to Pramod:</strong> Primary single bench for DS matters in early 2020 — would have heard Pramod's 2018 case during this period.
+        </div>
+      </div>
+      <div class="judge-stats">
+        <div class="judge-stat-num">1</div>
+        <div class="judge-stat-label">Disposals</div>
+      </div>
+    </div>
+
+    <div class="judge-card">
+      <div class="judge-avatar">⚖</div>
+      <div>
+        <div class="judge-name">Hon'ble Mr. Justice Sangeet Raj Lodha</div>
+        <div class="judge-meta">Division Bench (Former, Retired) — Jaipur</div>
+        <div class="judge-bench">DB-I [1683] with Justice M K Goyal — Jan 2020</div>
+        <div style="margin-top:10px;font-size:13px">
+          <strong>Disposals:</strong> 0 (no disposal_proc_filing entries for bench 1683 in data)<br>
+          Sat with Justice Mahendar Kumar Goyal on the main Division Bench in 2020<br>
+          DOB: 13 Oct 1959 | Retired: 13 Oct 2021<br>
+          <strong>Relevance:</strong> Pramod's cases are Single Bench; DB involvement would require an intra-court appeal.
+        </div>
+      </div>
+      <div class="judge-stats">
+        <div class="judge-stat-num">0</div>
+        <div class="judge-stat-label">SB Disposals</div>
+      </div>
+    </div>
+
+    <div class="judge-card">
+      <div class="judge-avatar">⚖</div>
+      <div>
+        <div class="judge-name">Hon'ble Mr. Justice Mahendar Kumar Goyal</div>
+        <div class="judge-meta">Single Bench & Division Bench — Jaipur</div>
+        <div class="judge-bench">DB-I [1683] with Lodha · SB [1665] solo — Jan 2020</div>
+        <div style="margin-top:10px;font-size:13px">
+          <strong>Disposals:</strong> 4 cases as SB [1665]<br>
+          URNs: RJHC020166782021, RJHC020391122021, RJHC020081942020, RJHC020777562023<br>
+          Sat both as Division Bench (with Lodha) and Solo Single Bench<br>
+          <strong>Relevance:</strong> As a single bench judge disposing DS matters, could have handled interim orders in Pramod's 2018 case during 2020–2021.
+        </div>
+      </div>
+      <div class="judge-stats">
+        <div class="judge-stat-num">4</div>
+        <div class="judge-stat-label">SB Disposals</div>
+      </div>
+    </div>
+
+    <div class="judge-card">
+      <div class="judge-avatar">⚖</div>
+      <div>
+        <div class="judge-name">Hon'ble Mr. Justice Goverdhan Bardhar</div>
+        <div class="judge-meta">Single Bench IV · Division Bench (with Maheshwari) — Jaipur 2020</div>
+        <div class="judge-bench">SB-IV [1565] · DB [1667] with Maheshwari — Jan 2020</div>
+        <div style="margin-top:10px;font-size:13px">
+          <strong>Disposals:</strong> 1 case disposed as SB [1565] (URN: RJHC020427052019)<br>
+          Single Bench IV for DS and service matters; also sat in DB with Maheshwari<br>
+          <strong>Relevance:</strong> Was on the bench when Pramod's 2018 salary case was being processed in 2020.
+        </div>
+      </div>
+      <div class="judge-stats">
+        <div class="judge-stat-num">1</div>
+        <div class="judge-stat-label">SB Disposals</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RISHABH TAB -->
+  <div class="panel" id="tab-rishabh">
+    <div class="stats-row">
+      <div class="stat-box"><div class="stat-num">207</div><div class="stat-label">Total Cases</div></div>
+      <div class="stat-box red"><div class="stat-num">52</div><div class="stat-label">2025 (Peak Year)</div></div>
+      <div class="stat-box green"><div class="stat-num">39</div><div class="stat-label">2026 (YTD)</div></div>
+      <div class="stat-box gold"><div class="stat-num">40</div><div class="stat-label">Cases with Subject Data</div></div>
+    </div>
+    <div class="section-title">All Extracted Cases (2020–2026)</div>
+    <div class="table-wrap"><table>
+      <thead><tr><th>#</th><th>Case No</th><th>Year</th><th>Petitioner</th><th>Respondent</th><th>Subject</th><th>Filed</th><th>Disposed</th></tr></thead>
+      <tbody id="rishabh-cases"></tbody>
+    </table></div>
+  </div>
+
+  <!-- GILL TAB -->
+  <div class="panel" id="tab-gill">
+    <div class="stats-row">
+      <div class="stat-box"><div class="stat-num">810</div><div class="stat-label">Total Cases</div></div>
+      <div class="stat-box red"><div class="stat-num">249</div><div class="stat-label">2025 (Peak Year)</div></div>
+      <div class="stat-box green"><div class="stat-num">142</div><div class="stat-label">2026 (YTD)</div></div>
+      <div class="stat-box gold"><div class="stat-num">531</div><div class="stat-label">Last 3 Years</div></div>
+    </div>
+    <div class="section-title">Sample Cases (2020–2026)</div>
+    <div class="table-wrap"><table>
+      <thead><tr><th>#</th><th>Case No</th><th>Year</th><th>Petitioner</th><th>Subject</th><th>Filed</th><th>Disposed</th></tr></thead>
+      <tbody id="gill-cases"></tbody>
+    </table></div>
+  </div>
+
+  <!-- AVASTHI TAB -->
+  <div class="panel" id="tab-avasthi">
+    <div class="stats-row">
+      <div class="stat-box"><div class="stat-num">52</div><div class="stat-label">Total Cases</div></div>
+      <div class="stat-box red"><div class="stat-num">19</div><div class="stat-label">2018 (Peak Year)</div></div>
+      <div class="stat-box green"><div class="stat-num">15</div><div class="stat-label">2025–2026</div></div>
+      <div class="stat-box gold"><div class="stat-num">1979</div><div class="stat-label">Enrolment Year</div></div>
+    </div>
+    <div class="section-title">All 52 Cases</div>
+    <div class="table-wrap"><table>
+      <thead><tr><th>#</th><th>Case No</th><th>Year</th><th>Petitioner</th><th>Subject</th><th>Filed</th><th>Disposed</th></tr></thead>
+      <tbody id="avasthi-cases"></tbody>
+    </table></div>
+  </div>
+
+  <!-- PRAMOD TAB -->
+  <div class="panel" id="tab-pramod">
+    <div class="stats-row">
+      <div class="stat-box"><div class="stat-num">10</div><div class="stat-label">Total Cases</div></div>
+      <div class="stat-box red"><div class="stat-num">0</div><div class="stat-label">Disposed Cases</div></div>
+      <div class="stat-box green"><div class="stat-num">3</div><div class="stat-label">Hearings Aug–Sep 2026</div></div>
+      <div class="stat-box gold"><div class="stat-num">8</div><div class="stat-label">Years Pending (oldest)</div></div>
+    </div>
+    <div class="section-title">All 10 Cases</div>
+    <div class="table-wrap"><table>
+      <thead><tr><th>#</th><th>Case No</th><th>URN</th><th>Filed</th><th>Next Hearing</th><th>Subject / Prayers</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td class="case-no">205200127382026</td><td style="font-family:monospace;font-size:11px">RJHC020660442026</td><td>13 Jul 2026</td><td style="font-weight:700;color:#c62828">18 Aug 2026</td><td>Release pension + retirement benefits — Retired DCF (60 yrs) Art.226</td></tr>
+        <tr><td>2</td><td class="case-no">205200083412025</td><td style="font-family:monospace;font-size:11px">RJHC020432952025</td><td>15 May 2025</td><td style="font-weight:700;color:#c62828">20 Aug 2026</td><td>Quash penalty 30.04.2024 — stoppage of 2 increments u/R.16 RCS(CCA)</td></tr>
+        <tr><td>3</td><td class="case-no">201800077172025</td><td style="font-family:monospace;font-size:11px">RJHC020432952025</td><td>15 May 2025</td><td>—</td><td><em>Linked to Case 2</em></td></tr>
+        <tr><td>4</td><td class="case-no">205200026912025</td><td style="font-family:monospace;font-size:11px">RJHC020150232025</td><td>13 Feb 2025</td><td style="font-weight:700;color:#c62828">18 Aug 2026</td><td>Quash 2nd charge sheet 06.12.2017 u/R.16 CCA</td></tr>
+        <tr><td>5</td><td class="case-no">201800025352025</td><td style="font-family:monospace;font-size:11px">RJHC020150232025</td><td>13 Feb 2025</td><td>—</td><td><em>Linked to Case 4</em></td></tr>
+        <tr><td>6</td><td class="case-no">205200026512025</td><td style="font-family:monospace;font-size:11px">RJHC020144542025</td><td>11 Feb 2025</td><td style="font-weight:700;color:#c62828">12 Oct 2026</td><td>Quash order 18.10.2024 — promotion denied (2016-17 penalty)</td></tr>
+        <tr><td>7</td><td class="case-no">201800024982025</td><td style="font-family:monospace;font-size:11px">RJHC020144542025</td><td>11 Feb 2025</td><td>—</td><td><em>Linked to Case 6</em></td></tr>
+        <tr><td>8</td><td class="case-no">205200140592023</td><td style="font-family:monospace;font-size:11px">RJHC020719612023</td><td>31 Aug 2023</td><td style="font-weight:700;color:#c62828">14 Sep 2026</td><td>Quash inquiry 13.06.2022 — absence without prior info</td></tr>
+        <tr><td>9</td><td class="case-no">205200261232018</td><td style="font-family:monospace;font-size:11px">RJHC021134882018</td><td>27 Nov 2018</td><td style="font-weight:700;color:#c62828">03 Sep 2026</td><td>Release salary + interest during suspension (Asst. Conservator)</td></tr>
+        <tr><td>10</td><td class="case-no">201800218662018</td><td style="font-family:monospace;font-size:11px">RJHC021134882018</td><td>27 Nov 2018</td><td>—</td><td><em>Linked to Case 9</em></td></tr>
+      </tbody>
+    </table></div>
+  </div>
+</div>
+
+<div style="background:#0d2137;color:#5a7a99;text-align:center;padding:16px;font-size:12px;margin-top:30px">
+  <strong style="color:#8fb4d6">Rajasthan High Court — Legal Network Intelligence</strong> · Data: civil_t, advocate_t, disposal_proc_filing, roster_list · Generated 2026-08-08
+</div>
+
+<script>
+const rishabh = [["201800049762020","2020","VIJAY VAISHNAV","NATIONAL HEALTH MISSION","—","2020-04-17","2020-04-17"],["201100009702026","2026","KUMARI YUKTA KHANDELWAL","LAXMI DHONKARIYA","Indian Succession Act / U/S 384 / Allowed application U/S 372","2026-02-02","2026-09-07"],["204900052552025","2025","SMT.SHYAMA KANWAR W/O LATE SHRI MAHAVEER","—","—","2025-?","2025-11-12"],["201100020132021","2021","SMT. INDRA DEVI W/O CHANDRABHAN","—","—","2021-?","2026-09-24"],["205200040452022","2022","M/S CHANDRAWATI HOSPITALITY","BHARAT SINGH GURJAR DY. GC","DS-FOOD & CIVIL SUPPLY/BHAR/QUASH ORDER DT 03.03.2022 — FIRM BLACKLISTED","2022-?","2026-08-13"],["201800040662022","2022","M/S CHANDRAWATI HOSPITALITY","—","—","2022-?","2022-03-05"],["203900028582021","2021","MUKESH SHARMA S/O CHHOTE LAL","—","—","2021-?","2026-08-12"],["205200026752026","2026","DARSHITA GUPTA D/O ASHISH GUPTA","—","—","2026-?","2026-08-13"],["207400041832014","2014","BAHADUR SINGH AND ANR","STATE OF RAJASTHAN","—","2014-?","2014-11-15"],["205200190382023","2023","ANDELI INDIA PVT. LTD.","NEERAJ BATRA","—","2023-?","2026-10-26"],["207600004502024","2024","SUNEEL KUMAR S/O JAGDISH PRASAD","NITIN JAIN","DS-MEDICAL/DAUSA/ADV DT 10.01.2022/QUASH SELECTION LIST","2024-?","2026-09-11"],["201800078282020","2020","SURYA PRAKASH KALWAR","—","—","2020-?","2020-08-04"],["205200071382020","2020","HIMANSHU CHAHAL S/O SATISH KUMAR","—","—","2020-?","2020-08-24"],["205200057032021","2021","BHILWARA-JAIPUR TOLL ROAD PVT. LTD.","—","—","2021-?","2021-05-10"],["201800053682021","2021","BHILWARA-JAIPUR TOLL ROAD PVT. LTD.","—","—","2021-?","2021-04-09"],["201100013412020","2020","—","—","—","2020-?","—"],["201800078392026","2026","—","—","—","2026-?","—"],["205200140592023","2023","PRAMOD KUMAR PANDEY","STATE OF RAJASTHAN","DS-PERSONAL/JAIPUR/DCF/QUASH ORDER 13.06.2022","2023-08-31","PENDING"],["207600014112025","2025","—","—","—","2025-?","—"],["200900006062020","2020","—","—","—","2020-?","—"]];
+
+const gill = [["205200128002021","2021","SMT RINKU W/O DINESH KUMAR HARIJAN","—","DS-LOCAL SELF/AJMER/SWEEPER/ALLOW SERVICE BENEFITS","2021-?","—"],["205200103852024","2024","SMT. SOSAR W/O KALYAN","—","DS-LOCAL SELF/BUNDI/U/S 73-B MUNICIPALITIES ACT","2024-?","—"],["207600000742019","2019","STATE OF RAJASTHAN","—","JPR-M/57YR/POLICE/CONSTABLE(DRIVER)/REGULARIZATION","2019-?","—"],["205200184602023","2023","ANUPMA KAUSHAL D/O RAJVEER","—","DS-LOCAL SELF/DHOLPUR/ASST. TOWN PLANNER/QUASH SUSPENSION","2023-?","—"],["200800012282024","2024","JAGDISH PRASAD YADAV S/O RAMNARAYAN","—","—","2024-?","—"],["205200037342026","2026","VILLAGERS OF VILLAGE","—","—","2026-?","—"],["205200094192026","2026","—","—","—","2026-?","—"],["201800104752025","2025","—","—","—","2025-?","—"]];
+
+const avasthi = [["205200261232018","2018","PRAMOD KUMAR PANDEY","STATE OF RAJASTHAN","JPR-M/DS-FOREST/ASSTT. CONSERVATOR/RELEASE DUE SALARY DURING SUSPENSION","2018-11-27","PENDING (8 yrs)"],["205200127102021","2021","COL. HARENDRA SINGH (RETD.)","—","DS-REVENUE/JPR-M/RAJ LAND REVENUE ACT/QUASH COMMUNICATION 23.07.2021","2021-?","Pending"],["205200130152019","2019","RAMJI LAL VERMA","—","DS-SECRETARIAT/JPR-M/RETD. RAS/QUASH PUNISHMENT 28.02.2019","2019-?","Pending"],["205200213972018","2018","STATE OF RAJASTHAN","—","DS-INFORMATION/RTI ACT/QUASH ORDER 30.05.2018","2018-?","Pending"],["205200134732018","2018","RAJESH KUMAR KASANA","—","DS-RPSC/PERSONNEL/RAS & RTS/NGE CATEGORY","2018-?","Pending"],["203900056692025","2025","SHAH RUKH KHAN S/O MEER TAJ MOHAMMED","—","—","2025-?","Sep 2025"],["207400089852025","2025","MANISH DUSAD S/O SUWALAL","—","—","2025-?","Nov 2025"],["201800091242026","2026","RAM KISHOR MEENA","—","—","2026-?","May 2026"],["205200101072024","2024","PRATIBHA SINGH RATHORE","—","—","2024-?","Oct 2026"],["203900047372026","2026","SEEMA W/O ANIL GUPTA","—","—","2026-?","Aug 2026"],["208200001482016","2016","SHREE CEMENT LTD","—","—","2016-?","Aug 2025"],["205200198512018","2018","BABULAL KARDAM (RETD. AEN, IRRIGATION)","—","—","2018-?","Aug 2026"],["205200227102018","2018","PRAKASH PARASHAR","—","—","2018-?","Oct 2026"]];
+
+function populateTable(id, data, showRes) {
+  const tbody = document.getElementById(id);
+  data.forEach((r, i) => {
+    const tr = document.createElement('tr');
+    const disp = r[r.length-1];
+    const badge = disp === 'PENDING' || disp === 'Pending' || disp === '—' || disp.startsWith('Pending')
+      ? '<span class="badge badge-pending">Pending</span>'
+      : `<span class="badge badge-disposed">Disposed ${disp}</span>`;
+    tr.innerHTML = `<td>${i+1}</td><td class="case-no">${r[0]}</td><td>${r[1]}</td><td>${r[2]}</td>${showRes?`<td>${r[3]}</td>`:''}<td style="font-size:11px;color:#555">${r[4]||'—'}</td><td style="font-size:12px">${r[5]||'—'}</td><td>${badge}</td>`;
+    tbody.appendChild(tr);
+  });
+}
+
+populateTable('rishabh-cases', rishabh, true);
+populateTable('gill-cases', gill, false);
+populateTable('avasthi-cases', avasthi, false);
+
+function showTab(name) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('tab-' + name).classList.add('active');
+  event.target.classList.add('active');
+}
+</script>
+</body>
+</html>
