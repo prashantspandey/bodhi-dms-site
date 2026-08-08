@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pramod Kumar Pandey — Case Profile | Rajasthan High Court</title>
+<style>
+  :root {
+    --primary: #1a3a5c;
+    --accent:  #c0392b;
+    --gold:    #d4a017;
+    --light:   #f4f7fb;
+    --border:  #dce4ef;
+    --text:    #1e2d3d;
+    --muted:   #6b7f96;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: var(--light);
+    color: var(--text);
+    line-height: 1.6;
+  }
+
+  /* Header */
+  .header {
+    background: linear-gradient(135deg, #0d2137 0%, #1a3a5c 60%, #1e4976 100%);
+    color: #fff;
+    padding: 40px 32px 32px;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: '⚖';
+    position: absolute;
+    right: 40px;
+    top: 20px;
+    font-size: 120px;
+    opacity: 0.06;
+  }
+  .court-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 4px;
+    padding: 4px 12px;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+    color: #aac4e0;
+  }
+  .header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+  }
+  .header h1 span { color: var(--gold); }
+  .header .sub {
+    margin-top: 6px;
+    color: #8fb4d6;
+    font-size: 14px;
+  }
+  .header .meta-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+  }
+  .pill {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 20px;
+    padding: 4px 14px;
+    font-size: 12px;
+    color: #c5daf0;
+  }
+  .pill strong { color: #fff; }
+
+  /* Layout */
+  .container { max-width: 1100px; margin: 0 auto; padding: 32px 20px; }
+
+  /* Section */
+  .section { margin-bottom: 36px; }
+  .section-title {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    color: var(--primary);
+    border-bottom: 2px solid var(--primary);
+    padding-bottom: 8px;
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .section-title .icon { font-size: 16px; }
+
+  /* Info grid */
+  .info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 14px;
+  }
+  .info-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 18px;
+    border-left: 4px solid var(--primary);
+  }
+  .info-card .label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: var(--muted);
+    margin-bottom: 5px;
+    font-weight: 600;
+  }
+  .info-card .value {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text);
+  }
+  .info-card.accent { border-left-color: var(--accent); }
+  .info-card.gold   { border-left-color: var(--gold); }
+
+  /* Table */
+  .table-wrap {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  }
+  table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+  thead tr { background: var(--primary); color: #fff; }
+  thead th {
+    padding: 12px 14px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+  }
+  tbody tr { border-bottom: 1px solid var(--border); transition: background 0.15s; }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: #f0f5fb; }
+  tbody td { padding: 12px 14px; vertical-align: top; }
+  .case-no {
+    font-family: 'Courier New', monospace;
+    font-size: 12px;
+    color: var(--primary);
+    font-weight: 700;
+  }
+  .urn {
+    font-family: 'Courier New', monospace;
+    font-size: 11px;
+    color: var(--muted);
+  }
+  .badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 11px;
+    font-weight: 600;
+  }
+  .badge-active   { background: #e8f5e9; color: #2e7d32; }
+  .badge-linked   { background: #fff3e0; color: #e65100; }
+  .badge-pending  { background: #e3f2fd; color: #1565c0; }
+  .date-upcoming {
+    font-weight: 700;
+    color: #c62828;
+  }
+
+  /* Advocate cards */
+  .adv-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+  }
+  .adv-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+  }
+  .adv-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+  }
+  .adv-card.petitioner::before { background: #1a3a5c; }
+  .adv-card.respondent::before { background: #c0392b; }
+  .adv-role {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 8px;
+  }
+  .adv-role.pet { color: var(--primary); }
+  .adv-role.res { color: var(--accent); }
+  .adv-name {
+    font-size: 17px;
+    font-weight: 700;
+    margin-bottom: 4px;
+    color: var(--text);
+  }
+  .adv-code {
+    font-size: 11px;
+    color: var(--muted);
+    font-family: monospace;
+    margin-bottom: 12px;
+  }
+  .adv-detail {
+    font-size: 12.5px;
+    color: #445;
+    margin-top: 6px;
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+  }
+  .adv-detail .ico { flex-shrink: 0; width: 16px; color: var(--muted); }
+  .adv-detail a { color: var(--primary); text-decoration: none; }
+  .adv-detail a:hover { text-decoration: underline; }
+
+  /* Timeline */
+  .timeline {
+    position: relative;
+    padding-left: 28px;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 8px; top: 6px; bottom: 6px;
+    width: 2px;
+    background: var(--border);
+  }
+  .tl-item {
+    position: relative;
+    margin-bottom: 20px;
+  }
+  .tl-item::before {
+    content: '';
+    position: absolute;
+    left: -24px;
+    top: 5px;
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: var(--primary);
+    border: 2px solid #fff;
+    box-shadow: 0 0 0 2px var(--primary);
+  }
+  .tl-item.active::before { background: var(--accent); box-shadow: 0 0 0 2px var(--accent); }
+  .tl-year {
+    font-size: 11px;
+    color: var(--muted);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .tl-text {
+    font-size: 14px;
+    color: var(--text);
+    margin-top: 2px;
+  }
+  .tl-text strong { color: var(--primary); }
+
+  /* Judge section */
+  .judge-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 14px;
+  }
+  .judge-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 18px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .judge-avatar {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary), #2e6da4);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+  .judge-name { font-weight: 700; font-size: 14px; }
+  .judge-meta { font-size: 12px; color: var(--muted); margin-top: 2px; }
+  .judge-period { font-size: 11px; color: #aaa; margin-top: 3px; }
+
+  /* Stats bar */
+  .stats-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0;
+    background: var(--primary);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 28px;
+  }
+  .stat-item {
+    flex: 1;
+    min-width: 120px;
+    padding: 20px 24px;
+    border-right: 1px solid rgba(255,255,255,0.12);
+    color: #fff;
+  }
+  .stat-item:last-child { border-right: none; }
+  .stat-num {
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 1;
+    color: var(--gold);
+  }
+  .stat-label { font-size: 12px; color: #8fb4d6; margin-top: 4px; }
+
+  /* Footer */
+  .footer {
+    background: #0d2137;
+    color: #5a7a99;
+    text-align: center;
+    padding: 20px;
+    font-size: 12px;
+    margin-top: 40px;
+  }
+  .footer strong { color: #8fb4d6; }
+
+  .note-box {
+    background: #fff8e1;
+    border: 1px solid #ffe082;
+    border-left: 4px solid var(--gold);
+    border-radius: 6px;
+    padding: 12px 16px;
+    font-size: 13px;
+    color: #5d4037;
+    margin-bottom: 28px;
+  }
+
+  @media (max-width: 600px) {
+    .header h1 { font-size: 20px; }
+    .stat-num { font-size: 24px; }
+    .stats-bar { flex-direction: column; }
+    .stat-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.12); }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="court-badge">Rajasthan High Court · Jaipur Bench · Case Intelligence</div>
+  <h1>PRAMOD KUMAR PANDEY <span>S/O Dwarika Nath Pandey</span></h1>
+  <div class="sub">Retired Deputy Conservator of Forest, Rajasthan Forest Department · Jaipur Division</div>
+  <div class="meta-pills">
+    <div class="pill"><strong>10</strong> Cases Filed</div>
+    <div class="pill"><strong>2018–2026</strong> Litigation Span</div>
+    <div class="pill"><strong>6</strong> Active Proceedings</div>
+    <div class="pill">All Cases vs. <strong>State of Rajasthan</strong></div>
+    <div class="pill">Art. <strong>226</strong> Jurisdiction</div>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- STATS -->
+  <div class="stats-bar">
+    <div class="stat-item">
+      <div class="stat-num">10</div>
+      <div class="stat-label">Total Cases Filed</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">6</div>
+      <div class="stat-label">Substantive Petitions</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">8</div>
+      <div class="stat-label">Years in Litigation</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">3</div>
+      <div class="stat-label">Hearings in Aug–Oct '26</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">4</div>
+      <div class="stat-label">Advocates Involved</div>
+    </div>
+  </div>
+
+  <!-- IDENTITY -->
+  <div class="section">
+    <div class="section-title"><span class="icon">👤</span> Personal & Professional Profile</div>
+    <div class="info-grid">
+      <div class="info-card">
+        <div class="label">Full Name</div>
+        <div class="value">Pramod Kumar Pandey</div>
+      </div>
+      <div class="info-card">
+        <div class="label">Father's Name</div>
+        <div class="value">Dwarika Nath Pandey</div>
+      </div>
+      <div class="info-card gold">
+        <div class="label">Designation</div>
+        <div class="value">Retired Deputy Conservator of Forest (DCF)</div>
+      </div>
+      <div class="info-card gold">
+        <div class="label">Department</div>
+        <div class="value">Rajasthan Forest Department, Jaipur Division</div>
+      </div>
+      <div class="info-card">
+        <div class="label">Earlier Rank</div>
+        <div class="value">Asst. Conservator of Forest (2018)</div>
+      </div>
+      <div class="info-card">
+        <div class="label">Retirement Age</div>
+        <div class="value">60 Years (2026 case confirms retirement)</div>
+      </div>
+      <div class="info-card accent">
+        <div class="label">Opponent in All Cases</div>
+        <div class="value">State of Rajasthan</div>
+      </div>
+      <div class="info-card">
+        <div class="label">Bench / Jurisdiction</div>
+        <div class="value">Jaipur Bench · Rajasthan High Court</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LITIGATION TIMELINE -->
+  <div class="section">
+    <div class="section-title"><span class="icon">📅</span> Litigation Timeline</div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-year">November 2018</div>
+        <div class="tl-text"><strong>First petition filed.</strong> Challenged as Asst. Conservator — sought release of salary and interest withheld during suspension period. [RJHC021134882018] — Still active in 2026.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">August 2023</div>
+        <div class="tl-text"><strong>Departmental inquiry challenged.</strong> Sought quashing of order dt. 13.06.2022 for absence from duty without prior information. [RJHC020719612023]</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">February 2025</div>
+        <div class="tl-text"><strong>Promotion denial challenged.</strong> Quash order dt. 18.10.2024 — promotion denied due to minor penalty imposed in 2016–17. [RJHC020144542025]</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">February 2025</div>
+        <div class="tl-text"><strong>Second charge sheet challenged.</strong> Quash second charge sheet dt. 06.12.2017. [RJHC020150232025]</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">May 2025</div>
+        <div class="tl-text"><strong>Penalty order challenged.</strong> Quash order dt. 30.04.2024 imposing stoppage of two increments u/R.16 RCS(CCA). [RJHC020432952025]</div>
+      </div>
+      <div class="tl-item active">
+        <div class="tl-year">July 2026 — MOST RECENT</div>
+        <div class="tl-text"><strong>Pension petition filed.</strong> As retired DCF (60 yrs), sought release of pension and all applicable retirement benefits under Art. 226. [RJHC020660442026] — Next hearing: <strong style="color:#c62828">18 August 2026</strong></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ALL 10 CASES -->
+  <div class="section">
+    <div class="section-title"><span class="icon">📋</span> All 10 Cases — Complete Record</div>
+    <div class="note-box">
+      ⓘ Cases 3, 5, 7 and 10 share URNs with their paired substantive petition — these are linked/misc registrations of the same petition under a different filing section. The 6 unique URNs represent distinct legal disputes.
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Case Number</th>
+            <th>URN</th>
+            <th>Filed</th>
+            <th>Next Hearing</th>
+            <th>Subject / Prayers</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td><div class="case-no">205200127382026</div></td>
+            <td><div class="urn">RJHC020660442026</div></td>
+            <td>13 Jul 2026</td>
+            <td><span class="date-upcoming">18 Aug 2026</span></td>
+            <td>Release of pension and all applicable retirement benefits — Retired DCF (60 yrs) — Art. 226</td>
+            <td><span class="badge badge-active">Active</span></td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td><div class="case-no">205200083412025</div></td>
+            <td><div class="urn">RJHC020432952025</div></td>
+            <td>15 May 2025</td>
+            <td><span class="date-upcoming">20 Aug 2026</span></td>
+            <td>Quash penalty order dt. 30.04.2024 — stoppage of two increments u/R. 16 RCS (CCA Rules)</td>
+            <td><span class="badge badge-active">Active</span></td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td><div class="case-no">201800077172025</div></td>
+            <td><div class="urn">RJHC020432952025</div></td>
+            <td>15 May 2025</td>
+            <td>—</td>
+            <td><em style="color:#999">Linked to Case 2 (same URN)</em></td>
+            <td><span class="badge badge-linked">Linked</span></td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td><div class="case-no">205200026912025</div></td>
+            <td><div class="urn">RJHC020150232025</div></td>
+            <td>13 Feb 2025</td>
+            <td><span class="date-upcoming">18 Aug 2026</span></td>
+            <td>Quash second charge sheet dt. 06.12.2017 — u/R. 16 CCA (RCS Rules)</td>
+            <td><span class="badge badge-active">Active</span></td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td><div class="case-no">201800025352025</div></td>
+            <td><div class="urn">RJHC020150232025</div></td>
+            <td>13 Feb 2025</td>
+            <td>—</td>
+            <td><em style="color:#999">Linked to Case 4 (same URN)</em></td>
+            <td><span class="badge badge-linked">Linked</span></td>
+          </tr>
+          <tr>
+            <td>6</td>
+            <td><div class="case-no">205200026512025</div></td>
+            <td><div class="urn">RJHC020144542025</div></td>
+            <td>11 Feb 2025</td>
+            <td><span class="date-upcoming">12 Oct 2026</span></td>
+            <td>Quash order dt. 18.10.2024 — promotion denied due to minor penalty imposed in year 2016–17 upon petitioner</td>
+            <td><span class="badge badge-active">Active</span></td>
+          </tr>
+          <tr>
+            <td>7</td>
+            <td><div class="case-no">201800024982025</div></td>
+            <td><div class="urn">RJHC020144542025</div></td>
+            <td>11 Feb 2025</td>
+            <td>—</td>
+            <td><em style="color:#999">Linked to Case 6 (same URN)</em></td>
+            <td><span class="badge badge-linked">Linked</span></td>
+          </tr>
+          <tr>
+            <td>8</td>
+            <td><div class="case-no">205200140592023</div></td>
+            <td><div class="urn">RJHC020719612023</div></td>
+            <td>31 Aug 2023</td>
+            <td><span class="date-upcoming">14 Sep 2026</span></td>
+            <td>DS-Personal / Quash orders dt. 13.06.2022 &amp; 25.07.2018 — inquiry u/R. 16 RCS (CCA) for absence from duty without prior information — 50 yrs</td>
+            <td><span class="badge badge-active">Active</span></td>
+          </tr>
+          <tr>
+            <td>9</td>
+            <td><div class="case-no">205200261232018</div></td>
+            <td><div class="urn">RJHC021134882018</div></td>
+            <td>27 Nov 2018</td>
+            <td><span class="date-upcoming">03 Sep 2026</span></td>
+            <td>DS-Forest / Release due salary of petitioner along with interest during period of suspension — Asst. Conservator — 50 yrs</td>
+            <td><span class="badge badge-active">Active</span></td>
+          </tr>
+          <tr>
+            <td>10</td>
+            <td><div class="case-no">201800218662018</div></td>
+            <td><div class="urn">RJHC021134882018</div></td>
+            <td>27 Nov 2018</td>
+            <td>—</td>
+            <td><em style="color:#999">Linked to Case 9 (same URN)</em></td>
+            <td><span class="badge badge-linked">Linked</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ADVOCATES -->
+  <div class="section">
+    <div class="section-title"><span class="icon">⚖️</span> Advocates on Record</div>
+    <div class="adv-grid">
+
+      <div class="adv-card petitioner">
+        <div class="adv-role pet">Petitioner's Advocate — All Cases</div>
+        <div class="adv-name">Rishabh Khandelwal</div>
+        <div class="adv-code">Code: 62904 &nbsp;|&nbsp; Reg: R16072009</div>
+        <div class="adv-detail"><span class="ico">📅</span> Born: 9 September 1985</div>
+        <div class="adv-detail"><span class="ico">📍</span> T-02, 3rd Floor, Mayur Apartments, Rajbhawan Road, Civil Lines, Jaipur</div>
+        <div class="adv-detail"><span class="ico">📞</span> <a href="tel:9549365775">9549365775</a> &nbsp;/&nbsp; <a href="tel:7300350469">7300350469</a></div>
+        <div class="adv-detail"><span class="ico">✉️</span> <a href="mailto:RISHABHKHANDELWAL585@GMAIL.COM">RISHABHKHANDELWAL585@GMAIL.COM</a></div>
+      </div>
+
+      <div class="adv-card respondent">
+        <div class="adv-role res">Respondent's Advocate — 2023 Case</div>
+        <div class="adv-name">K S Chandel</div>
+        <div class="adv-code">Code: 24627 &nbsp;|&nbsp; Reg: R4001982</div>
+        <div class="adv-detail"><span class="ico">📅</span> Born: 1 September 1957</div>
+        <div class="adv-detail"><span class="ico">📍</span> B-128, Anandpuri, Moti Doongari Road, Jaipur</div>
+        <div class="adv-detail"><span class="ico">📞</span> <a href="tel:9828017219">9828017219</a></div>
+        <div class="adv-detail"><span class="ico">🗓</span> Enrolled since 1982</div>
+      </div>
+
+      <div class="adv-card respondent">
+        <div class="adv-role res">Respondent's Advocate — 2018 Case</div>
+        <div class="adv-name">Banwari Lal Avasthi</div>
+        <div class="adv-code">Code: 29683 &nbsp;|&nbsp; Reg: R5401979</div>
+        <div class="adv-detail"><span class="ico">📅</span> Born: 8 October 1949</div>
+        <div class="adv-detail"><span class="ico">📍</span> 30, Janakpuri-II Ext., Ahead Imliwala Phatak, Jaipur</div>
+        <div class="adv-detail"><span class="ico">📞</span> Not registered</div>
+        <div class="adv-detail"><span class="ico">🗓</span> Enrolled since 1979 — Senior practitioner</div>
+      </div>
+
+      <div class="adv-card respondent">
+        <div class="adv-role res">Respondent's Advocate — 2025 Case</div>
+        <div class="adv-name">Guru Charan Singh Gill</div>
+        <div class="adv-code">Code: 50250 &nbsp;|&nbsp; Reg: R521978</div>
+        <div class="adv-detail"><span class="ico">📅</span> Born: 1 August 1953</div>
+        <div class="adv-detail"><span class="ico">📍</span> 95, Heera Nagar, Ajmer Road, Jaipur</div>
+        <div class="adv-detail"><span class="ico">📞</span> <a href="tel:7300001111">7300001111</a></div>
+        <div class="adv-detail"><span class="ico">✉️</span> <a href="mailto:gshergill55@gmail.com">gshergill55@gmail.com</a></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- JUDGES -->
+  <div class="section">
+    <div class="section-title"><span class="icon">🏛️</span> Judges — Bench Roster (Jaipur Bench)</div>
+    <div class="note-box">
+      Pramod's petitions are DS (Departmental Service) matters filed under Art. 226 of the Constitution, heard by <strong>Single Benches</strong> at Jaipur. The current Acting Chief Justice and DS Single Bench roster is extracted from the HC roster database.
+    </div>
+    <div class="judge-grid">
+
+      <div class="judge-card">
+        <div class="judge-avatar">⚖</div>
+        <div>
+          <div class="judge-name">Hon'ble Mr. Justice Sanjeev Prakash Sharma</div>
+          <div class="judge-meta">Acting Chief Justice · Rajasthan HC</div>
+          <div class="judge-period">Current (also on DB — 2025–26 roster)</div>
+        </div>
+      </div>
+
+      <div class="judge-card">
+        <div class="judge-avatar">⚖</div>
+        <div>
+          <div class="judge-name">Hon'ble Mr. Justice Baljinder Singh Sandhu</div>
+          <div class="judge-meta">Division Bench — Jaipur</div>
+          <div class="judge-period">2025–2026 Division Bench roster</div>
+        </div>
+      </div>
+
+      <div class="judge-card">
+        <div class="judge-avatar">⚖</div>
+        <div>
+          <div class="judge-name">Hon'ble Mr. Justice Mahendra Maheshwari</div>
+          <div class="judge-meta">Single Bench I — Jaipur</div>
+          <div class="judge-period">2020 roster — handled early DS matters</div>
+        </div>
+      </div>
+
+      <div class="judge-card">
+        <div class="judge-avatar">⚖</div>
+        <div>
+          <div class="judge-name">Hon'ble Mr. Justice Sangeet Raj Lodha</div>
+          <div class="judge-meta">Division Bench (Former)</div>
+          <div class="judge-period">2020 DB — paired with Justice M K Goyal</div>
+        </div>
+      </div>
+
+      <div class="judge-card">
+        <div class="judge-avatar">⚖</div>
+        <div>
+          <div class="judge-name">Hon'ble Mr. Justice Mahendra Kumar Goyal</div>
+          <div class="judge-meta">Division Bench (Former)</div>
+          <div class="judge-period">2020 DB — paired with Justice Lodha</div>
+        </div>
+      </div>
+
+      <div class="judge-card">
+        <div class="judge-avatar">⚖</div>
+        <div>
+          <div class="judge-name">Hon'ble Mr. Justice Goverdhan Bardhar</div>
+          <div class="judge-meta">Single Bench IV (Former)</div>
+          <div class="judge-period">2020 SB roster</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- KEY FINDINGS -->
+  <div class="section">
+    <div class="section-title"><span class="icon">🔍</span> Pattern Analysis</div>
+    <div class="info-grid">
+      <div class="info-card accent">
+        <div class="label">Core Dispute</div>
+        <div class="value">Departmental actions by Forest Dept — suspension, penalties, promotion denial, salary withholding, pension delay</div>
+      </div>
+      <div class="info-card accent">
+        <div class="label">Legal Basis</div>
+        <div class="value">Art. 226 — Writ petitions challenging departmental orders under CCA/RCS Rules</div>
+      </div>
+      <div class="info-card gold">
+        <div class="label">Oldest Pending Case</div>
+        <div class="value">RJHC021134882018 — Filed Nov 2018, still active Sep 2026 (8 years)</div>
+      </div>
+      <div class="info-card gold">
+        <div class="label">Next Hearings</div>
+        <div class="value">18 Aug 2026 · 20 Aug 2026 · 03 Sep 2026 · 14 Sep 2026 · 12 Oct 2026</div>
+      </div>
+      <div class="info-card">
+        <div class="label">Consistent Advocate</div>
+        <div class="value">Rishabh Khandelwal (Code 62904) appears in all 6 primary petitions</div>
+      </div>
+      <div class="info-card">
+        <div class="label">Data Source</div>
+        <div class="value">Rajasthan HC CIS Database · jaipur schema · civil_t table · advocate_t table</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  <strong>Rajasthan High Court — Case Intelligence Report</strong><br>
+  Data extracted from HC CIS Database (civil_t, advocate_t, roster_list) &nbsp;·&nbsp; Jaipur Bench &nbsp;·&nbsp; Generated 2026-08-08
+</div>
+
+</body>
+</html>
