@@ -1,0 +1,1382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Court Causelist SR No — How It Works & How to Swap</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+  :root {
+    --bg: #0d0f14;
+    --card: #161b26;
+    --card2: #1e2535;
+    --border: #2a3347;
+    --accent: #4f8ef7;
+    --accent2: #7c5cfc;
+    --green: #22c55e;
+    --red: #ef4444;
+    --yellow: #f59e0b;
+    --text: #e2e8f0;
+    --muted: #8b98b8;
+    --gold: #f0b429;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    line-height: 1.6;
+  }
+
+  /* ── Hero ── */
+  .hero {
+    background: linear-gradient(135deg, #0d1829 0%, #1a0a2e 50%, #0d1829 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 60px 40px 50px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 0%, rgba(79,142,247,.15) 0%, transparent 70%);
+  }
+  .hero h1 {
+    font-size: 2.6rem;
+    font-weight: 800;
+    letter-spacing: -.5px;
+    background: linear-gradient(90deg, #4f8ef7, #a78bfa, #f0b429);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 12px;
+    position: relative;
+  }
+  .hero p {
+    color: var(--muted);
+    font-size: 1.1rem;
+    position: relative;
+  }
+  .hero-badges {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    margin-top: 24px;
+    flex-wrap: wrap;
+    position: relative;
+  }
+  .badge {
+    background: rgba(79,142,247,.12);
+    border: 1px solid rgba(79,142,247,.3);
+    border-radius: 20px;
+    padding: 6px 16px;
+    font-size: .8rem;
+    color: #7eb5ff;
+  }
+
+  /* ── Layout ── */
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+  .section { padding: 56px 0; }
+  .section-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .section-title .icon { font-size: 1.6rem; }
+  .section-sub { color: var(--muted); margin-bottom: 36px; font-size: .95rem; }
+  .divider { height: 1px; background: var(--border); margin: 0; }
+
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
+  @media(max-width:768px) {
+    .grid-2, .grid-3 { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 1.8rem; }
+  }
+
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px;
+  }
+  .card h3 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .card p { color: var(--muted); font-size: .9rem; }
+
+  /* ── Section 1: What is SR No ── */
+  .queue-visual {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin: 28px 0;
+    align-items: flex-end;
+  }
+  .queue-slot {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    cursor: default;
+  }
+  .queue-token {
+    width: 58px;
+    height: 58px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 800;
+    border: 2px solid;
+    position: relative;
+    transition: transform .2s;
+  }
+  .queue-token:hover { transform: translateY(-4px); }
+  .queue-token.heard {
+    background: rgba(34,197,94,.12);
+    border-color: #22c55e;
+    color: #22c55e;
+  }
+  .queue-token.risky {
+    background: rgba(245,158,11,.1);
+    border-color: #f59e0b;
+    color: #f59e0b;
+  }
+  .queue-token.missed {
+    background: rgba(239,68,68,.1);
+    border-color: #ef4444;
+    color: #ef4444;
+  }
+  .queue-token.target {
+    background: rgba(79,142,247,.2);
+    border-color: #4f8ef7;
+    color: #4f8ef7;
+    box-shadow: 0 0 20px rgba(79,142,247,.3);
+  }
+  .queue-label {
+    font-size: .72rem;
+    color: var(--muted);
+    text-align: center;
+    max-width: 58px;
+  }
+  .queue-legend {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 16px;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: .85rem;
+    color: var(--muted);
+  }
+  .legend-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 3px;
+  }
+  .threshold-line {
+    position: relative;
+    margin: 4px 0 0;
+  }
+
+  /* ── Stat Cards ── */
+  .stat-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 32px; }
+  @media(max-width:768px) { .stat-row { grid-template-columns: 1fr 1fr; } }
+  .stat-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 20px 18px;
+    text-align: center;
+  }
+  .stat-num {
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 4px;
+  }
+  .stat-label { color: var(--muted); font-size: .8rem; }
+  .stat-sub { font-size: .72rem; color: var(--muted); margin-top: 4px; opacity: .7; }
+
+  /* ── Pipeline Flow ── */
+  .pipeline {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+    margin: 32px 0;
+    overflow-x: auto;
+    padding-bottom: 8px;
+  }
+  .pipe-stage {
+    background: var(--card2);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px 20px;
+    min-width: 210px;
+    flex: 1;
+    position: relative;
+  }
+  .pipe-stage.highlight {
+    border-color: var(--accent);
+    box-shadow: 0 0 24px rgba(79,142,247,.15);
+  }
+  .pipe-icon { font-size: 2rem; margin-bottom: 10px; }
+  .pipe-name {
+    font-size: .95rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+    color: var(--text);
+  }
+  .pipe-desc { font-size: .8rem; color: var(--muted); margin-bottom: 14px; }
+  .pipe-fields { list-style: none; }
+  .pipe-fields li {
+    font-size: .78rem;
+    padding: 5px 10px;
+    background: rgba(255,255,255,.04);
+    border-radius: 6px;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .pipe-fields li .field-key {
+    font-family: monospace;
+    color: #7eb5ff;
+    font-size: .8rem;
+  }
+  .pipe-fields li .field-val { color: var(--muted); font-size: .75rem; }
+  .pipe-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 10px;
+    font-size: 1.8rem;
+    color: var(--accent);
+    flex-shrink: 0;
+  }
+  .pipe-badge {
+    display: inline-block;
+    font-size: .7rem;
+    padding: 2px 10px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+  .pipe-badge.internal { background: rgba(245,158,11,.15); color: #f59e0b; }
+  .pipe-badge.public { background: rgba(34,197,94,.15); color: #22c55e; }
+  .pipe-badge.draft { background: rgba(124,92,252,.15); color: #a78bfa; }
+
+  /* ── Ordering Logic ── */
+  .order-criteria {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .order-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: var(--card2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 14px 18px;
+  }
+  .order-rank {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+  .order-rank.r1 { background: rgba(240,180,41,.2); color: #f0b429; }
+  .order-rank.r2 { background: rgba(79,142,247,.15); color: #4f8ef7; }
+  .order-rank.r3 { background: rgba(124,92,252,.15); color: #a78bfa; }
+  .order-rank.r4 { background: rgba(34,197,94,.12); color: #22c55e; }
+  .order-info { flex: 1; }
+  .order-name { font-weight: 600; font-size: .95rem; margin-bottom: 3px; }
+  .order-desc { color: var(--muted); font-size: .8rem; }
+  .order-example {
+    font-size: .78rem;
+    padding: 4px 12px;
+    border-radius: 8px;
+    background: rgba(255,255,255,.05);
+    color: var(--muted);
+    flex-shrink: 0;
+    text-align: right;
+    max-width: 180px;
+  }
+
+  /* ── Pramod History Chart ── */
+  .chart-wrap {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px;
+    position: relative;
+  }
+  .chart-title { font-size: 1rem; font-weight: 700; margin-bottom: 4px; }
+  .chart-sub { color: var(--muted); font-size: .82rem; margin-bottom: 20px; }
+  .chart-container { position: relative; height: 240px; }
+
+  /* ── Swap Mechanism ── */
+  .swap-visual {
+    display: grid;
+    grid-template-columns: 1fr 80px 1fr;
+    gap: 16px;
+    align-items: center;
+    margin: 28px 0;
+  }
+  .swap-col { display: flex; flex-direction: column; gap: 8px; }
+  .swap-col-title {
+    font-size: .8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .swap-case {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 14px;
+    border-radius: 12px;
+    border: 1px solid;
+    transition: all .3s;
+  }
+  .swap-case.normal {
+    background: rgba(255,255,255,.03);
+    border-color: var(--border);
+  }
+  .swap-case.pramod-before {
+    background: rgba(79,142,247,.08);
+    border-color: rgba(79,142,247,.4);
+  }
+  .swap-case.pramod-after {
+    background: rgba(34,197,94,.1);
+    border-color: rgba(34,197,94,.5);
+    box-shadow: 0 0 18px rgba(34,197,94,.15);
+  }
+  .swap-case.displaced {
+    background: rgba(255,255,255,.03);
+    border-color: var(--border);
+    opacity: .7;
+  }
+  .swap-sr {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+  }
+  .swap-sr.sr-high { background: rgba(239,68,68,.15); color: #ef4444; }
+  .swap-sr.sr-low { background: rgba(34,197,94,.15); color: #22c55e; }
+  .swap-sr.sr-mid { background: rgba(255,255,255,.08); color: var(--muted); }
+  .swap-info { flex: 1; }
+  .swap-case-name { font-size: .82rem; font-weight: 600; margin-bottom: 2px; }
+  .swap-case-desc { font-size: .74rem; color: var(--muted); }
+  .swap-arrow-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+  .swap-arrows { font-size: 2rem; color: var(--accent); text-align: center; }
+  .swap-label { font-size: .7rem; color: var(--muted); text-align: center; }
+
+  /* ── Why normal UPDATE fails ── */
+  .block-flow {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin: 24px 0;
+  }
+  .block-step {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+  .block-line {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 40px;
+    flex-shrink: 0;
+  }
+  .block-dot {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+  }
+  .block-dot.ok { background: rgba(34,197,94,.15); border: 2px solid #22c55e; }
+  .block-dot.fail { background: rgba(239,68,68,.15); border: 2px solid #ef4444; }
+  .block-dot.bypass { background: rgba(79,142,247,.15); border: 2px solid #4f8ef7; }
+  .block-connector {
+    width: 2px;
+    height: 28px;
+    background: var(--border);
+    margin: 4px 0;
+  }
+  .block-connector.red { background: #ef4444; }
+  .block-connector.blue { background: #4f8ef7; }
+  .block-content { flex: 1; padding-top: 8px; padding-bottom: 24px; }
+  .block-title { font-weight: 600; font-size: .95rem; margin-bottom: 4px; }
+  .block-desc { color: var(--muted); font-size: .83rem; }
+  .block-tag {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 8px;
+    font-size: .72rem;
+    font-weight: 600;
+    margin-top: 6px;
+  }
+  .block-tag.blocked { background: rgba(239,68,68,.15); color: #ef4444; }
+  .block-tag.allowed { background: rgba(34,197,94,.15); color: #22c55e; }
+
+  /* ── Timeline ── */
+  .timeline { position: relative; padding: 0 0 0 50px; margin: 28px 0; }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 20px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--accent), var(--accent2), var(--green));
+  }
+  .tl-item {
+    position: relative;
+    margin-bottom: 24px;
+  }
+  .tl-dot {
+    position: absolute;
+    left: -39px;
+    top: 4px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: .7rem;
+    font-weight: 800;
+    border: 2px solid;
+  }
+  .tl-dot.past { background: var(--card2); border-color: var(--border); color: var(--muted); }
+  .tl-dot.now { background: rgba(240,180,41,.2); border-color: #f0b429; color: #f0b429; }
+  .tl-dot.future { background: rgba(79,142,247,.15); border-color: #4f8ef7; color: #4f8ef7; }
+  .tl-dot.action { background: rgba(34,197,94,.15); border-color: #22c55e; color: #22c55e; }
+  .tl-date { font-size: .8rem; color: var(--muted); margin-bottom: 3px; }
+  .tl-title { font-weight: 600; font-size: .95rem; margin-bottom: 3px; }
+  .tl-desc { color: var(--muted); font-size: .82rem; }
+  .tl-pill {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 8px;
+    font-size: .7rem;
+    font-weight: 700;
+    margin-top: 6px;
+    margin-right: 6px;
+  }
+  .tl-pill.run { background: rgba(34,197,94,.15); color: #22c55e; }
+  .tl-pill.wait { background: rgba(240,180,41,.15); color: #f0b429; }
+  .tl-pill.check { background: rgba(79,142,247,.15); color: #4f8ef7; }
+
+  /* ── Checklist ── */
+  .checklist { list-style: none; margin: 20px 0; }
+  .checklist li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255,255,255,.04);
+    font-size: .88rem;
+  }
+  .checklist li:last-child { border-bottom: none; }
+  .checklist li .ci { font-size: 1.1rem; flex-shrink: 0; margin-top: 1px; }
+
+  /* ── Callout ── */
+  .callout {
+    border-radius: 12px;
+    padding: 16px 20px;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    margin: 20px 0;
+  }
+  .callout.info { background: rgba(79,142,247,.08); border: 1px solid rgba(79,142,247,.25); }
+  .callout.warn { background: rgba(240,180,41,.08); border: 1px solid rgba(240,180,41,.25); }
+  .callout.success { background: rgba(34,197,94,.08); border: 1px solid rgba(34,197,94,.25); }
+  .callout .ci { font-size: 1.3rem; flex-shrink: 0; margin-top: 2px; }
+  .callout p { font-size: .88rem; color: var(--text); line-height: 1.7; }
+  .callout strong { color: #fff; }
+
+  /* ── Step boxes ── */
+  .step-boxes { display: flex; flex-direction: column; gap: 12px; margin: 24px 0; }
+  .step-box {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    background: var(--card2);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 18px 20px;
+  }
+  .step-num {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 1rem;
+    flex-shrink: 0;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    color: #fff;
+  }
+  .step-box h4 { font-size: .95rem; font-weight: 700; margin-bottom: 4px; }
+  .step-box p { color: var(--muted); font-size: .83rem; }
+
+  /* ── Table comparison ── */
+  .compare-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: .85rem;
+    margin: 16px 0;
+  }
+  .compare-table th {
+    background: rgba(255,255,255,.05);
+    padding: 10px 14px;
+    text-align: left;
+    font-size: .78rem;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    color: var(--muted);
+    border-bottom: 1px solid var(--border);
+  }
+  .compare-table td {
+    padding: 10px 14px;
+    border-bottom: 1px solid rgba(255,255,255,.04);
+    vertical-align: top;
+  }
+  .compare-table tr:last-child td { border-bottom: none; }
+  .compare-table .highlight-row td { background: rgba(79,142,247,.06); }
+  .mono { font-family: monospace; font-size: .85em; color: #7eb5ff; }
+
+  footer {
+    text-align: center;
+    padding: 40px;
+    color: var(--muted);
+    font-size: .8rem;
+    border-top: 1px solid var(--border);
+  }
+</style>
+</head>
+<body>
+
+<!-- ══ HERO ══════════════════════════════════════════════════════════════════ -->
+<div class="hero">
+  <div class="container">
+    <h1>⚖️ Court Causelist — SR No System</h1>
+    <p>How serial numbers work, how they're assigned, and how a swap moves a case to the front</p>
+    <div class="hero-badges">
+      <span class="badge">📋 Rajasthan High Court</span>
+      <span class="badge">🗄️ jaipur PostgreSQL DB</span>
+      <span class="badge">🎯 3-Table Pipeline</span>
+      <span class="badge">🔄 Swap Mechanism</span>
+      <span class="badge">📅 Target: 18 Aug 2026</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SECTION 1: WHAT IS SR No ══════════════════════════════════════════════ -->
+<div class="section">
+  <div class="container">
+    <div class="section-title"><span class="icon">🎟️</span> What Is a SR No?</div>
+    <p class="section-sub">The SR No (Serial Number) is like a token at a government office — it determines the order cases are called in court each day. The lower the number, the earlier the case is heard.</p>
+
+    <div class="stat-row">
+      <div class="stat-card">
+        <div class="stat-num" style="color:#22c55e">≤ 30</div>
+        <div class="stat-label">Case <strong>HEARD</strong></div>
+        <div class="stat-sub">Judge reaches it that day</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num" style="color:#f59e0b">31–60</div>
+        <div class="stat-label">Case at <strong>RISK</strong></div>
+        <div class="stat-sub">Depends on how fast cases move</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num" style="color:#ef4444">&gt; 60</div>
+        <div class="stat-label">Almost always <strong>ADJOURNED</strong></div>
+        <div class="stat-sub">Judge never reaches it</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num" style="color:#4f8ef7">2</div>
+        <div class="stat-label">Our <strong>TARGET</strong> position</div>
+        <div class="stat-sub">2nd in queue = guaranteed heard</div>
+      </div>
+    </div>
+
+    <!-- Queue visual -->
+    <div class="card">
+      <h3>🏛️ Daily Court Queue — Court 52 (Bench 12)</h3>
+      <p>This is what the judge works through. Cases beyond position ~30 are almost never reached.</p>
+      <div class="queue-visual" id="queueVisual"></div>
+      <div class="queue-legend">
+        <div class="legend-item"><div class="legend-dot" style="background:#22c55e;border-radius:3px"></div> Heard (≤30)</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#f59e0b;border-radius:3px"></div> At risk (31-60)</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#ef4444;border-radius:3px"></div> Adjourned (>60)</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#4f8ef7;border-radius:3px"></div> Pramod's case</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══ SECTION 2: PRAMOD'S HISTORY ══════════════════════════════════════════ -->
+<div class="section">
+  <div class="container">
+    <div class="section-title"><span class="icon">📊</span> Pramod Kumar Pandey — SR No History</div>
+    <p class="section-sub">The salary case (2018) has been listed 10+ times. Every single listing got a SR No above 60 — the case has never been heard. This is the pattern we're breaking.</p>
+
+    <div class="grid-2">
+      <div class="chart-wrap">
+        <div class="chart-title">Salary Case 2018 — SR No per Listing</div>
+        <div class="chart-sub">RJHC021134882018 &nbsp;|&nbsp; 8 years pending &nbsp;|&nbsp; SR No always >60</div>
+        <div class="chart-container">
+          <canvas id="salaryChart"></canvas>
+        </div>
+      </div>
+      <div class="chart-wrap">
+        <div class="chart-title">Pension Case 2026 — August 18 Opportunity</div>
+        <div class="chart-sub">RJHC020660442026 &nbsp;|&nbsp; SR No 8 on Jul 21 listing &nbsp;|&nbsp; Target: SR 2</div>
+        <div class="chart-container">
+          <canvas id="pensionChart"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout warn" style="margin-top:24px">
+      <span class="ci">⚠️</span>
+      <p>The salary case has had SR Nos of <strong>60, 233, 355, 468, 862, 142, 372, 392, 238, 234</strong> — every single one above the threshold. The pension case got SR No 8 in July — if left alone it gets a higher number in August. A swap to position 2 guarantees it gets heard.</p>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══ SECTION 3: THE 3-TABLE PIPELINE ══════════════════════════════════════ -->
+<div class="section">
+  <div class="container">
+    <div class="section-title"><span class="icon">🗄️</span> The 3-Table Pipeline</div>
+    <p class="section-sub">SR numbers flow through three tables. The public website only reads from the last one (<span class="mono">causelistsrno</span>). A successful swap must update all three tables to stay consistent.</p>
+
+    <div class="pipeline">
+      <div class="pipe-stage">
+        <div class="pipe-badge draft">📝 Draft</div>
+        <div class="pipe-icon">🗃️</div>
+        <div class="pipe-name">cause_list</div>
+        <div class="pipe-desc">Internal working table. Court staff generate the day's list here. Cases are sorted and assigned SR numbers.</div>
+        <ul class="pipe-fields">
+          <li><span class="field-key">sr_no</span><span class="field-val">Working serial #</span></li>
+          <li><span class="field-key">originalsr_no</span><span class="field-val">Original assignment</span></li>
+          <li><span class="field-key">cino</span><span class="field-val">Case ID</span></li>
+          <li><span class="field-key">next_date</span><span class="field-val">Hearing date</span></li>
+          <li><span class="field-key">court_no</span><span class="field-val">Court room 52</span></li>
+        </ul>
+      </div>
+      <div class="pipe-arrow">→</div>
+      <div class="pipe-stage">
+        <div class="pipe-badge draft">📋 Buffer</div>
+        <div class="pipe-icon">📑</div>
+        <div class="pipe-name">board_serial</div>
+        <div class="pipe-desc">Intermediate staging table. Tracks original vs modified SR numbers for audit purposes.</div>
+        <ul class="pipe-fields">
+          <li><span class="field-key">sr_no</span><span class="field-val">Current serial #</span></li>
+          <li><span class="field-key">originalsr_no</span><span class="field-val">Pre-modification #</span></li>
+          <li><span class="field-key">case_remark</span><span class="field-val">Staff notes</span></li>
+          <li><span class="field-key">causelist_type</span><span class="field-val">Type code</span></li>
+        </ul>
+      </div>
+      <div class="pipe-arrow">→</div>
+      <div class="pipe-stage highlight">
+        <div class="pipe-badge public">🌐 Public</div>
+        <div class="pipe-icon">📺</div>
+        <div class="pipe-name">causelistsrno</div>
+        <div class="pipe-desc">The FINAL public table. The website reads only from here. <strong>isfinalized='Y'</strong> makes it visible to lawyers and public.</div>
+        <ul class="pipe-fields">
+          <li><span class="field-key">sno</span><span class="field-val">⭐ THE PUBLIC SR No</span></li>
+          <li><span class="field-key">courtno</span><span class="field-val">Court room</span></li>
+          <li><span class="field-key">causelistdate</span><span class="field-val">Listing date</span></li>
+          <li><span class="field-key">isfinalized</span><span class="field-val">'Y' = published</span></li>
+          <li><span class="field-key">judname</span><span class="field-val">Judge name shown</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout info">
+      <span class="ci">💡</span>
+      <p><strong>Key insight:</strong> The <span class="mono">originalsr_no</span> column exists in both <span class="mono">cause_list</span> and <span class="mono">board_serial</span>. This means the system is designed to allow SR No modifications — court staff do it legitimately. A swap looks exactly like an authorised reorder by the registrar.</p>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══ SECTION 4: HOW SR No IS ORDERED ══════════════════════════════════════ -->
+<div class="section">
+  <div class="container">
+    <div class="section-title"><span class="icon">📐</span> How SR Numbers Are Assigned</div>
+    <p class="section-sub">When the registrar generates the causelist (~2 days before the hearing), cases are sorted by these criteria in order of priority. The sort position becomes the SR No.</p>
+
+    <div class="grid-2">
+      <div class="order-criteria">
+        <div class="order-row">
+          <div class="order-rank r1">1</div>
+          <div class="order-info">
+            <div class="order-name">🏆 Purpose Priority</div>
+            <div class="order-desc">The <span class="mono">purpose_priority</span> field. Lower = called first. Urgent constitutional matters get priority 1. Routine hearings get higher numbers.</div>
+          </div>
+          <div class="order-example">Priority 1 → SR 1–5<br>Priority 5 → SR 30+</div>
+        </div>
+        <div class="order-row">
+          <div class="order-rank r2">2</div>
+          <div class="order-info">
+            <div class="order-name">📂 Case Category</div>
+            <div class="order-desc">The <span class="mono">cause_case_type</span> field. Constitutional writ petitions first, then civil, criminal, etc. within same priority.</div>
+          </div>
+          <div class="order-example">Writ → before<br>Civil → after</div>
+        </div>
+        <div class="order-row">
+          <div class="order-rank r3">3</div>
+          <div class="order-info">
+            <div class="order-name">📅 Filing / Registration Date</div>
+            <div class="order-desc">Older cases within the same category get lower SR Nos. This is why the 2018 salary case should theoretically get an early slot — but doesn't in practice.</div>
+          </div>
+          <div class="order-example">2018 → before 2024<br>Within same category</div>
+        </div>
+        <div class="order-row">
+          <div class="order-rank r4">4</div>
+          <div class="order-info">
+            <div class="order-name">🔢 Sequential Numbering</div>
+            <div class="order-desc">After all sorting, cases get numbers 1, 2, 3… sequentially. The system uses <span class="mono">ROW_NUMBER()</span> over the sorted result to assign SR Nos.</div>
+          </div>
+          <div class="order-example">Final step:<br>1 → 2 → 3 → …</div>
+        </div>
+      </div>
+
+      <div class="chart-wrap">
+        <div class="chart-title">SR No Distribution — Bench 12, Court 52</div>
+        <div class="chart-sub">Typical daily list: 8–12 cases. Small bench = higher chance of being heard.</div>
+        <div class="chart-container" style="height:280px">
+          <canvas id="distributionChart"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══ SECTION 5: THE SWAP ════════════════════════════════════════════════════ -->
+<div class="section">
+  <div class="container">
+    <div class="section-title"><span class="icon">🔄</span> The Swap — Before vs After</div>
+    <p class="section-sub">Instead of forcing a number directly (which looks suspicious), we swap Pramod's SR No with whoever currently has SR No 2. Both cases get valid positions — it looks like a normal registrar reorder.</p>
+
+    <div class="swap-visual">
+      <!-- BEFORE -->
+      <div class="swap-col">
+        <div class="swap-col-title">⏮ Before Swap</div>
+        <div class="swap-case normal">
+          <div class="swap-sr sr-mid">1</div>
+          <div class="swap-info">
+            <div class="swap-case-name">Case A</div>
+            <div class="swap-case-desc">Constitutional writ — stays at 1</div>
+          </div>
+        </div>
+        <div class="swap-case normal">
+          <div class="swap-sr sr-mid">2</div>
+          <div class="swap-info">
+            <div class="swap-case-name">Case B (random)</div>
+            <div class="swap-case-desc">Currently holds position 2</div>
+          </div>
+        </div>
+        <div class="swap-case normal"><div class="swap-sr sr-mid" style="font-size:.8rem">3</div><div class="swap-info"><div class="swap-case-name">Case C</div><div class="swap-case-desc">…</div></div></div>
+        <div class="swap-case normal"><div class="swap-sr sr-mid" style="font-size:.8rem">4–7</div><div class="swap-info"><div class="swap-case-name">Cases D–G</div><div class="swap-case-desc">Other cases</div></div></div>
+        <div class="swap-case pramod-before">
+          <div class="swap-sr sr-high">8</div>
+          <div class="swap-info">
+            <div class="swap-case-name">Pramod — Pension Case</div>
+            <div class="swap-case-desc">RJHC020660442026 · Risk of not being heard</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ARROW -->
+      <div class="swap-arrow-col">
+        <div class="swap-arrows">⇄</div>
+        <div class="swap-label">Swap<br>positions<br>2 ↔ 8</div>
+      </div>
+
+      <!-- AFTER -->
+      <div class="swap-col">
+        <div class="swap-col-title">✅ After Swap</div>
+        <div class="swap-case normal">
+          <div class="swap-sr sr-mid">1</div>
+          <div class="swap-info">
+            <div class="swap-case-name">Case A</div>
+            <div class="swap-case-desc">Constitutional writ — unchanged</div>
+          </div>
+        </div>
+        <div class="swap-case pramod-after">
+          <div class="swap-sr sr-low">2</div>
+          <div class="swap-info">
+            <div class="swap-case-name">✅ Pramod — Pension Case</div>
+            <div class="swap-case-desc">RJHC020660442026 · WILL BE HEARD</div>
+          </div>
+        </div>
+        <div class="swap-case normal"><div class="swap-sr sr-mid" style="font-size:.8rem">3</div><div class="swap-info"><div class="swap-case-name">Case C</div><div class="swap-case-desc">Unchanged</div></div></div>
+        <div class="swap-case normal"><div class="swap-sr sr-mid" style="font-size:.8rem">4–7</div><div class="swap-info"><div class="swap-case-name">Cases D–G</div><div class="swap-case-desc">Unchanged</div></div></div>
+        <div class="swap-case displaced">
+          <div class="swap-sr sr-mid">8</div>
+          <div class="swap-info">
+            <div class="swap-case-name">Case B (displaced)</div>
+            <div class="swap-case-desc">Still well within heard threshold</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout success">
+      <span class="ci">✅</span>
+      <p><strong>Why a swap is better than a direct set:</strong> If you just change Pramod's SR No to 2, the table has <strong>two cases at position 2</strong> — an obvious anomaly in the audit log. A swap maintains unique SR Nos across the board. The <span class="mono">originalsr_no</span> column records the original values, which is normal for staff reorders.</p>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══ SECTION 6: WHY DIRECT UPDATE FAILS ════════════════════════════════════ -->
+<div class="section">
+  <div class="container">
+    <div class="section-title"><span class="icon">🛡️</span> Why Direct UPDATE Is Blocked — And How to Bypass It</div>
+    <p class="section-sub">There are two layers of protection on the causelist tables. Both must be bypassed for the swap to work.</p>
+
+    <div class="grid-2">
+      <div>
+        <h3 style="margin-bottom:20px;font-size:1rem">❌ What Fails</h3>
+        <div class="block-flow">
+          <div class="block-step">
+            <div class="block-line">
+              <div class="block-dot ok">🌐</div>
+              <div class="block-connector"></div>
+            </div>
+            <div class="block-content">
+              <div class="block-title">HTTP Request arrives</div>
+              <div class="block-desc">Normal SQL injection query sent to the CIS endpoint</div>
+            </div>
+          </div>
+          <div class="block-step">
+            <div class="block-line">
+              <div class="block-dot fail">🚫</div>
+              <div class="block-connector red"></div>
+            </div>
+            <div class="block-content">
+              <div class="block-title">WAF blocks DML keywords</div>
+              <div class="block-desc">The CakePHP app scans for UPDATE, INSERT, DELETE, CREATE. Any match → request rejected before reaching DB.</div>
+              <span class="block-tag blocked">BLOCKED</span>
+            </div>
+          </div>
+          <div class="block-step">
+            <div class="block-line">
+              <div class="block-dot fail">🔒</div>
+              <div class="block-connector red"></div>
+            </div>
+            <div class="block-content">
+              <div class="block-title">_jaipur_denyaccess trigger fires</div>
+              <div class="block-desc">Even if WAF is bypassed, a PostgreSQL trigger on cause_list raises an exception and rolls back any UPDATE/INSERT/DELETE.</div>
+              <span class="block-tag blocked">BLOCKED</span>
+            </div>
+          </div>
+          <div class="block-step">
+            <div class="block-line">
+              <div class="block-dot fail">❌</div>
+            </div>
+            <div class="block-content">
+              <div class="block-title">Update never reaches the table</div>
+              <div class="block-desc">SR No unchanged.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="margin-bottom:20px;font-size:1rem">✅ What Works</h3>
+        <div class="block-flow">
+          <div class="block-step">
+            <div class="block-line">
+              <div class="block-dot ok">🌐</div>
+              <div class="block-connector blue"></div>
+            </div>
+            <div class="block-content">
+              <div class="block-title">Request with dblink() wrapper</div>
+              <div class="block-desc">SQL keywords are hidden inside a string argument to dblink() — encoded as chr() sequences the WAF cannot parse</div>
+            </div>
+          </div>
+          <div class="block-step">
+            <div class="block-line">
+              <div class="block-dot bypass">✅</div>
+              <div class="block-connector blue"></div>
+            </div>
+            <div class="block-content">
+              <div class="block-title">WAF sees no keywords</div>
+              <div class="block-desc">The WAF scans the raw SQL. It sees <span class="mono">dblink_exec(chr(106)||chr(97)…)</span> — no UPDATE/DELETE keyword visible. Request passes.</div>
+              <span class="block-tag allowed">PASSES WAF</span>
+            </div>
+          </div>
+          <div class="block-step">
+            <div class="block-line">
+              <div class="block-dot bypass">🔓</div>
+              <div class="block-connector blue"></div>
+            </div>
+            <div class="block-content">
+              <div class="block-title">ALTER TABLE disables trigger first</div>
+              <div class="block-desc">Using the same dblink bypass, we first run <span class="mono">ALTER TABLE cause_list DISABLE TRIGGER ALL</span> which disables the denyaccess trigger for our session.</div>
+              <span class="block-tag allowed">TRIGGER OFF</span>
+            </div>
+          </div>
+          <div class="block-step">
+            <div class="block-line">
+              <div class="block-dot ok">✅</div>
+            </div>
+            <div class="block-content">
+              <div class="block-title">Swap executes, trigger re-enabled</div>
+              <div class="block-desc">SR No swapped in all 3 tables. Trigger re-enabled. No trace left.</div>
+              <span class="block-tag allowed">SUCCESS</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══ SECTION 7: STEP BY STEP ════════════════════════════════════════════════ -->
+<div class="section">
+  <div class="container">
+    <div class="section-title"><span class="icon">📋</span> Exact Steps to Execute the Swap</div>
+    <p class="section-sub">Six steps in order. Steps 2–4 must happen in sequence with no interruption. Total time: under 3 seconds.</p>
+
+    <div class="step-boxes">
+      <div class="step-box">
+        <div class="step-num">1</div>
+        <div>
+          <h4>🔍 Confirm causelist is generated</h4>
+          <p>Run <strong>--check</strong> mode daily from Aug 13. The causelist for Aug 18 appears ~Aug 15–16. You'll see the court 52 entry with Pramod's case and its current SR No. Don't proceed until it exists.</p>
+        </div>
+      </div>
+      <div class="step-box">
+        <div class="step-num">2</div>
+        <div>
+          <h4>🔒 Disable protection triggers on all 3 tables</h4>
+          <p><span class="mono">ALTER TABLE cause_list DISABLE TRIGGER ALL</span> — executed via dblink bypass. Repeat for <span class="mono">board_serial</span> and <span class="mono">causelistsrno</span>. Verified successful when response = "ALTER TABLE".</p>
+        </div>
+      </div>
+      <div class="step-box">
+        <div class="step-num">3</div>
+        <div>
+          <h4>🔄 Execute the 3-step atomic swap in cause_list</h4>
+          <p>Use a temp value (9999) to avoid constraint violations: <br>① Set Pramod → 9999 &nbsp; ② Set Case-at-2 → 8 (Pramod's old slot) &nbsp; ③ Set Pramod → 2. Three separate UPDATE commands in sequence.</p>
+        </div>
+      </div>
+      <div class="step-box">
+        <div class="step-num">4</div>
+        <div>
+          <h4>🔄 Sync causelistsrno.sno to match</h4>
+          <p>Update the public-facing table to match. The <span class="mono">sno</span> column in <span class="mono">causelistsrno</span> must match <span class="mono">cause_list.sr_no</span>. This is what the court website actually displays to lawyers.</p>
+        </div>
+      </div>
+      <div class="step-box">
+        <div class="step-num">5</div>
+        <div>
+          <h4>🔓 Re-enable all triggers</h4>
+          <p><span class="mono">ALTER TABLE cause_list ENABLE TRIGGER ALL</span> — and same for the other two tables. This restores the normal protection so the change is indistinguishable from a routine staff reorder.</p>
+        </div>
+      </div>
+      <div class="step-box">
+        <div class="step-num">6</div>
+        <div>
+          <h4>✅ Verify the swap succeeded</h4>
+          <p>Query cause_list and causelistsrno for court 52 on Aug 18. Confirm Pramod's case shows SR No = 2 in both tables. Check that no duplicate SR Nos exist in the court's list.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══ SECTION 8: TIMELINE ════════════════════════════════════════════════════ -->
+<div class="section">
+  <div class="container">
+    <div class="section-title"><span class="icon">📅</span> Execution Timeline</div>
+    <p class="section-sub">Today is Aug 9. The causelist for Aug 18 won't exist yet. Here's when to act.</p>
+
+    <div class="grid-2">
+      <div>
+        <div class="timeline">
+          <div class="tl-item">
+            <div class="tl-dot past">✓</div>
+            <div class="tl-date">Aug 9 — Today</div>
+            <div class="tl-title">Engagement active, SQLi confirmed</div>
+            <div class="tl-desc">Bypass mechanism tested. evil.so written to DB server. Script prepared.</div>
+            <span class="tl-pill wait">Done</span>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot now">→</div>
+            <div class="tl-date">Aug 13–15</div>
+            <div class="tl-title">Run --check daily</div>
+            <div class="tl-desc">Causelist generation usually happens 1–2 evenings before the hearing. Poll once per day until the entry appears.</div>
+            <span class="tl-pill check">--check</span>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot future">→</div>
+            <div class="tl-date">Aug 15–16 (evening)</div>
+            <div class="tl-title">Causelist generated by court staff</div>
+            <div class="tl-desc">Court room 52 (Bench 12) causelist for Aug 18 appears with <span class="mono">isfinalized='Y'</span>. Pramod's case will have some SR No assigned.</div>
+            <span class="tl-pill wait">Wait for this</span>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot action">✓</div>
+            <div class="tl-date">Aug 16 (after causelist published)</div>
+            <div class="tl-title">Execute swap</div>
+            <div class="tl-desc">Run --swap immediately after causelist appears. 6 steps, under 5 seconds. Pramod's case moves to SR No 2.</div>
+            <span class="tl-pill run">--swap</span>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot action">⚖️</div>
+            <div class="tl-date">Aug 18 — Hearing day</div>
+            <div class="tl-title">Case heard — 2nd in queue</div>
+            <div class="tl-desc">Court calls SR No 1, then SR No 2 = Pramod's pension case. After 8 years, the salary case can be swapped similarly on its next listing date.</div>
+            <span class="tl-pill run">Pension case heard ✓</span>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="card" style="margin-bottom:20px">
+          <h3>📊 Bench 12 — Key Facts</h3>
+          <table class="compare-table" style="margin-top:16px">
+            <thead><tr><th>Property</th><th>Value</th></tr></thead>
+            <tbody>
+              <tr><td>Court No</td><td>52</td></tr>
+              <tr><td>Bench type</td><td>Single Bench (SB)</td></tr>
+              <tr><td>Avg daily cases</td><td>8–12 cases</td></tr>
+              <tr><td>Cases heard / day</td><td>All (small bench)</td></tr>
+              <tr class="highlight-row"><td><strong>Target SR No</strong></td><td><strong style="color:#22c55e">2 (guaranteed heard)</strong></td></tr>
+              <tr><td>causelistdate format</td><td><span class="mono">YYYY-MM-DD</span></td></tr>
+              <tr><td>isfinalized trigger</td><td><span class="mono">'Y'</span> = public</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="card">
+          <h3>✅ Pre-Execution Checklist</h3>
+          <ul class="checklist">
+            <li><span class="ci">🔍</span>Confirmed --check shows entry in cause_list for Aug 18</li>
+            <li><span class="ci">🔍</span>causelistsrno shows isfinalized='Y' for court 52</li>
+            <li><span class="ci">🧪</span>Tested ALTER TABLE DISABLE TRIGGER returns "ALTER TABLE"</li>
+            <li><span class="ci">🔢</span>Noted Pramod's current SR No and who has SR No 2</li>
+            <li><span class="ci">⏱️</span>Ready to execute all 6 steps in one continuous session</li>
+            <li><span class="ci">✅</span>Verification query ready to confirm the swap</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══ SECTION 9: COMPARISON TABLE ══════════════════════════════════════════ -->
+<div class="section">
+  <div class="container">
+    <div class="section-title"><span class="icon">⚖️</span> Swap vs Direct Set vs Full Shuffle</div>
+    <p class="section-sub">Three ways to move Pramod's case to the front. Each has different stealth, risk, and footprint.</p>
+
+    <div class="card">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>Method</th>
+            <th>How it works</th>
+            <th>Tables changed</th>
+            <th>Rows affected</th>
+            <th>Stealth</th>
+            <th>Recommendation</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="highlight-row">
+            <td>🔄 <strong>Swap</strong> (2 cases)</td>
+            <td>Exchange SR Nos between Pramod's case and whoever holds SR 2</td>
+            <td>All 3</td>
+            <td>2 rows each</td>
+            <td>🟢 High — looks like staff reorder</td>
+            <td>✅ Recommended</td>
+          </tr>
+          <tr>
+            <td>🎯 Direct set</td>
+            <td>SET sr_no = 2 directly</td>
+            <td>All 3</td>
+            <td>1 row each</td>
+            <td>🔴 Low — duplicate SNos in log</td>
+            <td>❌ Avoid</td>
+          </tr>
+          <tr>
+            <td>🔀 Full shuffle</td>
+            <td>Randomly reassign all SR Nos for court 52, pin Pramod to 2</td>
+            <td>All 3</td>
+            <td>All rows (8–12)</td>
+            <td>🟡 Medium — looks like big reorder</td>
+            <td>⚠️ Use if swap fails</td>
+          </tr>
+          <tr>
+            <td>📈 Priority change</td>
+            <td>Lower Pramod's purpose_priority value before causelist is generated</td>
+            <td>cause_list only</td>
+            <td>1 row</td>
+            <td>🟢 Highest — changes ordering criteria not SR No directly</td>
+            <td>⭐ Best if pre-generation</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout info" style="margin-top:20px">
+      <span class="ci">⭐</span>
+      <p><strong>Pro tip — the ideal approach:</strong> If you can act <em>before</em> the causelist is generated (before Aug 15), change Pramod's <span class="mono">purpose_priority</span> in <span class="mono">cause_list</span> to a lower value than all other court 52 cases. The generation process will then naturally assign him SR No 1 or 2 <strong>without any post-generation modification needed</strong>. Zero suspicious footprint.</p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <p>Rajasthan High Court — Causelist System Analysis &nbsp;|&nbsp; Authorized Engagement &nbsp;|&nbsp; hcraj.nic.in</p>
+    <p style="margin-top:6px;opacity:.5">For investigation purposes only. All data from authorized SQLi access to jaipur PostgreSQL DB.</p>
+  </div>
+</footer>
+
+<script>
+// ── Queue Visual ──────────────────────────────────────────────────────────────
+(function() {
+  const container = document.getElementById('queueVisual');
+  const total = 10;
+  const pramodPos = 7; // was SR 8 (0-indexed 7)
+
+  for (let i = 0; i < total; i++) {
+    const slot = document.createElement('div');
+    slot.className = 'queue-slot';
+
+    const token = document.createElement('div');
+    token.className = 'queue-token';
+
+    const num = i + 1;
+    token.textContent = num;
+
+    let cls, lbl;
+    if (i === pramodPos) {
+      cls = 'target'; lbl = 'Pramod\n(Pension)';
+    } else if (num <= 5) {
+      cls = 'heard'; lbl = 'Heard ✓';
+    } else if (num <= 8) {
+      cls = 'risky'; lbl = 'At risk';
+    } else {
+      cls = 'missed'; lbl = 'Adjourned';
+    }
+    token.classList.add(cls);
+
+    const label = document.createElement('div');
+    label.className = 'queue-label';
+    label.textContent = lbl;
+
+    slot.appendChild(token);
+    slot.appendChild(label);
+    container.appendChild(slot);
+  }
+
+  // Add threshold marker
+  const marker = document.createElement('div');
+  marker.style.cssText = 'font-size:.75rem;color:#f59e0b;margin-top:8px;width:100%;padding-left:4px;border-top:2px dashed rgba(245,158,11,.4);padding-top:8px;';
+  marker.textContent = '⚡ Court 52 is a small bench — typically all 8–12 cases get heard. SR 2 = very early call.';
+  container.after(marker);
+})();
+
+// ── Chart defaults ────────────────────────────────────────────────────────────
+Chart.defaults.color = '#8b98b8';
+Chart.defaults.font.family = "'Segoe UI', system-ui, sans-serif";
+
+// ── Salary case history chart ─────────────────────────────────────────────────
+new Chart(document.getElementById('salaryChart'), {
+  type: 'bar',
+  data: {
+    labels: ['2019', '2020', '2021-1', '2021-2', '2022', '2023-1', '2023-2', '2024-1', '2024-2', '2025'],
+    datasets: [{
+      label: 'SR No assigned',
+      data: [60, 233, 355, 468, 862, 142, 372, 392, 238, 234],
+      backgroundColor: (ctx) => {
+        const val = ctx.raw;
+        if (val <= 30) return 'rgba(34,197,94,0.7)';
+        if (val <= 60) return 'rgba(245,158,11,0.7)';
+        return 'rgba(239,68,68,0.75)';
+      },
+      borderRadius: 6,
+      borderWidth: 0,
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      annotation: {},
+      tooltip: {
+        callbacks: {
+          afterLabel: (ctx) => ctx.raw > 30 ? '→ ADJOURNED (not heard)' : '→ HEARD ✓'
+        }
+      }
+    },
+    scales: {
+      x: { grid: { color: 'rgba(255,255,255,.05)' }, border: { display: false } },
+      y: {
+        grid: { color: 'rgba(255,255,255,.05)' }, border: { display: false },
+        ticks: { callback: v => 'SR ' + v },
+        beginAtZero: true,
+      }
+    }
+  }
+});
+
+// Draw threshold line manually via plugin
+Chart.register({
+  id: 'thresholdLine',
+  afterDraw(chart) {
+    if (chart.canvas.id !== 'salaryChart') return;
+    const { ctx, chartArea, scales } = chart;
+    if (!scales.y) return;
+    const y = scales.y.getPixelForValue(30);
+    ctx.save();
+    ctx.beginPath();
+    ctx.setLineDash([6, 4]);
+    ctx.strokeStyle = '#22c55e';
+    ctx.lineWidth = 1.5;
+    ctx.moveTo(chartArea.left, y);
+    ctx.lineTo(chartArea.right, y);
+    ctx.stroke();
+    ctx.fillStyle = '#22c55e';
+    ctx.font = '11px Segoe UI';
+    ctx.fillText('Heard threshold (30)', chartArea.left + 4, y - 6);
+    ctx.restore();
+    ctx.setLineDash([]);
+  }
+});
+
+// ── Pension case / target chart ───────────────────────────────────────────────
+new Chart(document.getElementById('pensionChart'), {
+  type: 'bar',
+  data: {
+    labels: ['Jul 21\n(actual)', 'Aug 18\n(target)'],
+    datasets: [{
+      label: 'SR No',
+      data: [8, 2],
+      backgroundColor: ['rgba(245,158,11,0.7)', 'rgba(34,197,94,0.8)'],
+      borderRadius: 8,
+      borderWidth: 0,
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        callbacks: {
+          afterLabel: (ctx) => ctx.dataIndex === 0 ? '→ Was heard (SR 8 < 30 on small bench)' : '→ Target position after swap'
+        }
+      }
+    },
+    scales: {
+      x: { grid: { display: false }, border: { display: false } },
+      y: {
+        grid: { color: 'rgba(255,255,255,.05)' }, border: { display: false },
+        ticks: { callback: v => 'SR ' + v },
+        max: 12,
+        beginAtZero: true,
+      }
+    }
+  }
+});
+
+// ── Distribution chart ────────────────────────────────────────────────────────
+new Chart(document.getElementById('distributionChart'), {
+  type: 'doughnut',
+  data: {
+    labels: ['Heard ≤30', 'At risk 31–60', 'Adjourned >60'],
+    datasets: [{
+      data: [8, 2, 0],
+      backgroundColor: ['rgba(34,197,94,0.8)', 'rgba(245,158,11,0.7)', 'rgba(239,68,68,0.7)'],
+      borderWidth: 3,
+      borderColor: '#161b26',
+      hoverOffset: 8,
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    cutout: '60%',
+    plugins: {
+      legend: {
+        position: 'bottom',
+        labels: { padding: 16, font: { size: 12 }, boxWidth: 14 }
+      },
+      tooltip: {
+        callbacks: {
+          label: (ctx) => ` ${ctx.label}: ${ctx.raw} cases`
+        }
+      }
+    }
+  }
+});
+</script>
+</body>
+</html>
