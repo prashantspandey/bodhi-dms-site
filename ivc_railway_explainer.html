@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IVC Logistics — How Railway Business Works</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; background: #f0f2f5; color: #222; line-height: 1.6; }
+
+  .header { background: linear-gradient(135deg, #1a3a5c, #0d6efd); color: white; padding: 40px; }
+  .header h1 { font-size: 30px; font-weight: 800; margin-bottom: 8px; }
+  .header p { opacity: 0.85; font-size: 15px; max-width: 700px; }
+
+  .section { background: white; border-radius: 12px; margin: 24px 40px; box-shadow: 0 2px 12px rgba(0,0,0,0.07); overflow: hidden; }
+  .section-title { background: #1a3a5c; color: white; padding: 16px 28px; font-size: 17px; font-weight: 700; display: flex; justify-content: space-between; align-items: center; }
+  .section-title .tag { background: rgba(255,255,255,0.15); border-radius: 20px; padding: 3px 14px; font-size: 12px; font-weight: 500; }
+  .section-body { padding: 28px; }
+
+  /* ── Steps ─────────────────────────────────────────── */
+  .steps { display: flex; flex-direction: column; gap: 0; }
+  .step { display: flex; gap: 20px; position: relative; }
+  .step:not(:last-child) .step-line { position: absolute; left: 26px; top: 56px; bottom: 0; width: 2px; background: #e9ecef; z-index: 0; }
+  .step-left { display: flex; flex-direction: column; align-items: center; flex-shrink: 0; }
+  .step-num { width: 52px; height: 52px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 800; color: white; z-index: 1; flex-shrink: 0; }
+  .step-content { flex: 1; padding-bottom: 32px; }
+  .step-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; flex-wrap: wrap; gap: 8px; }
+  .step-title { font-size: 16px; font-weight: 700; color: #1a3a5c; }
+  .step-date { font-size: 12px; color: #888; background: #f8f9fa; padding: 3px 10px; border-radius: 20px; white-space: nowrap; }
+  .step-desc { font-size: 13px; color: #555; margin-bottom: 12px; }
+  .step-proof { background: #f8f9fa; border-left: 3px solid #0d6efd; padding: 10px 14px; border-radius: 0 6px 6px 0; font-size: 12px; color: #444; margin-bottom: 10px; }
+  .step-proof strong { color: #1a3a5c; }
+  .money-row { display: flex; gap: 12px; flex-wrap: wrap; }
+  .money-badge { padding: 6px 14px; border-radius: 20px; font-size: 12px; font-weight: 700; white-space: nowrap; }
+  .earn { background: #d1f0dd; color: #0a5428; }
+  .pay  { background: #fde8e8; color: #8b1c1c; }
+  .nil  { background: #e9ecef; color: #555; }
+  .note-badge { background: #fff3cd; color: #856404; }
+
+  /* ── Historical table ───────────────────────────────── */
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  thead { background: #0d6efd; color: white; }
+  th { padding: 13px 16px; text-align: left; font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.3px; white-space: nowrap; }
+  td { padding: 12px 16px; border-bottom: 1px solid #f0f2f5; vertical-align: middle; }
+  tr:hover td { background: #fafbfc; }
+  tr:nth-child(even) td { background: #f8f9fa; }
+  tr:nth-child(even):hover td { background: #f0f2f5; }
+  .yr-badge { display: inline-block; background: #1a3a5c; color: white; padding: 3px 12px; border-radius: 12px; font-weight: 700; font-size: 12px; }
+  .yr-badge.current { background: #0d6efd; }
+  .yr-badge.test { background: #adb5bd; }
+  .bar { height: 10px; border-radius: 5px; background: #0d6efd; display: inline-block; vertical-align: middle; margin-right: 6px; }
+  .phase { display: inline-block; padding: 2px 10px; border-radius: 10px; font-size: 11px; font-weight: 600; }
+  .phase-test { background: #e2e3e5; color: #495057; }
+  .phase-early { background: #fff3cd; color: #856404; }
+  .phase-growth { background: #d1f0dd; color: #0a5428; }
+  .phase-full { background: #cce5ff; color: #004085; }
+
+  /* ── CN Comparison ──────────────────────────────────── */
+  .compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .compare-card { border-radius: 10px; overflow: hidden; }
+  .compare-header { padding: 16px 20px; font-size: 15px; font-weight: 700; color: white; }
+  .road-header { background: #198754; }
+  .rail-header { background: #dc3545; }
+  .compare-body { padding: 0; }
+  .compare-row { display: flex; padding: 11px 20px; border-bottom: 1px solid #f0f2f5; align-items: flex-start; gap: 12px; }
+  .compare-row:last-child { border-bottom: none; }
+  .compare-label { font-size: 11px; color: #888; text-transform: uppercase; letter-spacing: 0.4px; min-width: 110px; flex-shrink: 0; padding-top: 1px; }
+  .compare-val { font-size: 13px; color: #222; font-weight: 500; }
+  .compare-val.highlight { color: #0d6efd; font-weight: 700; }
+  .road-val { color: #198754; }
+  .rail-val { color: #dc3545; }
+  .diff-table { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 4px; }
+  .diff-table th { background: #f8f9fa; padding: 10px 16px; font-size: 11px; text-transform: uppercase; color: #666; font-weight: 600; letter-spacing: 0.3px; }
+  .diff-table td { padding: 11px 16px; border-bottom: 1px solid #f0f2f5; }
+  .diff-table tr:last-child td { border-bottom: none; }
+
+  .stats-row { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; margin: 24px 40px; }
+  .stat { background: white; border-radius: 10px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.07); border-top: 4px solid #0d6efd; }
+  .stat.green { border-top-color: #198754; }
+  .stat.red   { border-top-color: #dc3545; }
+  .stat.orange{ border-top-color: #fd7e14; }
+  .stat .lbl  { font-size: 11px; color: #888; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
+  .stat .val  { font-size: 24px; font-weight: 800; color: #1a3a5c; }
+  .stat .sub  { font-size: 12px; color: #aaa; margin-top: 4px; }
+
+  .footer { text-align: center; padding: 32px; color: #aaa; font-size: 12px; }
+  @media(max-width:800px){
+    .compare-grid,.stats-row{grid-template-columns:1fr;}
+    .section,.stats-row{margin:16px;}
+    .header{padding:24px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>IVC Logistics — How the Railway Business Works</h1>
+  <p>A complete guide to how IVC moves automobiles by Indian Railways — from customer order to final delivery, with real example from RR 282000043 (Maruti Suzuki, Feb–Aug 2026).</p>
+</div>
+
+<!-- Stats -->
+<div class="stats-row">
+  <div class="stat">
+    <div class="lbl">Railway Operations Started</div>
+    <div class="val">Nov 2024</div>
+    <div class="sub">First real RR number dispatch</div>
+  </div>
+  <div class="stat green">
+    <div class="lbl">Total Dispatches (to Aug 2026)</div>
+    <div class="val">1,478</div>
+    <div class="sub">All railway indent requests</div>
+  </div>
+  <div class="stat red">
+    <div class="lbl">IR Freight Paid (2025–26)</div>
+    <div class="val">₹167 Cr</div>
+    <div class="sub">To Indian Railways only</div>
+  </div>
+  <div class="stat orange">
+    <div class="lbl">Own Rakes (IVCLL fleet)</div>
+    <div class="val">12</div>
+    <div class="sub">IVCLL-01 to IVCLL-12</div>
+  </div>
+</div>
+
+<!-- SECTION 1: Steps -->
+<div class="section">
+  <div class="section-title">
+    How a Railway Dispatch Works — Step by Step
+    <span class="tag">Real Example: RR 282000043 · Maruti Suzuki · Feb–Aug 2026</span>
+  </div>
+  <div class="section-body">
+  <div class="steps">
+
+    <!-- Step 0 -->
+    <div class="step">
+      <div class="step-line"></div>
+      <div class="step-left">
+        <div class="step-num" style="background:#6f42c1">0</div>
+      </div>
+      <div class="step-content">
+        <div class="step-header">
+          <div class="step-title">Rate Contract (Before Everything Begins)</div>
+          <div class="step-date">Pre-agreed · No date</div>
+        </div>
+        <div class="step-desc">IVC and the OEM (e.g. Maruti Suzuki) sign a rate contract that defines exactly how much IVC will charge per vehicle per route. This contract is stored in IVC's Rate Master. Without this, no order can be placed.</div>
+        <div class="step-proof"><strong>DB Proof:</strong> RateMaster table — route "Mundra Port → Manesar", rate locked at <strong>₹87,853 per consignment</strong></div>
+        <div class="money-row">
+          <span class="money-badge nil">No money moves at this stage</span>
+          <span class="money-badge note-badge">Agreed rate enables all future billing</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 1 -->
+    <div class="step">
+      <div class="step-line"></div>
+      <div class="step-left">
+        <div class="step-num" style="background:#0d6efd">1</div>
+      </div>
+      <div class="step-content">
+        <div class="step-header">
+          <div class="step-title">Shipment Order (Customer Places Order)</div>
+          <div class="step-date">4 Feb 2026</div>
+        </div>
+        <div class="step-desc">Maruti Suzuki places an order with IVC to transport imported cars from Mundra Port (Gujarat) to their Manesar plant. IVC raises a Consignment Note (CN) — the official billing document for this shipment.</div>
+        <div class="step-proof"><strong>DB Proof:</strong> CNMaster — CN No. <strong>GUR349913</strong> · Consignor: Maruti Suzuki India Ltd. · Origin: Mundra Port · Dest: Manesar · Date: 4 Feb 2026</div>
+        <div class="money-row">
+          <span class="money-badge earn">IVC earns: ₹87,853 (CN GUR349913)</span>
+          <span class="money-badge note-badge">Cash collected only after POD (Step 8)</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 2 -->
+    <div class="step">
+      <div class="step-line"></div>
+      <div class="step-left">
+        <div class="step-num" style="background:#0d6efd">2</div>
+      </div>
+      <div class="step-content">
+        <div class="step-header">
+          <div class="step-title">Railway Indent (IVC Books a Rake)</div>
+          <div class="step-date">Before 7 Feb 2026</div>
+        </div>
+        <div class="step-desc">IVC files an Indent Request with Indian Railways to reserve rake IVCLL-07 for the Sabarmati → Manesar journey. Indian Railways confirms and assigns the rake and siding (loading track).</div>
+        <div class="step-proof"><strong>DB Proof:</strong> tblt_R_IndentRequest — ID 2778 · Indent No. 24.04 · Rake: IVCLL-07 · Office: Sabarmati</div>
+        <div class="money-row">
+          <span class="money-badge nil">No payment yet — commitment only</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 3 -->
+    <div class="step">
+      <div class="step-line"></div>
+      <div class="step-left">
+        <div class="step-num" style="background:#198754">3</div>
+      </div>
+      <div class="step-content">
+        <div class="step-header">
+          <div class="step-title">Loading (Cars Put on Train)</div>
+          <div class="step-date">7 Feb 2026 · 6:10 AM – 10:00 AM</div>
+        </div>
+        <div class="step-desc">Cars are physically driven onto flatcar wagons at Sabarmati railway yard. A loading contractor's crew secures each vehicle. The rake is placed on the loading siding at 6:10 AM; loading completed by 10:00 AM.</div>
+        <div class="step-proof"><strong>DB Proof:</strong> datIR_PlaceDate = 7 Feb 6:10 AM · datIR_LoadDate = 7 Feb 10:00 AM · Loading bill (Mar leg): Bill #2223 — RKM Enterprises, 264 cars @ ₹245</div>
+        <div class="money-row">
+          <span class="money-badge pay">IVC pays loading contractor: ₹64,680</span>
+          <span class="money-badge note-badge">Rate: ₹245 per car (Manesar leg)</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 4 -->
+    <div class="step">
+      <div class="step-line"></div>
+      <div class="step-left">
+        <div class="step-num" style="background:#dc3545">4</div>
+      </div>
+      <div class="step-content">
+        <div class="step-header">
+          <div class="step-title">Main Dispatch (Train Departs, RR Issued)</div>
+          <div class="step-date">7 Feb 2026 · After 10:00 AM</div>
+        </div>
+        <div class="step-desc">Indian Railways issues the Railway Receipt (RR) — the official freight document, like a bill of lading for trains. The train departs. IVC is now liable to pay Indian Railways the haulage charges.</div>
+        <div class="step-proof"><strong>DB Proof:</strong> txtIR_RRNo = <strong>282000043</strong> · IR Bill: 9926022472420018 (Feb leg) · IR Bill: 9926030638250225 (Mar leg)</div>
+        <div class="money-row">
+          <span class="money-badge pay">IVC pays IR (Feb leg, Sabarmati→Manesar): ₹3,15,315</span>
+          <span class="money-badge pay">IVC pays IR (Mar leg, Manesar→Doddaballapur): ₹37,44,003</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 5 -->
+    <div class="step">
+      <div class="step-line"></div>
+      <div class="step-left">
+        <div class="step-num" style="background:#6c757d">5</div>
+      </div>
+      <div class="step-content">
+        <div class="step-header">
+          <div class="step-title">Transit (Train Travels to Destination)</div>
+          <div class="step-date">7 Feb → 7 Feb (5 hrs) · 28 Mar → 4 Apr (7 days)</div>
+        </div>
+        <div class="step-desc">The train travels the route. Tracked via Railway Receipt number. No loading/unloading during transit. Speed varies — short routes like Sabarmati→Manesar (~900 km) take 5 hours. Long routes like Manesar→Doddaballapur (2,100 km) take 7 days.</div>
+        <div class="step-proof"><strong>DB Proof:</strong> ReachDate in CNMaster — CN 263420176 arrived Karnataka 4 Apr 2026, 10:29 AM · Transit: 7 days from 28 Mar 2026</div>
+        <div class="money-row">
+          <span class="money-badge nil">₹0 — cost already included in haulage (Step 4)</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 6 -->
+    <div class="step">
+      <div class="step-line"></div>
+      <div class="step-left">
+        <div class="step-num" style="background:#198754">6</div>
+      </div>
+      <div class="step-content">
+        <div class="step-header">
+          <div class="step-title">Unloading (Cars Taken Off Train)</div>
+          <div class="step-date">7 Feb 2026 · 2:59 PM &amp; 5 Apr 2026</div>
+        </div>
+        <div class="step-desc">Cars are unloaded from wagons at the destination railway yard by local unloading contractors. IVC's field employee supervises the process. Contractors bill IVC per car unloaded.</div>
+        <div class="step-proof"><strong>DB Proof:</strong> Bill #2529 — Sanathkumar K R. Enterprises, DBU (Doddaballapur), 264 cars @ ₹275 · Anup Kumar Singh fooding "dtd.5/4/26" (Bill #2447)</div>
+        <div class="money-row">
+          <span class="money-badge pay">IVC pays unloading contractor: ₹72,600</span>
+          <span class="money-badge pay">Employee fooding: ₹300</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 7 -->
+    <div class="step">
+      <div class="step-line"></div>
+      <div class="step-left">
+        <div class="step-num" style="background:#fd7e14">7</div>
+      </div>
+      <div class="step-content">
+        <div class="step-header">
+          <div class="step-title">Last Mile Delivery (Cars Driven to Dealers)</div>
+          <div class="step-date">May 2026 – Aug 2026</div>
+        </div>
+        <div class="step-desc">After unloading at the railway yard, individual cars are driven by IVC drivers to the actual dealer showrooms or OEM plants. This is the "last mile" — often a few kilometres from the yard. Drivers claim fuel reimbursements which are often filed late.</div>
+        <div class="step-proof"><strong>DB Proof:</strong> Bill #2680 (₹529 · May 7) · Bill #2694 (₹529 · May 7) · Bill #3645 (₹529 · Aug 17 — filed 5 months late, MDA 33)</div>
+        <div class="money-row">
+          <span class="money-badge pay">Fuel reimbursements (3 drivers): ₹1,587 total</span>
+          <span class="money-badge note-badge">Bill #3645 = the ₹529 filed 5 months late — our starting point</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 8 -->
+    <div class="step">
+      <div class="step-left">
+        <div class="step-num" style="background:#6f42c1">8</div>
+      </div>
+      <div class="step-content">
+        <div class="step-header">
+          <div class="step-title">POD — Proof of Delivery (Cash Collected)</div>
+          <div class="step-date">13 Feb 2026 (Manesar leg)</div>
+        </div>
+        <div class="step-desc">The receiving party (Maruti Suzuki plant, dealer) signs the POD confirming cars received in good condition. This is the trigger for IVC to collect payment. Without a signed POD, IVC cannot raise a final invoice.</div>
+        <div class="step-proof"><strong>DB Proof:</strong> CNMaster — CN GUR349913 · PODDate = <strong>13 Feb 2026</strong></div>
+        <div class="money-row">
+          <span class="money-badge earn">IVC collects from Maruti Suzuki: ₹87,853</span>
+          <span class="money-badge note-badge">GST (18%) adds ₹15,813 → Total invoice: ₹1,03,666</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- P&L Summary -->
+  <div style="margin-top:28px;background:#f8f9fa;border-radius:10px;padding:24px;">
+    <div style="font-size:15px;font-weight:700;color:#1a3a5c;margin-bottom:16px;">Complete P&amp;L for RR 282000043</div>
+    <table class="diff-table">
+      <thead><tr><th>Item</th><th>Who Pays/Earns</th><th style="text-align:right">Amount</th></tr></thead>
+      <tbody>
+        <tr><td style="color:#198754;font-weight:600">Revenue — Maruti Suzuki pays IVC (CN GUR349913)</td><td>IVC earns</td><td style="text-align:right;color:#198754;font-weight:700">+ ₹87,853</td></tr>
+        <tr><td style="color:#198754;font-weight:600">Revenue — Mar 28 leg estimated (264 cars ~₹20,000/car)</td><td>IVC earns</td><td style="text-align:right;color:#198754;font-weight:700">~+ ₹52,80,000</td></tr>
+        <tr><td>IR: Sabarmati → Manesar haulage (Bill #696)</td><td>IVC pays IR</td><td style="text-align:right;color:#dc3545">− ₹3,15,315</td></tr>
+        <tr><td>IR: Manesar → Doddaballapur haulage (Bill #2201)</td><td>IVC pays IR</td><td style="text-align:right;color:#dc3545">− ₹37,44,003</td></tr>
+        <tr><td>Loading — RKM Enterprises, Manesar (Bill #2223)</td><td>IVC pays contractor</td><td style="text-align:right;color:#dc3545">− ₹64,680</td></tr>
+        <tr><td>Unloading — Sanathkumar, Doddaballapur (Bill #2529)</td><td>IVC pays contractor</td><td style="text-align:right;color:#dc3545">− ₹72,600</td></tr>
+        <tr><td>Employee fooding — Anup Kumar Singh (Bill #2447)</td><td>IVC pays employee</td><td style="text-align:right;color:#dc3545">− ₹300</td></tr>
+        <tr><td>Last mile fuel — 3 drivers (Bills #2680 + #2694 + #3645)</td><td>IVC pays drivers</td><td style="text-align:right;color:#dc3545">− ₹1,587</td></tr>
+        <tr style="background:#1a3a5c;color:white"><td colspan="2" style="font-weight:700;padding:12px 16px">Estimated Net Profit</td><td style="text-align:right;font-weight:700;font-size:15px;padding:12px 16px;color:#7affc4">~₹10,69,368 (~20%)</td></tr>
+      </tbody>
+    </table>
+  </div>
+  </div>
+</div>
+
+<!-- SECTION 2: Historical Table -->
+<div class="section">
+  <div class="section-title">
+    IVC Railway Business — Year by Year Since Launch
+    <span class="tag">Source: tblt_R_IndentRequest + tblt_R_IncidentalExpense</span>
+  </div>
+  <div>
+  <table>
+    <thead>
+      <tr>
+        <th>Year</th>
+        <th>Phase</th>
+        <th>Dispatches</th>
+        <th>Own Rakes (IVCLL)</th>
+        <th>Hired Rakes</th>
+        <th>IR Freight Paid</th>
+        <th>Notable Milestone</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="yr-badge test">2019</span></td>
+        <td><span class="phase phase-test">System Setup</span></td>
+        <td>21</td>
+        <td>0</td>
+        <td>1</td>
+        <td>Not recorded</td>
+        <td>First entries — #0005, Test-001. No real RR numbers. System configuration and testing only.</td>
+      </tr>
+      <tr>
+        <td><span class="yr-badge test">2020</span></td>
+        <td><span class="phase phase-test">System Setup</span></td>
+        <td>193</td>
+        <td>83</td>
+        <td>84</td>
+        <td>Not recorded</td>
+        <td>High entry count but no RR numbers found — likely data migration or parallel testing during COVID period.</td>
+      </tr>
+      <tr>
+        <td><span class="yr-badge test">2021</span></td>
+        <td><span class="phase phase-test">System Setup</span></td>
+        <td>157</td>
+        <td>51</td>
+        <td>84</td>
+        <td>Not recorded</td>
+        <td>Continued parallel running. No live IR receipts. System being trained on real route data.</td>
+      </tr>
+      <tr>
+        <td><span class="yr-badge test">2022–23</span></td>
+        <td><span class="phase phase-test">Gap / Inactive</span></td>
+        <td>0</td>
+        <td>—</td>
+        <td>—</td>
+        <td>—</td>
+        <td>No records in database for these years. Railway module may have been paused or data not migrated.</td>
+      </tr>
+      <tr>
+        <td><span class="yr-badge">2024</span></td>
+        <td><span class="phase phase-early">Commercial Launch</span></td>
+        <td>15</td>
+        <td>11</td>
+        <td>4</td>
+        <td>Not separate</td>
+        <td>First REAL dispatch: Oct 18, 2024 — IRTEST241018, IVCLL-03, Bechraji. First live RR: 262000819 (Nov 25, 2024, IVCLL-04).</td>
+      </tr>
+      <tr>
+        <td><span class="yr-badge">2025</span></td>
+        <td><span class="phase phase-growth">Growth</span></td>
+        <td>234</td>
+        <td>118</td>
+        <td>116</td>
+        <td style="color:#dc3545;font-weight:700">₹40.1 Crore</td>
+        <td>Full commercial operations. Nearly equal own vs hired rakes. 213 unique RR numbers. Multiple routes active.</td>
+      </tr>
+      <tr>
+        <td><span class="yr-badge current">2026</span></td>
+        <td><span class="phase phase-full">Scale Up</span></td>
+        <td>858 <span style="font-size:11px;color:#888">(Jan–Aug only)</span></td>
+        <td>446</td>
+        <td>412</td>
+        <td style="color:#dc3545;font-weight:700">₹127 Crore</td>
+        <td>3.7× growth vs 2025. Own rakes slightly ahead of hired. 723 unique RR numbers in 8 months.</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+</div>
+
+<!-- SECTION 3: CN Difference -->
+<div class="section">
+  <div class="section-title">
+    Road CN vs Railway CN — What's the Difference?
+    <span class="tag">Both use CNMaster table · Different CNType</span>
+  </div>
+  <div class="section-body">
+
+  <p style="font-size:13px;color:#555;margin-bottom:20px">A CN (Consignment Note) is IVC's billing document for every vehicle movement — whether by truck or by train. Both live in the same <strong>CNMaster</strong> table in the database, but they work very differently.</p>
+
+  <div class="compare-grid">
+    <div class="compare-card" style="border:2px solid #198754">
+      <div class="compare-header road-header">🚛 Road CN (Truck Delivery) — CNType = 4</div>
+      <div class="compare-body">
+        <div class="compare-row"><div class="compare-label">Transport</div><div class="compare-val">One truck, one trip</div></div>
+        <div class="compare-row"><div class="compare-label">Capacity</div><div class="compare-val">6–12 cars per truck (car carrier)</div></div>
+        <div class="compare-row"><div class="compare-label">Booking</div><div class="compare-val">1 CN per truck trip</div></div>
+        <div class="compare-row"><div class="compare-label">Vehicle No.</div><div class="compare-val road-val">Truck registration no. (e.g. HR55AK0012)</div></div>
+        <div class="compare-row"><div class="compare-label">Driver</div><div class="compare-val road-val">Named truck driver, mobile number tracked</div></div>
+        <div class="compare-row"><div class="compare-label">Linked to</div><div class="compare-val">TripLog → Hire Slip (TLHSNO like MNSR/TL/…)</div></div>
+        <div class="compare-row"><div class="compare-label">Typical freight</div><div class="compare-val road-val">₹5,000–₹15,000 per CN</div></div>
+        <div class="compare-row"><div class="compare-label">Transit time</div><div class="compare-val">Hours to 2–3 days</div></div>
+        <div class="compare-row"><div class="compare-label">GPS tracked</div><div class="compare-val">Yes — real-time via GPS device</div></div>
+        <div class="compare-row"><div class="compare-label">Real example</div><div class="compare-val road-val">CN 271310724 · Kharkhoda · ₹6,267 · Truck MNSR/TL/1192534</div></div>
+      </div>
+    </div>
+
+    <div class="compare-card" style="border:2px solid #dc3545">
+      <div class="compare-header rail-header">🚂 Railway CN — CNType = 3</div>
+      <div class="compare-body">
+        <div class="compare-row"><div class="compare-label">Transport</div><div class="compare-val">One rake (train), many wagons</div></div>
+        <div class="compare-row"><div class="compare-label">Capacity</div><div class="compare-val">100–264 cars per rake dispatch</div></div>
+        <div class="compare-row"><div class="compare-label">Booking</div><div class="compare-val">1 CN per rake (covers all cars)</div></div>
+        <div class="compare-row"><div class="compare-label">Vehicle No.</div><div class="compare-val rail-val">Rake number (e.g. IVCLL-09) + RR Number</div></div>
+        <div class="compare-row"><div class="compare-label">Driver</div><div class="compare-val rail-val">No driver — Indian Railways crew operates train</div></div>
+        <div class="compare-row"><div class="compare-label">Linked to</div><div class="compare-val">ChallanCN → RlyChallan → IndentRequest → RR Number</div></div>
+        <div class="compare-row"><div class="compare-label">Typical freight</div><div class="compare-val rail-val">₹50,000–₹2,00,000 per CN (bulk)</div></div>
+        <div class="compare-row"><div class="compare-label">Transit time</div><div class="compare-val">4–10 days (long distance)</div></div>
+        <div class="compare-row"><div class="compare-label">GPS tracked</div><div class="compare-val">No — tracked via IR Railway Receipt</div></div>
+        <div class="compare-row"><div class="compare-label">Real example</div><div class="compare-val rail-val">CN GUR349913 · Mundra Port→Manesar · ₹87,853 · Rake IVCLL-07</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Key difference table -->
+  <div style="margin-top:24px">
+    <div style="font-size:14px;font-weight:700;color:#1a3a5c;margin-bottom:12px">Key Differences at a Glance</div>
+    <table class="diff-table" style="border:1px solid #e9ecef;border-radius:8px;overflow:hidden">
+      <thead>
+        <tr>
+          <th style="width:25%">Factor</th>
+          <th style="color:#198754">Road CN (Truck)</th>
+          <th style="color:#dc3545">Railway CN</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Scale</strong></td><td>6–12 cars per movement</td><td>100–264 cars per movement</td></tr>
+        <tr><td><strong>Cost per car</strong></td><td>₹500–₹3,000 (short haul)</td><td>₹14,000–₹20,000 (long haul)</td></tr>
+        <tr><td><strong>Distance</strong></td><td>Any — mostly under 500 km</td><td>Typically 500–3,000 km</td></tr>
+        <tr><td><strong>Loading/Unloading</strong></td><td>Done by truck driver + helper</td><td>Separate contractors paid per car</td></tr>
+        <tr><td><strong>Who operates vehicle</strong></td><td>IVC's hired truck driver</td><td>Indian Railways loco pilot (not IVC)</td></tr>
+        <tr><td><strong>Biggest cost to IVC</strong></td><td>Truck hire (HV charges)</td><td>Indian Railways haulage (89% of all costs)</td></tr>
+        <tr><td><strong>Last mile needed?</strong></td><td>No — truck goes door to door</td><td>Yes — cars driven from yard to dealer</td></tr>
+        <tr><td><strong>DB table chain</strong></td><td>CNMaster → TripLog → VehicleID</td><td>CNMaster → ChallanCN → RlyChallan → IndentRequest</td></tr>
+        <tr><td><strong>Payment trigger</strong></td><td>POD signed at dealer</td><td>POD signed + IR receipt settled</td></tr>
+        <tr><td><strong>Risk</strong></td><td>Accident, theft, breakdown</td><td>Damage at loading/unloading, wagon fire, IR delays</td></tr>
+      </tbody>
+    </table>
+  </div>
+  </div>
+</div>
+
+<div class="footer">
+  IVC Logistics Limited · Railway Operations Explainer · Based on data extracted from eMist TMS &amp; eFleet Systems<br>
+  Data covers Nov 2019 – Aug 2026 · For internal reference only
+</div>
+
+</body>
+</html>
