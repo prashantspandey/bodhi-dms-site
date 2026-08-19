@@ -59,22 +59,22 @@ tr:hover td{background:#fafbfc}
 <body>
 <div class="hdr">
   <h1>IVC Logistics — Complete P&L per Railway Receipt (RR)</h1>
-  <p>Every railway dispatch since Oct 2024 · 1050 rows · Costs: ₹104.76 Cr confirmed · Duplicate RRs shown as separate rows with ⚠️</p>
+  <p>Every railway dispatch since Oct 2024 · 1049 rows · Costs: ₹104.76 Cr confirmed · Duplicate RRs shown as separate rows with ⚠️</p>
 </div>
 <div class="stats">
-  <div class="stat"><div class="l">Total Dispatches</div><div class="v">1050</div><div class="s">Oct 2024 – Aug 2026</div></div>
+  <div class="stat"><div class="l">Total Dispatches</div><div class="v">1049</div><div class="s">Oct 2024 – Aug 2026</div></div>
   <div class="stat r"><div class="l">Total Direct Costs</div><div class="v">₹104.8Cr</div><div class="s">IR haulage + loading + unloading</div></div>
   <div class="stat g"><div class="l">Rail Revenue (PKD+DBU)</div><div class="v">₹96Cr</div><div class="s">Rail-tagged CNs in TMS · 8,685 vehicles</div></div>
-  <div class="stat o"><div class="l">Duplicate RR rows</div><div class="v">327</div><div class="s">⚠️ same RR used twice</div></div>
-  <div class="stat gr"><div class="l">No Revenue Data</div><div class="v">851</div><div class="s">cost only rows</div></div>
+  <div class="stat o"><div class="l">Duplicate RR rows</div><div class="v">326</div><div class="s">⚠️ same RR used twice</div></div>
+  <div class="stat gr"><div class="l">No Revenue Data</div><div class="v">886</div><div class="s">cost only rows</div></div>
 </div>
 <div class="dup-note">
-  ⚠️ <strong>327 rows marked with ⚠️</strong> have RR numbers reused across multiple dispatches.
+  ⚠️ <strong>326 rows marked with ⚠️</strong> have RR numbers reused across multiple dispatches.
   Costs for these are assigned to the IndentRequest whose load date is closest to the bill date.
   This is a data quality issue in IVC's system — the same RR number appears for different trips.
 </div>
 <div class="note">
-  ℹ️ <strong>Revenue:</strong> ChallanCN links for most railway challans point to old 2014 test CNs — revenue shows "Not linked" for 851 rows.
+  ℹ️ <strong>Revenue:</strong> ChallanCN links for most railway challans point to old 2014 test CNs — revenue shows "Not linked" for 886 rows.
   The cost breakdown (IR Haulage, Loading, Unloading, Terminal, Wharfage, Fuel) is accurate and complete.
 </div>
 <div class="ctrl">
@@ -609,9 +609,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 04 Aug 2026 → 04 Aug 2026</div>
       </td>
       <td class="amt cost-total">₹3,819,528</td>
-      <td class=" amt">₹10,981,707<br><span style="font-size:10px;color:#888">102 CNs · est.</span></td>
-      <td class="profit-pos amt">₹7,162,179</td>
-      <td class="profit-pos">65.2%</td>
+      <td class="no-data amt"><em class="nr">Not linked</em></td>
+      <td class="profit-neg amt">N/A</td>
+      <td class="profit-neg">N/A</td>
     </tr><tr class="rr-row">
       <td class="rr-num">262003218<br><span style="font-size:10px;color:#aaa">IR#3470</span></td>
       <td><span class="rake hired">NMG</span></td>
@@ -1663,9 +1663,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 17 Jul 2026 → 19 Aug 2026</div>
       </td>
       <td class="amt cost-total">₹3,942,288</td>
-      <td class=" amt">₹6,448,352<br><span style="font-size:10px;color:#888">51 CNs · est.</span></td>
-      <td class="profit-pos amt">₹2,506,064</td>
-      <td class="profit-pos">38.9%</td>
+      <td class=" amt">₹10,318,746<br><span style="font-size:10px;color:#888">82 CNs · est.</span></td>
+      <td class="profit-pos amt">₹6,376,458</td>
+      <td class="profit-pos">61.8%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">261000108<br><span style="font-size:10px;color:#aaa">IR#3401</span></td>
       <td><span class="rake hired">MT-51</span></td>
@@ -1833,9 +1833,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 14 Jul 2026 → 19 Aug 2026</div>
       </td>
       <td class="amt cost-total">₹3,942,288</td>
-      <td class=" amt">₹3,870,394<br><span style="font-size:10px;color:#888">31 CNs · est.</span></td>
-      <td class="profit-neg amt">₹-71,894</td>
-      <td class="profit-neg">-1.9%</td>
+      <td class="no-data amt"><em class="nr">Not linked</em></td>
+      <td class="profit-neg amt">N/A</td>
+      <td class="profit-neg">N/A</td>
     </tr><tr class="rr-row">
       <td class="rr-num">⚠️ 281000012<br><span style="font-size:10px;color:#aaa">IR#3392</span></td>
       <td><span class="rake own">IVCLL-07</span></td>
@@ -2207,9 +2207,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 08 Jul 2026 → 14 Aug 2026</div>
       </td>
       <td class="amt cost-total">₹2,027,802</td>
-      <td class=" amt">₹860,338<br><span style="font-size:10px;color:#888">8 CNs · est.</span></td>
-      <td class="profit-neg amt">₹-1,167,464</td>
-      <td class="profit-neg">-135.7%</td>
+      <td class=" amt">₹938,550<br><span style="font-size:10px;color:#888">8 CNs · est.</span></td>
+      <td class="profit-neg amt">₹-1,089,252</td>
+      <td class="profit-neg">-116.1%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">262000946<br><span style="font-size:10px;color:#aaa">IR#3367</span></td>
       <td><span class="rake hired">MK-09</span></td>
@@ -2275,9 +2275,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 06 Jul 2026 → 14 Aug 2026</div>
       </td>
       <td class="amt cost-total">₹2,027,802</td>
-      <td class=" amt">₹1,353,829<br><span style="font-size:10px;color:#888">12 CNs · est.</span></td>
-      <td class="profit-neg amt">₹-673,973</td>
-      <td class="profit-neg">-49.8%</td>
+      <td class=" amt">₹1,481,390<br><span style="font-size:10px;color:#888">13 CNs · est.</span></td>
+      <td class="profit-neg amt">₹-546,412</td>
+      <td class="profit-neg">-36.9%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">⚠️ 282000083<br><span style="font-size:10px;color:#aaa">IR#3364</span></td>
       <td><span class="rake own">IVCLL-09</span></td>
@@ -2360,9 +2360,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 05 Jul 2026 → 14 Aug 2026</div>
       </td>
       <td class="amt cost-total">₹4,084,196</td>
-      <td class=" amt">₹1,353,829<br><span style="font-size:10px;color:#888">12 CNs · est.</span></td>
-      <td class="profit-neg amt">₹-2,730,367</td>
-      <td class="profit-neg">-201.7%</td>
+      <td class=" amt">₹1,481,390<br><span style="font-size:10px;color:#888">13 CNs · est.</span></td>
+      <td class="profit-neg amt">₹-2,602,806</td>
+      <td class="profit-neg">-175.7%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">262000939<br><span style="font-size:10px;color:#aaa">IR#3355</span></td>
       <td><span class="rake hired">MN-08</span></td>
@@ -2428,9 +2428,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 04 Jul 2026 → 14 Aug 2026</div>
       </td>
       <td class="amt cost-total">₹1,531,050</td>
-      <td class=" amt">₹1,594,650<br><span style="font-size:10px;color:#888">14 CNs · est.</span></td>
-      <td class="profit-pos amt">₹63,600</td>
-      <td class="profit-pos">4.0%</td>
+      <td class=" amt">₹1,752,314<br><span style="font-size:10px;color:#888">15 CNs · est.</span></td>
+      <td class="profit-pos amt">₹221,264</td>
+      <td class="profit-pos">12.6%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">⚠️ 251000001<br><span style="font-size:10px;color:#aaa">IR#3354</span></td>
       <td><span class="rake hired">MT-43</span></td>
@@ -2513,9 +2513,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 03 Jul 2026 → 14 Aug 2026</div>
       </td>
       <td class="amt cost-total">₹1,527,000</td>
-      <td class=" amt">₹1,670,411<br><span style="font-size:10px;color:#888">15 CNs · est.</span></td>
-      <td class="profit-pos amt">₹143,411</td>
-      <td class="profit-pos">8.6%</td>
+      <td class="no-data amt"><em class="nr">Not linked</em></td>
+      <td class="profit-neg amt">N/A</td>
+      <td class="profit-neg">N/A</td>
     </tr><tr class="rr-row">
       <td class="rr-num">261000100<br><span style="font-size:10px;color:#aaa">IR#3350</span></td>
       <td><span class="rake hired">MT-42</span></td>
@@ -2564,9 +2564,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 02 Jul 2026 → 14 Aug 2026</div>
       </td>
       <td class="amt cost-total">₹2,027,802</td>
-      <td class=" amt">₹1,670,411<br><span style="font-size:10px;color:#888">15 CNs · est.</span></td>
-      <td class="profit-neg amt">₹-357,391</td>
-      <td class="profit-neg">-21.4%</td>
+      <td class=" amt">₹1,838,898<br><span style="font-size:10px;color:#888">16 CNs · est.</span></td>
+      <td class="profit-neg amt">₹-188,904</td>
+      <td class="profit-neg">-10.3%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">282000615<br><span style="font-size:10px;color:#aaa">IR#3348</span></td>
       <td><span class="rake own">IVCLL-04</span></td>
@@ -2615,9 +2615,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 30 Jun 2026 → 12 Aug 2026</div>
       </td>
       <td class="amt cost-total">₹3,242,919</td>
-      <td class=" amt">₹3,081,140<br><span style="font-size:10px;color:#888">23 CNs · est.</span></td>
-      <td class="profit-neg amt">₹-161,779</td>
-      <td class="profit-neg">-5.3%</td>
+      <td class=" amt">₹3,249,627<br><span style="font-size:10px;color:#888">25 CNs · est.</span></td>
+      <td class="profit-pos amt">₹6,708</td>
+      <td class="profit-pos">0.2%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">282000435<br><span style="font-size:10px;color:#aaa">IR#3344</span></td>
       <td><span class="rake own">IVCLL-05</span></td>
@@ -2649,9 +2649,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 30 Jun 2026 → 29 Jul 2026</div>
       </td>
       <td class="amt cost-total">₹1,946,690</td>
-      <td class=" amt">₹3,081,140<br><span style="font-size:10px;color:#888">23 CNs · est.</span></td>
-      <td class="profit-pos amt">₹1,134,450</td>
-      <td class="profit-pos">36.8%</td>
+      <td class=" amt">₹3,249,627<br><span style="font-size:10px;color:#888">25 CNs · est.</span></td>
+      <td class="profit-pos amt">₹1,302,937</td>
+      <td class="profit-pos">40.1%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">282000592<br><span style="font-size:10px;color:#aaa">IR#3341</span></td>
       <td><span class="rake hired">PC-01</span></td>
@@ -2666,9 +2666,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 29 Jun 2026 → 12 Aug 2026</div>
       </td>
       <td class="amt cost-total">₹1,465,920</td>
-      <td class=" amt">₹3,101,872<br><span style="font-size:10px;color:#888">24 CNs · est.</span></td>
-      <td class="profit-pos amt">₹1,635,952</td>
-      <td class="profit-pos">52.7%</td>
+      <td class=" amt">₹3,270,359<br><span style="font-size:10px;color:#888">25 CNs · est.</span></td>
+      <td class="profit-pos amt">₹1,804,439</td>
+      <td class="profit-pos">55.2%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">⚠️ 281000043<br><span style="font-size:10px;color:#aaa">IR#3342</span></td>
       <td><span class="rake own">IVCLL-11</span></td>
@@ -2734,9 +2734,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 28 Jun 2026 → 17 Jul 2026</div>
       </td>
       <td class="amt cost-total">₹2,148,360</td>
-      <td class=" amt">₹5,408,877<br><span style="font-size:10px;color:#888">40 CNs · est.</span></td>
-      <td class="profit-pos amt">₹3,260,517</td>
-      <td class="profit-pos">60.3%</td>
+      <td class=" amt">₹5,577,364<br><span style="font-size:10px;color:#888">42 CNs · est.</span></td>
+      <td class="profit-pos amt">₹3,429,004</td>
+      <td class="profit-pos">61.5%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">282000591<br><span style="font-size:10px;color:#aaa">IR#3340</span></td>
       <td><span class="rake hired">PF-05</span></td>
@@ -2751,9 +2751,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 28 Jun 2026 → 29 Jul 2026</div>
       </td>
       <td class="amt cost-total">₹2,049,302</td>
-      <td class=" amt">₹5,408,877<br><span style="font-size:10px;color:#888">40 CNs · est.</span></td>
-      <td class="profit-pos amt">₹3,359,575</td>
-      <td class="profit-pos">62.1%</td>
+      <td class=" amt">₹5,577,364<br><span style="font-size:10px;color:#888">42 CNs · est.</span></td>
+      <td class="profit-pos amt">₹3,528,062</td>
+      <td class="profit-pos">63.3%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">282000433<br><span style="font-size:10px;color:#aaa">IR#3334</span></td>
       <td><span class="rake own">IVCLL-03</span></td>
@@ -2836,9 +2836,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 27 Jun 2026 → 29 Jul 2026</div>
       </td>
       <td class="amt cost-total">₹3,942,288</td>
-      <td class=" amt">₹7,774,460<br><span style="font-size:10px;color:#888">57 CNs · est.</span></td>
-      <td class="profit-pos amt">₹3,832,172</td>
-      <td class="profit-pos">49.3%</td>
+      <td class=" amt">₹7,942,947<br><span style="font-size:10px;color:#888">59 CNs · est.</span></td>
+      <td class="profit-pos amt">₹4,000,659</td>
+      <td class="profit-pos">50.4%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">262003125<br><span style="font-size:10px;color:#aaa">IR#3331</span></td>
       <td><span class="rake hired">FK-18</span></td>
@@ -6355,9 +6355,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 07 May 2026 → 07 May 2026</div>
       </td>
       <td class="amt cost-total">₹335,311</td>
-      <td class="no-data amt"><em class="nr">Not linked</em></td>
-      <td class="profit-neg amt">N/A</td>
-      <td class="profit-neg">N/A</td>
+      <td class=" amt">₹9,922<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
+      <td class="profit-neg amt">₹-325,389</td>
+      <td class="profit-neg">-3279.5%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">262000733<br><span style="font-size:10px;color:#aaa">IR#3122</span></td>
       <td><span class="rake hired">NMG</span></td>
@@ -6372,9 +6372,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 13 Jun 2026 → 23 Jun 2026</div>
       </td>
       <td class="amt cost-total">₹48,360</td>
-      <td class=" amt">₹8,171<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
-      <td class="profit-neg amt">₹-40,189</td>
-      <td class="profit-neg">-491.9%</td>
+      <td class=" amt">₹9,922<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
+      <td class="profit-neg amt">₹-38,438</td>
+      <td class="profit-neg">-387.4%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">262002279<br><span style="font-size:10px;color:#aaa">IR#3114</span></td>
       <td><span class="rake hired">NMG</span></td>
@@ -6406,9 +6406,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 26 May 2026 → 04 Jun 2026</div>
       </td>
       <td class="amt cost-total">₹46,865</td>
-      <td class=" amt">₹8,171<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
-      <td class="profit-neg amt">₹-38,694</td>
-      <td class="profit-neg">-473.6%</td>
+      <td class=" amt">₹9,922<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
+      <td class="profit-neg amt">₹-36,943</td>
+      <td class="profit-neg">-372.3%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">282000405<br><span style="font-size:10px;color:#aaa">IR#3117</span></td>
       <td><span class="rake own">IVCLL02</span></td>
@@ -6440,9 +6440,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 06 May 2026 → 30 Jun 2026</div>
       </td>
       <td class="amt cost-total">₹2,027,802</td>
-      <td class=" amt">₹1,548,218<br><span style="font-size:10px;color:#888">11 CNs · est.</span></td>
-      <td class="profit-neg amt">₹-479,584</td>
-      <td class="profit-neg">-31.0%</td>
+      <td class=" amt">₹1,935,272<br><span style="font-size:10px;color:#888">13 CNs · est.</span></td>
+      <td class="profit-neg amt">₹-92,530</td>
+      <td class="profit-neg">-4.8%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">⚠️ 282000581<br><span style="font-size:10px;color:#aaa">IR#3119</span></td>
       <td><span class="rake own">IVCLL07</span></td>
@@ -6457,9 +6457,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 06 May 2026 → 13 Jun 2026</div>
       </td>
       <td class="amt cost-total">₹4,211,824</td>
-      <td class=" amt">₹1,548,218<br><span style="font-size:10px;color:#888">11 CNs · est.</span></td>
-      <td class="profit-neg amt">₹-2,663,606</td>
-      <td class="profit-neg">-172.0%</td>
+      <td class="no-data amt"><em class="nr">Not linked</em></td>
+      <td class="profit-neg amt">N/A</td>
+      <td class="profit-neg">N/A</td>
     </tr><tr class="rr-row">
       <td class="rr-num">282000152<br><span style="font-size:10px;color:#aaa">IR#3120</span></td>
       <td><span class="rake hired">NMG</span></td>
@@ -6559,9 +6559,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 26 May 2026 → 04 Jun 2026</div>
       </td>
       <td class="amt cost-total">₹47,320</td>
-      <td class=" amt">₹8,171<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
-      <td class="profit-neg amt">₹-39,149</td>
-      <td class="profit-neg">-479.1%</td>
+      <td class=" amt">₹9,922<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
+      <td class="profit-neg amt">₹-37,398</td>
+      <td class="profit-neg">-376.9%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">281000047<br><span style="font-size:10px;color:#aaa">IR#3109</span></td>
       <td><span class="rake own">IVCLL07</span></td>
@@ -6576,9 +6576,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 05 May 2026 → 05 May 2026</div>
       </td>
       <td class="amt cost-total">₹46,200</td>
-      <td class=" amt">₹557,842<br><span style="font-size:10px;color:#888">18 CNs · est.</span></td>
-      <td class="profit-pos amt">₹511,642</td>
-      <td class="profit-pos">91.7%</td>
+      <td class="no-data amt"><em class="nr">Not linked</em></td>
+      <td class="profit-neg amt">N/A</td>
+      <td class="profit-neg">N/A</td>
     </tr><tr class="rr-row">
       <td class="rr-num">282000312<br><span style="font-size:10px;color:#aaa">IR#3111</span></td>
       <td><span class="rake own">IVCLL03</span></td>
@@ -6610,9 +6610,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 04 May 2026 → 13 Jun 2026</div>
       </td>
       <td class="amt cost-total">₹4,216,774</td>
-      <td class=" amt">₹3,515,286<br><span style="font-size:10px;color:#888">27 CNs · est.</span></td>
-      <td class="profit-neg amt">₹-701,488</td>
-      <td class="profit-neg">-20.0%</td>
+      <td class=" amt">₹3,902,340<br><span style="font-size:10px;color:#888">30 CNs · est.</span></td>
+      <td class="profit-neg amt">₹-314,434</td>
+      <td class="profit-neg">-8.1%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">262002981<br><span style="font-size:10px;color:#aaa">IR#3107</span></td>
       <td><span class="rake hired">NMG</span></td>
@@ -6644,9 +6644,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 04 May 2026 → 13 Jun 2026</div>
       </td>
       <td class="amt cost-total">₹3,973,413</td>
-      <td class=" amt">₹8,171<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
-      <td class="profit-neg amt">₹-3,965,242</td>
-      <td class="profit-neg">-48528.9%</td>
+      <td class="no-data amt"><em class="nr">Not linked</em></td>
+      <td class="profit-neg amt">N/A</td>
+      <td class="profit-neg">N/A</td>
     </tr><tr class="rr-row">
       <td class="rr-num">282000578<br><span style="font-size:10px;color:#aaa">IR#3106</span></td>
       <td><span class="rake hired">NMG</span></td>
@@ -6661,9 +6661,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 04 May 2026 → 30 Jun 2026</div>
       </td>
       <td class="amt cost-total">₹2,049,302</td>
-      <td class=" amt">₹3,515,286<br><span style="font-size:10px;color:#888">27 CNs · est.</span></td>
-      <td class="profit-pos amt">₹1,465,984</td>
-      <td class="profit-pos">41.7%</td>
+      <td class=" amt">₹3,902,340<br><span style="font-size:10px;color:#888">30 CNs · est.</span></td>
+      <td class="profit-pos amt">₹1,853,038</td>
+      <td class="profit-pos">47.5%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">282000056<br><span style="font-size:10px;color:#aaa">IR#3096</span></td>
       <td><span class="rake own">IVCLL10</span></td>
@@ -6678,9 +6678,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 03 May 2026 → 23 Jun 2026</div>
       </td>
       <td class="amt cost-total">₹3,973,513</td>
-      <td class=" amt">₹8,171<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
-      <td class="profit-neg amt">₹-3,965,342</td>
-      <td class="profit-neg">-48530.2%</td>
+      <td class=" amt">₹9,922<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
+      <td class="profit-neg amt">₹-3,963,591</td>
+      <td class="profit-neg">-39948.4%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">⚠️ 261000070<br><span style="font-size:10px;color:#aaa">IR#3098</span></td>
       <td><span class="rake hired">NMG</span></td>
@@ -6695,9 +6695,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 26 May 2026 → 04 Jun 2026</div>
       </td>
       <td class="amt cost-total">₹52,325</td>
-      <td class=" amt">₹8,171<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
-      <td class="profit-neg amt">₹-44,154</td>
-      <td class="profit-neg">-540.4%</td>
+      <td class=" amt">₹9,922<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
+      <td class="profit-neg amt">₹-42,403</td>
+      <td class="profit-neg">-427.4%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">282000577<br><span style="font-size:10px;color:#aaa">IR#3103</span></td>
       <td><span class="rake own">IVCLL09</span></td>
@@ -6712,9 +6712,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 03 May 2026 → 30 Jun 2026</div>
       </td>
       <td class="amt cost-total">₹3,967,038</td>
-      <td class=" amt">₹4,561,266<br><span style="font-size:10px;color:#888">36 CNs · est.</span></td>
-      <td class="profit-pos amt">₹594,228</td>
-      <td class="profit-pos">13.0%</td>
+      <td class=" amt">₹4,948,320<br><span style="font-size:10px;color:#888">38 CNs · est.</span></td>
+      <td class="profit-pos amt">₹981,282</td>
+      <td class="profit-pos">19.8%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">⚠️ 282000581<br><span style="font-size:10px;color:#aaa">IR#3097</span></td>
       <td><span class="rake own">IVCLL05</span></td>
@@ -6746,9 +6746,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 02 May 2026 → 02 May 2026</div>
       </td>
       <td class="amt cost-total">₹46,200</td>
-      <td class=" amt">₹557,842<br><span style="font-size:10px;color:#888">18 CNs · est.</span></td>
-      <td class="profit-pos amt">₹511,642</td>
-      <td class="profit-pos">91.7%</td>
+      <td class="no-data amt"><em class="nr">Not linked</em></td>
+      <td class="profit-neg amt">N/A</td>
+      <td class="profit-neg">N/A</td>
     </tr><tr class="rr-row">
       <td class="rr-num">⚠️ 282000038<br><span style="font-size:10px;color:#aaa">IR#3102</span></td>
       <td><span class="rake own">IVCLL01</span></td>
@@ -6780,9 +6780,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 26 May 2026 → 23 Jun 2026</div>
       </td>
       <td class="amt cost-total">₹50,960</td>
-      <td class=" amt">₹8,171<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
-      <td class="profit-neg amt">₹-42,789</td>
-      <td class="profit-neg">-523.7%</td>
+      <td class=" amt">₹9,922<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
+      <td class="profit-neg amt">₹-41,038</td>
+      <td class="profit-neg">-413.6%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">262002263<br><span style="font-size:10px;color:#aaa">IR#3100</span></td>
       <td><span class="rake hired">NMG</span></td>
@@ -6967,9 +6967,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 28 Apr 2026 → 28 Apr 2026</div>
       </td>
       <td class="amt cost-total">₹418,807</td>
-      <td class="no-data amt"><em class="nr">Not linked</em></td>
-      <td class="profit-neg amt">N/A</td>
-      <td class="profit-neg">N/A</td>
+      <td class=" amt">₹9,922<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
+      <td class="profit-neg amt">₹-408,885</td>
+      <td class="profit-neg">-4121.1%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">⚠️ 281000045<br><span style="font-size:10px;color:#aaa">IR#3082</span></td>
       <td><span class="rake own">IVCLL06</span></td>
@@ -6984,9 +6984,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 28 Apr 2026 → 28 Apr 2026</div>
       </td>
       <td class="amt cost-total">₹46,200</td>
-      <td class=" amt">₹1,651,780<br><span style="font-size:10px;color:#888">35 CNs · est.</span></td>
-      <td class="profit-pos amt">₹1,605,580</td>
-      <td class="profit-pos">97.2%</td>
+      <td class="no-data amt"><em class="nr">Not linked</em></td>
+      <td class="profit-neg amt">N/A</td>
+      <td class="profit-neg">N/A</td>
     </tr><tr class="rr-row">
       <td class="rr-num">262000705<br><span style="font-size:10px;color:#aaa">IR#3080</span></td>
       <td><span class="rake hired">NMG</span></td>
@@ -7001,9 +7001,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 30 Apr 2026 → 22 May 2026</div>
       </td>
       <td class="amt cost-total">₹96,700</td>
-      <td class=" amt">₹8,171<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
-      <td class="profit-neg amt">₹-88,529</td>
-      <td class="profit-neg">-1083.5%</td>
+      <td class=" amt">₹9,922<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
+      <td class="profit-neg amt">₹-86,778</td>
+      <td class="profit-neg">-874.6%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">262002961<br><span style="font-size:10px;color:#aaa">IR#3079</span></td>
       <td><span class="rake hired">NMG</span></td>
@@ -7052,9 +7052,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 27 Apr 2026 → 17 Aug 2026</div>
       </td>
       <td class="amt cost-total">₹11,644,819</td>
-      <td class=" amt">₹8,171<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
-      <td class="profit-neg amt">₹-11,636,648</td>
-      <td class="profit-neg">-142416.1%</td>
+      <td class="no-data amt"><em class="nr">Not linked</em></td>
+      <td class="profit-neg amt">N/A</td>
+      <td class="profit-neg">N/A</td>
     </tr><tr class="rr-row">
       <td class="rr-num">262002250<br><span style="font-size:10px;color:#aaa">IR#3087</span></td>
       <td><span class="rake hired">NMG</span></td>
@@ -7120,9 +7120,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 30 Apr 2026 → 30 Apr 2026</div>
       </td>
       <td class="amt cost-total">₹26,225</td>
-      <td class=" amt">₹9,539<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
-      <td class="profit-neg amt">₹-16,686</td>
-      <td class="profit-neg">-174.9%</td>
+      <td class=" amt">₹11,578<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
+      <td class="profit-neg amt">₹-14,647</td>
+      <td class="profit-neg">-126.5%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">262002885<br><span style="font-size:10px;color:#aaa">IR#2986</span></td>
       <td><span class="rake hired">NMG</span></td>
@@ -7222,9 +7222,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 24 Apr 2026 → 12 May 2026</div>
       </td>
       <td class="amt cost-total">₹1,731,948</td>
-      <td class=" amt">₹10,690<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
-      <td class="profit-neg amt">₹-1,721,258</td>
-      <td class="profit-neg">-16101.2%</td>
+      <td class="no-data amt"><em class="nr">Not linked</em></td>
+      <td class="profit-neg amt">N/A</td>
+      <td class="profit-neg">N/A</td>
     </tr><tr class="rr-row">
       <td class="rr-num">⚠️ 282000020<br><span style="font-size:10px;color:#aaa">IR#3074</span></td>
       <td><span class="rake own">IVCLL03</span></td>
@@ -7239,9 +7239,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 24 Feb 2026 → 24 Apr 2026</div>
       </td>
       <td class="amt cost-total">₹419,527</td>
-      <td class="no-data amt"><em class="nr">Not linked</em></td>
-      <td class="profit-neg amt">N/A</td>
-      <td class="profit-neg">N/A</td>
+      <td class=" amt">₹13,017<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
+      <td class="profit-neg amt">₹-406,510</td>
+      <td class="profit-neg">-3122.9%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">⚠️ 282000052<br><span style="font-size:10px;color:#aaa">IR#3067</span></td>
       <td><span class="rake own">IVCLL05</span></td>
@@ -7256,9 +7256,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 24 Apr 2026 → 22 May 2026</div>
       </td>
       <td class="amt cost-total">₹2,923,131</td>
-      <td class=" amt">₹10,690<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
-      <td class="profit-neg amt">₹-2,912,441</td>
-      <td class="profit-neg">-27243.9%</td>
+      <td class="no-data amt"><em class="nr">Not linked</em></td>
+      <td class="profit-neg amt">N/A</td>
+      <td class="profit-neg">N/A</td>
     </tr><tr class="rr-row">
       <td class="rr-num">⚠️ 282000053<br><span style="font-size:10px;color:#aaa">IR#3066</span></td>
       <td><span class="rake own">IVCLL09</span></td>
@@ -7273,9 +7273,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 24 Apr 2026 → 13 Jun 2026</div>
       </td>
       <td class="amt cost-total">₹3,973,113</td>
-      <td class=" amt">₹10,690<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
-      <td class="profit-neg amt">₹-3,962,423</td>
-      <td class="profit-neg">-37065.8%</td>
+      <td class="no-data amt"><em class="nr">Not linked</em></td>
+      <td class="profit-neg amt">N/A</td>
+      <td class="profit-neg">N/A</td>
     </tr><tr class="rr-row">
       <td class="rr-num">262002237<br><span style="font-size:10px;color:#aaa">IR#3061</span></td>
       <td><span class="rake hired">NMG</span></td>
@@ -7341,9 +7341,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 23 Apr 2026 → 12 May 2026</div>
       </td>
       <td class="amt cost-total">₹1,731,948</td>
-      <td class=" amt">₹10,690<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
-      <td class="profit-neg amt">₹-1,721,258</td>
-      <td class="profit-neg">-16101.2%</td>
+      <td class="no-data amt"><em class="nr">Not linked</em></td>
+      <td class="profit-neg amt">N/A</td>
+      <td class="profit-neg">N/A</td>
     </tr><tr class="rr-row">
       <td class="rr-num">262000689<br><span style="font-size:10px;color:#aaa">IR#3060</span></td>
       <td><span class="rake hired">NMG</span></td>
@@ -7358,9 +7358,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 30 Apr 2026 → 13 May 2026</div>
       </td>
       <td class="amt cost-total">₹63,680</td>
-      <td class=" amt">₹10,690<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
-      <td class="profit-neg amt">₹-52,990</td>
-      <td class="profit-neg">-495.7%</td>
+      <td class=" amt">₹13,017<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
+      <td class="profit-neg amt">₹-50,663</td>
+      <td class="profit-neg">-389.2%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">282000397<br><span style="font-size:10px;color:#aaa">IR#3065</span></td>
       <td><span class="rake own">IVCLL07</span></td>
@@ -7443,9 +7443,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 30 Apr 2026 → 30 Apr 2026</div>
       </td>
       <td class="amt cost-total">₹47,365</td>
-      <td class=" amt">₹10,690<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
-      <td class="profit-neg amt">₹-36,675</td>
-      <td class="profit-neg">-343.1%</td>
+      <td class=" amt">₹13,017<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
+      <td class="profit-neg amt">₹-34,348</td>
+      <td class="profit-neg">-263.9%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">⚠️ 261000067<br><span style="font-size:10px;color:#aaa">IR#3053</span></td>
       <td><span class="rake hired">NMG</span></td>
@@ -7460,9 +7460,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 30 Apr 2026 → 30 Apr 2026</div>
       </td>
       <td class="amt cost-total">₹50,550</td>
-      <td class=" amt">₹10,690<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
-      <td class="profit-neg amt">₹-39,860</td>
-      <td class="profit-neg">-372.9%</td>
+      <td class=" amt">₹13,017<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
+      <td class="profit-neg amt">₹-37,533</td>
+      <td class="profit-neg">-288.3%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">282000396<br><span style="font-size:10px;color:#aaa">IR#3055</span></td>
       <td><span class="rake own">IVCLL03</span></td>
@@ -7511,9 +7511,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 30 Apr 2026 → 30 Apr 2026</div>
       </td>
       <td class="amt cost-total">₹49,640</td>
-      <td class=" amt">₹2,519<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
-      <td class="profit-neg amt">₹-47,121</td>
-      <td class="profit-neg">-1870.3%</td>
+      <td class=" amt">₹3,095<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
+      <td class="profit-neg amt">₹-46,545</td>
+      <td class="profit-neg">-1503.8%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">⚠️ 282000031<br><span style="font-size:10px;color:#aaa">IR#3050</span></td>
       <td><span class="rake own">IVCLL04</span></td>
@@ -7562,9 +7562,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 30 Apr 2026 → 13 Jun 2026</div>
       </td>
       <td class="amt cost-total">₹53,045</td>
-      <td class=" amt">₹2,519<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
-      <td class="profit-neg amt">₹-50,526</td>
-      <td class="profit-neg">-2005.5%</td>
+      <td class=" amt">₹3,095<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
+      <td class="profit-neg amt">₹-49,950</td>
+      <td class="profit-neg">-1613.8%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">282000050<br><span style="font-size:10px;color:#aaa">IR#3049</span></td>
       <td><span class="rake own">IVCLL06</span></td>
@@ -7579,9 +7579,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 20 Apr 2026 → 30 Apr 2026</div>
       </td>
       <td class="amt cost-total">₹3,972,913</td>
-      <td class=" amt">₹2,519<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
-      <td class="profit-neg amt">₹-3,970,394</td>
-      <td class="profit-neg">-157595.4%</td>
+      <td class=" amt">₹3,095<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
+      <td class="profit-neg amt">₹-3,969,818</td>
+      <td class="profit-neg">-128258.1%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">262002224<br><span style="font-size:10px;color:#aaa">IR#3054</span></td>
       <td><span class="rake hired">NMG</span></td>
@@ -7681,9 +7681,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 30 Apr 2026 → 13 Jun 2026</div>
       </td>
       <td class="amt cost-total">₹56,300</td>
-      <td class=" amt">₹2,519<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
-      <td class="profit-neg amt">₹-53,781</td>
-      <td class="profit-neg">-2134.7%</td>
+      <td class=" amt">₹3,095<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
+      <td class="profit-neg amt">₹-53,205</td>
+      <td class="profit-neg">-1719.0%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">282000394<br><span style="font-size:10px;color:#aaa">IR#3039</span></td>
       <td><span class="rake own">IVCLL09</span></td>
@@ -7732,9 +7732,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 30 Apr 2026 → 04 May 2026</div>
       </td>
       <td class="amt cost-total">₹82,460</td>
-      <td class=" amt">₹2,519<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
-      <td class="profit-neg amt">₹-79,941</td>
-      <td class="profit-neg">-3173.1%</td>
+      <td class=" amt">₹3,095<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
+      <td class="profit-neg amt">₹-79,365</td>
+      <td class="profit-neg">-2564.1%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">262002930<br><span style="font-size:10px;color:#aaa">IR#3036</span></td>
       <td><span class="rake hired">NMG</span></td>
@@ -7783,9 +7783,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 30 Apr 2026 → 30 Apr 2026</div>
       </td>
       <td class="amt cost-total">₹52,005</td>
-      <td class=" amt">₹2,519<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
-      <td class="profit-neg amt">₹-49,486</td>
-      <td class="profit-neg">-1964.2%</td>
+      <td class=" amt">₹3,095<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
+      <td class="profit-neg amt">₹-48,910</td>
+      <td class="profit-neg">-1580.2%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">262002218<br><span style="font-size:10px;color:#aaa">IR#3042</span></td>
       <td><span class="rake hired">NMG</span></td>
@@ -7834,9 +7834,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 16 Apr 2026 → 30 Apr 2026</div>
       </td>
       <td class="amt cost-total">₹3,943,088</td>
-      <td class=" amt">₹30,457,602<br><span style="font-size:10px;color:#888">196 CNs · est.</span></td>
-      <td class="profit-pos amt">₹26,514,514</td>
-      <td class="profit-pos">87.1%</td>
+      <td class=" amt">₹30,441,088<br><span style="font-size:10px;color:#888">195 CNs · est.</span></td>
+      <td class="profit-pos amt">₹26,498,000</td>
+      <td class="profit-pos">87.0%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">262002922<br><span style="font-size:10px;color:#aaa">IR#3031</span></td>
       <td><span class="rake hired">NMG</span></td>
@@ -7936,9 +7936,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 15 Apr 2026 → 15 Apr 2026</div>
       </td>
       <td class="amt cost-total">₹46,200</td>
-      <td class=" amt">₹1,093,938<br><span style="font-size:10px;color:#888">16 CNs · est.</span></td>
-      <td class="profit-pos amt">₹1,047,738</td>
-      <td class="profit-pos">95.8%</td>
+      <td class="no-data amt"><em class="nr">Not linked</em></td>
+      <td class="profit-neg amt">N/A</td>
+      <td class="profit-neg">N/A</td>
     </tr><tr class="rr-row">
       <td class="rr-num">⚠️ 282000048<br><span style="font-size:10px;color:#aaa">IR#3029</span></td>
       <td><span class="rake own">IVCLL04</span></td>
@@ -7953,9 +7953,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 15 Apr 2026 → 01 May 2026</div>
       </td>
       <td class="amt cost-total">₹2,926,265</td>
-      <td class=" amt">₹2,519<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
-      <td class="profit-neg amt">₹-2,923,746</td>
-      <td class="profit-neg">-116051.2%</td>
+      <td class="no-data amt"><em class="nr">Not linked</em></td>
+      <td class="profit-neg amt">N/A</td>
+      <td class="profit-neg">N/A</td>
     </tr><tr class="rr-row">
       <td class="rr-num">262000657<br><span style="font-size:10px;color:#aaa">IR#3033</span></td>
       <td><span class="rake hired">NMG</span></td>
@@ -7970,9 +7970,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 30 Apr 2026 → 30 Apr 2026</div>
       </td>
       <td class="amt cost-total">₹25,980</td>
-      <td class=" amt">₹2,519<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
-      <td class="profit-neg amt">₹-23,461</td>
-      <td class="profit-neg">-931.2%</td>
+      <td class=" amt">₹3,095<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
+      <td class="profit-neg amt">₹-22,885</td>
+      <td class="profit-neg">-739.4%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">282000230<br><span style="font-size:10px;color:#aaa">IR#3024</span></td>
       <td><span class="rake own">IVCLL07</span></td>
@@ -8004,9 +8004,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 28 Apr 2026 → 30 Apr 2026</div>
       </td>
       <td class="amt cost-total">₹47,820</td>
-      <td class=" amt">₹2,519<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
-      <td class="profit-neg amt">₹-45,301</td>
-      <td class="profit-neg">-1798.1%</td>
+      <td class=" amt">₹3,095<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
+      <td class="profit-neg amt">₹-44,725</td>
+      <td class="profit-neg">-1445.0%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">262002911<br><span style="font-size:10px;color:#aaa">IR#3023</span></td>
       <td><span class="rake hired">NMG</span></td>
@@ -8038,9 +8038,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 28 Apr 2026 → 30 Apr 2026</div>
       </td>
       <td class="amt cost-total">₹49,640</td>
-      <td class=" amt">₹2,519<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
-      <td class="profit-neg amt">₹-47,121</td>
-      <td class="profit-neg">-1870.3%</td>
+      <td class=" amt">₹3,095<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
+      <td class="profit-neg amt">₹-46,545</td>
+      <td class="profit-neg">-1503.8%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">262000645<br><span style="font-size:10px;color:#aaa">IR#3022</span></td>
       <td><span class="rake hired">NMG</span></td>
@@ -8055,9 +8055,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 28 Apr 2026 → 30 Apr 2026</div>
       </td>
       <td class="amt cost-total">₹59,000</td>
-      <td class=" amt">₹2,519<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
-      <td class="profit-neg amt">₹-56,481</td>
-      <td class="profit-neg">-2241.9%</td>
+      <td class=" amt">₹3,095<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
+      <td class="profit-neg amt">₹-55,905</td>
+      <td class="profit-neg">-1806.2%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">282000391<br><span style="font-size:10px;color:#aaa">IR#3019</span></td>
       <td><span class="rake own">IVCLL03</span></td>
@@ -8191,9 +8191,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 28 Apr 2026 → 30 Apr 2026</div>
       </td>
       <td class="amt cost-total">₹49,180</td>
-      <td class=" amt">₹2,519<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
-      <td class="profit-neg amt">₹-46,661</td>
-      <td class="profit-neg">-1852.1%</td>
+      <td class=" amt">₹3,095<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
+      <td class="profit-neg amt">₹-46,085</td>
+      <td class="profit-neg">-1488.9%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">262000639<br><span style="font-size:10px;color:#aaa">IR#3104</span></td>
       <td><span class="rake hired">NMG</span></td>
@@ -8208,9 +8208,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 30 Apr 2026 → 30 May 2026</div>
       </td>
       <td class="amt cost-total">₹83,480</td>
-      <td class=" amt">₹2,519<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
-      <td class="profit-neg amt">₹-80,961</td>
-      <td class="profit-neg">-3213.5%</td>
+      <td class=" amt">₹3,095<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
+      <td class="profit-neg amt">₹-80,385</td>
+      <td class="profit-neg">-2597.1%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">⚠️ 281000043<br><span style="font-size:10px;color:#aaa">IR#3008</span></td>
       <td><span class="rake own">IVCLL10</span></td>
@@ -8242,9 +8242,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 10 Apr 2026 → 30 Apr 2026</div>
       </td>
       <td class="amt cost-total">₹4,211,824</td>
-      <td class=" amt">₹1,150,870<br><span style="font-size:10px;color:#888">12 CNs · est.</span></td>
-      <td class="profit-neg amt">₹-3,060,954</td>
-      <td class="profit-neg">-266.0%</td>
+      <td class=" amt">₹991,571<br><span style="font-size:10px;color:#888">11 CNs · est.</span></td>
+      <td class="profit-neg amt">₹-3,220,253</td>
+      <td class="profit-neg">-324.8%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">262000636<br><span style="font-size:10px;color:#aaa">IR#3011</span></td>
       <td><span class="rake hired">NMG</span></td>
@@ -8259,9 +8259,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 28 Apr 2026 → 30 Apr 2026</div>
       </td>
       <td class="amt cost-total">₹59,000</td>
-      <td class=" amt">₹2,519<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
-      <td class="profit-neg amt">₹-56,481</td>
-      <td class="profit-neg">-2241.9%</td>
+      <td class=" amt">₹3,095<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
+      <td class="profit-neg amt">₹-55,905</td>
+      <td class="profit-neg">-1806.2%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">⚠️ 282000030<br><span style="font-size:10px;color:#aaa">IR#3010</span></td>
       <td><span class="rake own">IVCLL01</span></td>
@@ -8327,9 +8327,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 28 Apr 2026 → 30 Apr 2026</div>
       </td>
       <td class="amt cost-total">₹65,435</td>
-      <td class=" amt">₹2,519<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
-      <td class="profit-neg amt">₹-62,916</td>
-      <td class="profit-neg">-2497.3%</td>
+      <td class=" amt">₹3,095<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
+      <td class="profit-neg amt">₹-62,340</td>
+      <td class="profit-neg">-2014.1%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">⚠️ 282000090<br><span style="font-size:10px;color:#aaa">IR#3007</span></td>
       <td><span class="rake hired">NMG</span></td>
@@ -8395,9 +8395,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 08 Apr 2026 → 28 Apr 2026</div>
       </td>
       <td class="amt cost-total">₹1,784,771</td>
-      <td class=" amt">₹1,381,701<br><span style="font-size:10px;color:#888">12 CNs · est.</span></td>
-      <td class="profit-neg amt">₹-403,070</td>
-      <td class="profit-neg">-29.2%</td>
+      <td class=" amt">₹1,181,106<br><span style="font-size:10px;color:#888">10 CNs · est.</span></td>
+      <td class="profit-neg amt">₹-603,665</td>
+      <td class="profit-neg">-51.1%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">262002899<br><span style="font-size:10px;color:#aaa">IR#3005</span></td>
       <td><span class="rake hired">NMG</span></td>
@@ -8429,9 +8429,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 30 Apr 2026 → 13 Jun 2026</div>
       </td>
       <td class="amt cost-total">₹53,045</td>
-      <td class=" amt">₹1,151<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
-      <td class="profit-neg amt">₹-51,894</td>
-      <td class="profit-neg">-4509.1%</td>
+      <td class=" amt">₹1,439<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
+      <td class="profit-neg amt">₹-51,606</td>
+      <td class="profit-neg">-3587.3%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">⚠️ 282000047<br><span style="font-size:10px;color:#aaa">IR#2999</span></td>
       <td><span class="rake own">IVCLL08</span></td>
@@ -8446,9 +8446,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 08 Apr 2026 → 07 May 2026</div>
       </td>
       <td class="amt cost-total">₹3,973,263</td>
-      <td class=" amt">₹1,151<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
-      <td class="profit-neg amt">₹-3,972,112</td>
-      <td class="profit-neg">-345136.9%</td>
+      <td class="no-data amt"><em class="nr">Not linked</em></td>
+      <td class="profit-neg amt">N/A</td>
+      <td class="profit-neg">N/A</td>
     </tr><tr class="rr-row">
       <td class="rr-num">⚠️ 282000565<br><span style="font-size:10px;color:#aaa">IR#2997</span></td>
       <td><span class="rake own">IVCLL03</span></td>
@@ -8463,9 +8463,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 07 Apr 2026 → 30 Apr 2026</div>
       </td>
       <td class="amt cost-total">₹565,022</td>
-      <td class="no-data amt"><em class="nr">Not linked</em></td>
-      <td class="profit-neg amt">N/A</td>
-      <td class="profit-neg">N/A</td>
+      <td class=" amt">₹1,170,540<br><span style="font-size:10px;color:#888">10 CNs · est.</span></td>
+      <td class="profit-pos amt">₹605,518</td>
+      <td class="profit-pos">51.7%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">282000566<br><span style="font-size:10px;color:#aaa">IR#2998</span></td>
       <td><span class="rake own">IVCLL07</span></td>
@@ -8480,9 +8480,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 07 Apr 2026 → 28 Apr 2026</div>
       </td>
       <td class="amt cost-total">₹3,942,288</td>
-      <td class=" amt">₹1,371,135<br><span style="font-size:10px;color:#888">12 CNs · est.</span></td>
-      <td class="profit-neg amt">₹-2,571,153</td>
-      <td class="profit-neg">-187.5%</td>
+      <td class=" amt">₹1,170,540<br><span style="font-size:10px;color:#888">10 CNs · est.</span></td>
+      <td class="profit-neg amt">₹-2,771,748</td>
+      <td class="profit-neg">-236.8%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">261000061<br><span style="font-size:10px;color:#aaa">IR#2995</span></td>
       <td><span class="rake hired">NMG</span></td>
@@ -8497,9 +8497,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 28 Apr 2026 → 30 Apr 2026</div>
       </td>
       <td class="amt cost-total">₹45,090</td>
-      <td class=" amt">₹1,151<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
-      <td class="profit-neg amt">₹-43,939</td>
-      <td class="profit-neg">-3817.9%</td>
+      <td class=" amt">₹1,439<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
+      <td class="profit-neg amt">₹-43,651</td>
+      <td class="profit-neg">-3034.3%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">282000389<br><span style="font-size:10px;color:#aaa">IR#2991</span></td>
       <td><span class="rake own">IVCLL05</span></td>
@@ -8650,9 +8650,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 05 Apr 2026 → 05 Apr 2026</div>
       </td>
       <td class="amt cost-total">₹3,938,996</td>
-      <td class=" amt">₹2,915,432<br><span style="font-size:10px;color:#888">20 CNs · est.</span></td>
-      <td class="profit-neg amt">₹-1,023,564</td>
-      <td class="profit-neg">-35.1%</td>
+      <td class=" amt">₹2,731,352<br><span style="font-size:10px;color:#888">18 CNs · est.</span></td>
+      <td class="profit-neg amt">₹-1,207,644</td>
+      <td class="profit-neg">-44.2%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">282000387<br><span style="font-size:10px;color:#aaa">IR#2989</span></td>
       <td><span class="rake own">IVCLL02</span></td>
@@ -8701,9 +8701,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 04 Apr 2026 → 30 Apr 2026</div>
       </td>
       <td class="amt cost-total">₹3,943,088</td>
-      <td class=" amt">₹4,810,086<br><span style="font-size:10px;color:#888">32 CNs · est.</span></td>
-      <td class="profit-pos amt">₹866,998</td>
-      <td class="profit-pos">18.0%</td>
+      <td class=" amt">₹4,626,006<br><span style="font-size:10px;color:#888">31 CNs · est.</span></td>
+      <td class="profit-pos amt">₹682,918</td>
+      <td class="profit-pos">14.8%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">261000058<br><span style="font-size:10px;color:#aaa">IR#2985</span></td>
       <td><span class="rake hired">NMG</span></td>
@@ -8803,9 +8803,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 03 Apr 2026 → 28 Apr 2026</div>
       </td>
       <td class="amt cost-total">₹2,027,802</td>
-      <td class=" amt">₹6,065,892<br><span style="font-size:10px;color:#888">43 CNs · est.</span></td>
-      <td class="profit-pos amt">₹4,038,090</td>
-      <td class="profit-pos">66.6%</td>
+      <td class=" amt">₹5,881,811<br><span style="font-size:10px;color:#888">42 CNs · est.</span></td>
+      <td class="profit-pos amt">₹3,854,009</td>
+      <td class="profit-pos">65.5%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">262000611<br><span style="font-size:10px;color:#aaa">IR#2975</span></td>
       <td><span class="rake hired">NMG</span></td>
@@ -9449,9 +9449,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 23 Mar 2026 → 31 Mar 2026</div>
       </td>
       <td class="amt cost-total">₹3,821,359</td>
-      <td class=" amt">₹15,078,703<br><span style="font-size:10px;color:#888">93 CNs · est.</span></td>
-      <td class="profit-pos amt">₹11,257,344</td>
-      <td class="profit-pos">74.7%</td>
+      <td class=" amt">₹15,037,406<br><span style="font-size:10px;color:#888">93 CNs · est.</span></td>
+      <td class="profit-pos amt">₹11,216,047</td>
+      <td class="profit-pos">74.6%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">⚠️ 281000039<br><span style="font-size:10px;color:#aaa">IR#2935</span></td>
       <td><span class="rake own">IVCLL08</span></td>
@@ -9466,9 +9466,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 23 Mar 2026 → 23 Mar 2026</div>
       </td>
       <td class="amt cost-total">₹199,584</td>
-      <td class=" amt">₹1,444,638<br><span style="font-size:10px;color:#888">18 CNs · est.</span></td>
-      <td class="profit-pos amt">₹1,245,054</td>
-      <td class="profit-pos">86.2%</td>
+      <td class="no-data amt"><em class="nr">Not linked</em></td>
+      <td class="profit-neg amt">N/A</td>
+      <td class="profit-neg">N/A</td>
     </tr><tr class="rr-row">
       <td class="rr-num">262002849<br><span style="font-size:10px;color:#aaa">IR#2961</span></td>
       <td><span class="rake hired">NMG</span></td>
@@ -9806,9 +9806,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 17 Mar 2026 → 31 Mar 2026</div>
       </td>
       <td class="amt cost-total">₹3,822,659</td>
-      <td class=" amt">₹12,280,298<br><span style="font-size:10px;color:#888">75 CNs · est.</span></td>
-      <td class="profit-pos amt">₹8,457,639</td>
-      <td class="profit-pos">68.9%</td>
+      <td class=" amt">₹12,077,859<br><span style="font-size:10px;color:#888">74 CNs · est.</span></td>
+      <td class="profit-pos amt">₹8,255,200</td>
+      <td class="profit-pos">68.3%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">281000038<br><span style="font-size:10px;color:#aaa">IR#2896</span></td>
       <td><span class="rake own">IVCLL07</span></td>
@@ -9823,9 +9823,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 16 Mar 2026 → 16 Mar 2026</div>
       </td>
       <td class="amt cost-total">₹99,792</td>
-      <td class=" amt">₹1,444,638<br><span style="font-size:10px;color:#888">18 CNs · est.</span></td>
-      <td class="profit-pos amt">₹1,344,846</td>
-      <td class="profit-pos">93.1%</td>
+      <td class="no-data amt"><em class="nr">Not linked</em></td>
+      <td class="profit-neg amt">N/A</td>
+      <td class="profit-neg">N/A</td>
     </tr><tr class="rr-row">
       <td class="rr-num">⚠️ 282000037<br><span style="font-size:10px;color:#aaa">IR#2897</span></td>
       <td><span class="rake own">IVCLL04</span></td>
@@ -9925,9 +9925,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 14 Mar 2026 → 31 Mar 2026</div>
       </td>
       <td class="amt cost-total">₹3,822,279</td>
-      <td class=" amt">₹8,445,236<br><span style="font-size:10px;color:#888">51 CNs · est.</span></td>
-      <td class="profit-pos amt">₹4,622,957</td>
-      <td class="profit-pos">54.7%</td>
+      <td class=" amt">₹7,936,935<br><span style="font-size:10px;color:#888">48 CNs · est.</span></td>
+      <td class="profit-pos amt">₹4,114,656</td>
+      <td class="profit-pos">51.8%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">⚠️ 282000084<br><span style="font-size:10px;color:#aaa">IR#2903</span></td>
       <td><span class="rake own">IVCLL01</span></td>
@@ -10010,9 +10010,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 13 Mar 2026 → 13 Mar 2026</div>
       </td>
       <td class="amt cost-total">₹99,792</td>
-      <td class=" amt">₹553,388<br><span style="font-size:10px;color:#888">7 CNs · est.</span></td>
-      <td class="profit-pos amt">₹453,596</td>
-      <td class="profit-pos">82.0%</td>
+      <td class="no-data amt"><em class="nr">Not linked</em></td>
+      <td class="profit-neg amt">N/A</td>
+      <td class="profit-neg">N/A</td>
     </tr><tr class="rr-row">
       <td class="rr-num">261000047<br><span style="font-size:10px;color:#aaa">IR#2907</span></td>
       <td><span class="rake hired">NMG</span></td>
@@ -10299,9 +10299,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 09 Mar 2026 → 31 Mar 2026</div>
       </td>
       <td class="amt cost-total">₹3,822,159</td>
-      <td class=" amt">₹4,724,952<br><span style="font-size:10px;color:#888">35 CNs · est.</span></td>
-      <td class="profit-pos amt">₹902,794</td>
-      <td class="profit-pos">19.1%</td>
+      <td class=" amt">₹3,441,487<br><span style="font-size:10px;color:#888">25 CNs · est.</span></td>
+      <td class="profit-neg amt">₹-380,672</td>
+      <td class="profit-neg">-11.1%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">282000550<br><span style="font-size:10px;color:#aaa">IR#2890</span></td>
       <td><span class="rake own">IVCLL02</span></td>
@@ -10503,9 +10503,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 06 Mar 2026 → 31 Mar 2026</div>
       </td>
       <td class="amt cost-total">₹429,309</td>
-      <td class="no-data amt"><em class="nr">Not linked</em></td>
-      <td class="profit-neg amt">N/A</td>
-      <td class="profit-neg">N/A</td>
+      <td class=" amt">₹6,764,773<br><span style="font-size:10px;color:#888">51 CNs · est.</span></td>
+      <td class="profit-pos amt">₹6,335,464</td>
+      <td class="profit-pos">93.7%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">⚠️ 282000037<br><span style="font-size:10px;color:#aaa">IR#2877</span></td>
       <td><span class="rake own">IVCLL09</span></td>
@@ -10571,9 +10571,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 02 Mar 2026 → 31 Mar 2026</div>
       </td>
       <td class="amt cost-total">₹3,822,959</td>
-      <td class=" amt">₹12,407,490<br><span style="font-size:10px;color:#888">96 CNs · est.</span></td>
-      <td class="profit-pos amt">₹8,584,531</td>
-      <td class="profit-pos">69.2%</td>
+      <td class=" amt">₹8,886,438<br><span style="font-size:10px;color:#888">69 CNs · est.</span></td>
+      <td class="profit-pos amt">₹5,063,479</td>
+      <td class="profit-pos">57.0%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">262002073<br><span style="font-size:10px;color:#aaa">IR#2874</span></td>
       <td><span class="rake hired">BT-61</span></td>
@@ -10758,9 +10758,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 01 Mar 2026 → 01 Mar 2026</div>
       </td>
       <td class="amt cost-total">₹99,792</td>
-      <td class=" amt">₹546,165<br><span style="font-size:10px;color:#888">8 CNs · est.</span></td>
-      <td class="profit-pos amt">₹446,373</td>
-      <td class="profit-pos">81.7%</td>
+      <td class="no-data amt"><em class="nr">Not linked</em></td>
+      <td class="profit-neg amt">N/A</td>
+      <td class="profit-neg">N/A</td>
     </tr><tr class="rr-row">
       <td class="rr-num">262002792<br><span style="font-size:10px;color:#aaa">IR#2868</span></td>
       <td><span class="rake hired">FL-69</span></td>
@@ -11285,9 +11285,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 20 Feb 2026 → 20 Feb 2026</div>
       </td>
       <td class="amt cost-total">₹3,698,599</td>
-      <td class=" amt">₹11,609,513<br><span style="font-size:10px;color:#888">87 CNs · est.</span></td>
-      <td class="profit-pos amt">₹7,910,914</td>
-      <td class="profit-pos">68.1%</td>
+      <td class=" amt">₹8,391,649<br><span style="font-size:10px;color:#888">63 CNs · est.</span></td>
+      <td class="profit-pos amt">₹4,693,050</td>
+      <td class="profit-pos">55.9%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">262000472<br><span style="font-size:10px;color:#aaa">IR#2832</span></td>
       <td><span class="rake hired">ML-54</span></td>
@@ -11370,9 +11370,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 19 Feb 2026 → 19 Feb 2026</div>
       </td>
       <td class="amt cost-total">₹99,792</td>
-      <td class=" amt">₹546,165<br><span style="font-size:10px;color:#888">8 CNs · est.</span></td>
-      <td class="profit-pos amt">₹446,373</td>
-      <td class="profit-pos">81.7%</td>
+      <td class="no-data amt"><em class="nr">Not linked</em></td>
+      <td class="profit-neg amt">N/A</td>
+      <td class="profit-neg">N/A</td>
     </tr><tr class="rr-row">
       <td class="rr-num">261000035<br><span style="font-size:10px;color:#aaa">IR#2830</span></td>
       <td><span class="rake hired">MT-36</span></td>
@@ -11506,9 +11506,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 16 Feb 2026 → 25 Mar 2026</div>
       </td>
       <td class="amt cost-total">₹429,309</td>
-      <td class="no-data amt"><em class="nr">Not linked</em></td>
-      <td class="profit-neg amt">N/A</td>
-      <td class="profit-neg">N/A</td>
+      <td class=" amt">₹4,576,911<br><span style="font-size:10px;color:#888">35 CNs · est.</span></td>
+      <td class="profit-pos amt">₹4,147,602</td>
+      <td class="profit-pos">90.6%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">282000548<br><span style="font-size:10px;color:#aaa">IR#2812</span></td>
       <td><span class="rake own">IVCLL09</span></td>
@@ -11523,9 +11523,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 16 Feb 2026 → 25 Mar 2026</div>
       </td>
       <td class="amt cost-total">₹3,821,359</td>
-      <td class=" amt">₹5,969,315<br><span style="font-size:10px;color:#888">45 CNs · est.</span></td>
-      <td class="profit-pos amt">₹2,147,956</td>
-      <td class="profit-pos">36.0%</td>
+      <td class=" amt">₹4,576,911<br><span style="font-size:10px;color:#888">35 CNs · est.</span></td>
+      <td class="profit-pos amt">₹755,552</td>
+      <td class="profit-pos">16.5%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">262002032<br><span style="font-size:10px;color:#aaa">IR#2818</span></td>
       <td><span class="rake hired">BT-58</span></td>
@@ -11591,9 +11591,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 11 Mar 2026 → 31 Mar 2026</div>
       </td>
       <td class="amt cost-total">₹60,550</td>
-      <td class=" amt">₹2,156<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
-      <td class="profit-neg amt">₹-58,394</td>
-      <td class="profit-neg">-2708.9%</td>
+      <td class=" amt">₹2,624<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
+      <td class="profit-neg amt">₹-57,926</td>
+      <td class="profit-neg">-2207.3%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">261000032<br><span style="font-size:10px;color:#aaa">IR#2813</span></td>
       <td><span class="rake hired">MT-33</span></td>
@@ -11608,9 +11608,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 28 Feb 2026 → 24 Mar 2026</div>
       </td>
       <td class="amt cost-total">₹49,900</td>
-      <td class=" amt">₹2,156<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
-      <td class="profit-neg amt">₹-47,744</td>
-      <td class="profit-neg">-2214.9%</td>
+      <td class=" amt">₹2,624<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
+      <td class="profit-neg amt">₹-47,276</td>
+      <td class="profit-neg">-1801.5%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">⚠️ 281000033<br><span style="font-size:10px;color:#aaa">IR#2810</span></td>
       <td><span class="rake own">IVCLL09</span></td>
@@ -11625,9 +11625,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 15 Feb 2026 → 15 Feb 2026</div>
       </td>
       <td class="amt cost-total">₹99,792</td>
-      <td class=" amt">₹546,165<br><span style="font-size:10px;color:#888">8 CNs · est.</span></td>
-      <td class="profit-pos amt">₹446,373</td>
-      <td class="profit-pos">81.7%</td>
+      <td class="no-data amt"><em class="nr">Not linked</em></td>
+      <td class="profit-neg amt">N/A</td>
+      <td class="profit-neg">N/A</td>
     </tr><tr class="rr-row">
       <td class="rr-num">262000457<br><span style="font-size:10px;color:#aaa">IR#2814</span></td>
       <td><span class="rake hired">ML-51</span></td>
@@ -11642,9 +11642,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 11 Mar 2026 → 24 Mar 2026</div>
       </td>
       <td class="amt cost-total">₹60,170</td>
-      <td class=" amt">₹2,156<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
-      <td class="profit-neg amt">₹-58,014</td>
-      <td class="profit-neg">-2691.3%</td>
+      <td class=" amt">₹2,624<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
+      <td class="profit-neg amt">₹-57,546</td>
+      <td class="profit-neg">-2192.8%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">⚠️ 282000087<br><span style="font-size:10px;color:#aaa">IR#2808</span></td>
       <td><span class="rake hired">ZA-05</span></td>
@@ -11676,9 +11676,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 14 Feb 2026 → 25 Mar 2026</div>
       </td>
       <td class="amt cost-total">₹3,821,859</td>
-      <td class=" amt">₹8,402,896<br><span style="font-size:10px;color:#888">63 CNs · est.</span></td>
-      <td class="profit-pos amt">₹4,581,037</td>
-      <td class="profit-pos">54.5%</td>
+      <td class=" amt">₹6,138,595<br><span style="font-size:10px;color:#888">46 CNs · est.</span></td>
+      <td class="profit-pos amt">₹2,316,736</td>
+      <td class="profit-pos">37.7%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">⚠️ 281000032<br><span style="font-size:10px;color:#aaa">IR#2805</span></td>
       <td><span class="rake own">IVCLL06</span></td>
@@ -11693,9 +11693,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 13 Feb 2026 → 13 Feb 2026</div>
       </td>
       <td class="amt cost-total">₹99,792</td>
-      <td class=" amt">₹546,165<br><span style="font-size:10px;color:#888">8 CNs · est.</span></td>
-      <td class="profit-pos amt">₹446,373</td>
-      <td class="profit-pos">81.7%</td>
+      <td class="no-data amt"><em class="nr">Not linked</em></td>
+      <td class="profit-neg amt">N/A</td>
+      <td class="profit-neg">N/A</td>
     </tr><tr class="rr-row">
       <td class="rr-num">261000030<br><span style="font-size:10px;color:#aaa">IR#2804</span></td>
       <td><span class="rake hired">MT-31</span></td>
@@ -11710,9 +11710,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 28 Feb 2026 → 24 Mar 2026</div>
       </td>
       <td class="amt cost-total">₹51,325</td>
-      <td class=" amt">₹7,728<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
-      <td class="profit-neg amt">₹-43,597</td>
-      <td class="profit-neg">-564.1%</td>
+      <td class=" amt">₹9,524<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
+      <td class="profit-neg amt">₹-41,801</td>
+      <td class="profit-neg">-438.9%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">261000031<br><span style="font-size:10px;color:#aaa">IR#2807</span></td>
       <td><span class="rake hired">MT-32</span></td>
@@ -11727,9 +11727,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 28 Feb 2026 → 24 Mar 2026</div>
       </td>
       <td class="amt cost-total">₹50,375</td>
-      <td class=" amt">₹7,728<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
-      <td class="profit-neg amt">₹-42,647</td>
-      <td class="profit-neg">-551.8%</td>
+      <td class=" amt">₹9,524<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
+      <td class="profit-neg amt">₹-40,851</td>
+      <td class="profit-neg">-429.0%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">262002024<br><span style="font-size:10px;color:#aaa">IR#2806</span></td>
       <td><span class="rake hired">BT-57</span></td>
@@ -11812,9 +11812,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 28 Feb 2026 → 24 Mar 2026</div>
       </td>
       <td class="amt cost-total">₹52,750</td>
-      <td class=" amt">₹7,728<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
-      <td class="profit-neg amt">₹-45,022</td>
-      <td class="profit-neg">-582.6%</td>
+      <td class=" amt">₹9,524<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
+      <td class="profit-neg amt">₹-43,226</td>
+      <td class="profit-neg">-453.9%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">242000024<br><span style="font-size:10px;color:#aaa">IR#2795</span></td>
       <td><span class="rake hired">MN-04</span></td>
@@ -11829,9 +11829,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 28 Feb 2026 → 24 Mar 2026</div>
       </td>
       <td class="amt cost-total">₹52,580</td>
-      <td class=" amt">₹7,728<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
-      <td class="profit-neg amt">₹-44,852</td>
-      <td class="profit-neg">-580.4%</td>
+      <td class=" amt">₹9,524<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
+      <td class="profit-neg amt">₹-43,056</td>
+      <td class="profit-neg">-452.1%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">⚠️ 282000086<br><span style="font-size:10px;color:#aaa">IR#2798</span></td>
       <td><span class="rake hired">ZC-23</span></td>
@@ -11897,9 +11897,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 16 Mar 2026 → 24 Mar 2026</div>
       </td>
       <td class="amt cost-total">₹48,000</td>
-      <td class=" amt">₹8,801<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
-      <td class="profit-neg amt">₹-39,199</td>
-      <td class="profit-neg">-445.4%</td>
+      <td class=" amt">₹10,903<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
+      <td class="profit-neg amt">₹-37,097</td>
+      <td class="profit-neg">-340.2%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">261000028<br><span style="font-size:10px;color:#aaa">IR#2796</span></td>
       <td><span class="rake hired">Mt-29</span></td>
@@ -11914,9 +11914,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 18 Feb 2026 → 24 Mar 2026</div>
       </td>
       <td class="amt cost-total">₹52,075</td>
-      <td class=" amt">₹8,801<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
-      <td class="profit-neg amt">₹-43,274</td>
-      <td class="profit-neg">-491.7%</td>
+      <td class=" amt">₹10,903<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
+      <td class="profit-neg amt">₹-41,172</td>
+      <td class="profit-neg">-377.6%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">262002730<br><span style="font-size:10px;color:#aaa">IR#2793</span></td>
       <td><span class="rake hired">FL-65</span></td>
@@ -11948,9 +11948,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 11 Mar 2026 → 24 Mar 2026</div>
       </td>
       <td class="amt cost-total">₹67,775</td>
-      <td class=" amt">₹8,801<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
-      <td class="profit-neg amt">₹-58,974</td>
-      <td class="profit-neg">-670.1%</td>
+      <td class=" amt">₹10,903<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
+      <td class="profit-neg amt">₹-56,872</td>
+      <td class="profit-neg">-521.6%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">282000294<br><span style="font-size:10px;color:#aaa">IR#2788</span></td>
       <td><span class="rake own">IVCLL05</span></td>
@@ -11982,9 +11982,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 09 Feb 2026 → 24 Mar 2026</div>
       </td>
       <td class="amt cost-total">₹3,881,283</td>
-      <td class=" amt">₹8,801<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
-      <td class="profit-neg amt">₹-3,872,482</td>
-      <td class="profit-neg">-43998.6%</td>
+      <td class="no-data amt"><em class="nr">Not linked</em></td>
+      <td class="profit-neg amt">N/A</td>
+      <td class="profit-neg">N/A</td>
     </tr><tr class="rr-row">
       <td class="rr-num">262002727<br><span style="font-size:10px;color:#aaa">IR#2790</span></td>
       <td><span class="rake hired">FR-29</span></td>
@@ -12016,9 +12016,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 18 Feb 2026 → 24 Mar 2026</div>
       </td>
       <td class="amt cost-total">₹49,425</td>
-      <td class=" amt">₹8,801<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
-      <td class="profit-neg amt">₹-40,624</td>
-      <td class="profit-neg">-461.6%</td>
+      <td class=" amt">₹10,903<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
+      <td class="profit-neg amt">₹-38,522</td>
+      <td class="profit-neg">-353.3%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">282000371<br><span style="font-size:10px;color:#aaa">IR#2785</span></td>
       <td><span class="rake own">IVCLL02</span></td>
@@ -12118,9 +12118,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 28 Feb 2026 → 24 Mar 2026</div>
       </td>
       <td class="amt cost-total">₹45,605</td>
-      <td class=" amt">₹8,801<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
-      <td class="profit-neg amt">₹-36,804</td>
-      <td class="profit-neg">-418.2%</td>
+      <td class=" amt">₹10,903<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
+      <td class="profit-neg amt">₹-34,702</td>
+      <td class="profit-neg">-318.3%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">⚠️ 282000043<br><span style="font-size:10px;color:#aaa">IR#2778</span></td>
       <td><span class="rake own">IVCLL07</span></td>
@@ -12169,9 +12169,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 18 Feb 2026 → 24 Mar 2026</div>
       </td>
       <td class="amt cost-total">₹49,425</td>
-      <td class=" amt">₹8,801<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
-      <td class="profit-neg amt">₹-40,624</td>
-      <td class="profit-neg">-461.6%</td>
+      <td class=" amt">₹10,903<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
+      <td class="profit-neg amt">₹-38,522</td>
+      <td class="profit-neg">-353.3%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">281000031<br><span style="font-size:10px;color:#aaa">IR#2776</span></td>
       <td><span class="rake own">IVCLL08</span></td>
@@ -12186,9 +12186,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 06 Feb 2026 → 06 Feb 2026</div>
       </td>
       <td class="amt cost-total">₹99,792</td>
-      <td class=" amt">₹528,390<br><span style="font-size:10px;color:#888">7 CNs · est.</span></td>
-      <td class="profit-pos amt">₹428,598</td>
-      <td class="profit-pos">81.1%</td>
+      <td class="no-data amt"><em class="nr">Not linked</em></td>
+      <td class="profit-neg amt">N/A</td>
+      <td class="profit-neg">N/A</td>
     </tr><tr class="rr-row">
       <td class="rr-num">282000546<br><span style="font-size:10px;color:#aaa">IR#2780</span></td>
       <td><span class="rake own">IVCLL08</span></td>
@@ -12203,9 +12203,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 06 Feb 2026 → 31 Mar 2026</div>
       </td>
       <td class="amt cost-total">₹3,887,419</td>
-      <td class=" amt">₹12,377,923<br><span style="font-size:10px;color:#888">106 CNs · est.</span></td>
-      <td class="profit-pos amt">₹8,490,504</td>
-      <td class="profit-pos">68.6%</td>
+      <td class=" amt">₹8,381,807<br><span style="font-size:10px;color:#888">72 CNs · est.</span></td>
+      <td class="profit-pos amt">₹4,494,388</td>
+      <td class="profit-pos">53.6%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">261000024<br><span style="font-size:10px;color:#aaa">IR#2775</span></td>
       <td><span class="rake hired">MT-25</span></td>
@@ -12220,9 +12220,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 18 Feb 2026 → 24 Mar 2026</div>
       </td>
       <td class="amt cost-total">₹54,650</td>
-      <td class=" amt">₹8,801<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
-      <td class="profit-neg amt">₹-45,849</td>
-      <td class="profit-neg">-520.9%</td>
+      <td class=" amt">₹10,903<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
+      <td class="profit-neg amt">₹-43,747</td>
+      <td class="profit-neg">-401.2%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">282000144<br><span style="font-size:10px;color:#aaa">IR#2777</span></td>
       <td><span class="rake hired">DKK-04</span></td>
@@ -12237,9 +12237,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 05 Feb 2026 → 16 Mar 2026</div>
       </td>
       <td class="amt cost-total">₹1,613,985</td>
-      <td class=" amt">₹528,390<br><span style="font-size:10px;color:#888">7 CNs · est.</span></td>
-      <td class="profit-neg amt">₹-1,085,595</td>
-      <td class="profit-neg">-205.5%</td>
+      <td class="no-data amt"><em class="nr">Not linked</em></td>
+      <td class="profit-neg amt">N/A</td>
+      <td class="profit-neg">N/A</td>
     </tr><tr class="rr-row">
       <td class="rr-num">⚠️ 282000535<br><span style="font-size:10px;color:#aaa">IR#2773</span></td>
       <td><span class="rake own">IVCLL03</span></td>
@@ -12254,9 +12254,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 05 Feb 2026 → 26 Feb 2026</div>
       </td>
       <td class="amt cost-total">₹430,559</td>
-      <td class="no-data amt"><em class="nr">Not linked</em></td>
-      <td class="profit-neg amt">N/A</td>
-      <td class="profit-neg">N/A</td>
+      <td class=" amt">₹8,533,685<br><span style="font-size:10px;color:#888">72 CNs · est.</span></td>
+      <td class="profit-pos amt">₹8,103,126</td>
+      <td class="profit-pos">95.0%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">261000023<br><span style="font-size:10px;color:#aaa">IR#2770</span></td>
       <td><span class="rake hired">MT-24</span></td>
@@ -12271,9 +12271,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 18 Feb 2026 → 24 Mar 2026</div>
       </td>
       <td class="amt cost-total">₹54,175</td>
-      <td class=" amt">₹8,801<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
-      <td class="profit-neg amt">₹-45,374</td>
-      <td class="profit-neg">-515.5%</td>
+      <td class=" amt">₹10,903<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
+      <td class="profit-neg amt">₹-43,272</td>
+      <td class="profit-neg">-396.9%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">282000219<br><span style="font-size:10px;color:#aaa">IR#2771</span></td>
       <td><span class="rake own">IVCLL07</span></td>
@@ -12305,9 +12305,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 04 Feb 2026 → 12 Mar 2026</div>
       </td>
       <td class="amt cost-total">₹3,816,603</td>
-      <td class=" amt">₹8,801<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
-      <td class="profit-neg amt">₹-3,807,802</td>
-      <td class="profit-neg">-43263.8%</td>
+      <td class="no-data amt"><em class="nr">Not linked</em></td>
+      <td class="profit-neg amt">N/A</td>
+      <td class="profit-neg">N/A</td>
     </tr><tr class="rr-row">
       <td class="rr-num">282000370<br><span style="font-size:10px;color:#aaa">IR#2772</span></td>
       <td><span class="rake own">IVCLL05</span></td>
@@ -12390,9 +12390,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 02 Feb 2026 → 02 Feb 2026</div>
       </td>
       <td class="amt cost-total">₹3,744,003</td>
-      <td class=" amt">₹8,801<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
-      <td class="profit-neg amt">₹-3,735,202</td>
-      <td class="profit-neg">-42438.9%</td>
+      <td class="no-data amt"><em class="nr">Not linked</em></td>
+      <td class="profit-neg amt">N/A</td>
+      <td class="profit-neg">N/A</td>
     </tr><tr class="rr-row">
       <td class="rr-num">⚠️ 282000042<br><span style="font-size:10px;color:#aaa">IR#2765</span></td>
       <td><span class="rake own">IVCLL09</span></td>
@@ -12424,9 +12424,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 11 Mar 2026 → 24 Mar 2026</div>
       </td>
       <td class="amt cost-total">₹61,925</td>
-      <td class=" amt">₹8,801<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
-      <td class="profit-neg amt">₹-53,124</td>
-      <td class="profit-neg">-603.6%</td>
+      <td class=" amt">₹10,903<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
+      <td class="profit-neg amt">₹-51,022</td>
+      <td class="profit-neg">-467.9%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">262000419<br><span style="font-size:10px;color:#aaa">IR#2764</span></td>
       <td><span class="rake hired">ML-49</span></td>
@@ -12441,9 +12441,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 11 Mar 2026 → 31 Mar 2026</div>
       </td>
       <td class="amt cost-total">₹59,850</td>
-      <td class=" amt">₹8,801<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
-      <td class="profit-neg amt">₹-51,049</td>
-      <td class="profit-neg">-580.0%</td>
+      <td class=" amt">₹10,903<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
+      <td class="profit-neg amt">₹-48,947</td>
+      <td class="profit-neg">-448.9%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">282000369<br><span style="font-size:10px;color:#aaa">IR#2761</span></td>
       <td><span class="rake own">IVCLL05</span></td>
@@ -12509,9 +12509,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 18 Feb 2026 → 24 Mar 2026</div>
       </td>
       <td class="amt cost-total">₹44,200</td>
-      <td class=" amt">₹8,801<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
-      <td class="profit-neg amt">₹-35,399</td>
-      <td class="profit-neg">-402.2%</td>
+      <td class=" amt">₹10,903<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
+      <td class="profit-neg amt">₹-33,297</td>
+      <td class="profit-neg">-305.4%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">262000415<br><span style="font-size:10px;color:#aaa">IR#2758</span></td>
       <td><span class="rake hired">MN-02</span></td>
@@ -12526,9 +12526,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 10 Feb 2026 → 28 Feb 2026</div>
       </td>
       <td class="amt cost-total">₹46,035</td>
-      <td class=" amt">₹8,801<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
-      <td class="profit-neg amt">₹-37,234</td>
-      <td class="profit-neg">-423.0%</td>
+      <td class=" amt">₹10,903<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
+      <td class="profit-neg amt">₹-35,132</td>
+      <td class="profit-neg">-322.2%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">282000368<br><span style="font-size:10px;color:#aaa">IR#2755</span></td>
       <td><span class="rake own">IVCLL02</span></td>
@@ -12560,9 +12560,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 10 Feb 2026 → 18 Feb 2026</div>
       </td>
       <td class="amt cost-total">₹45,600</td>
-      <td class=" amt">₹8,801<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
-      <td class="profit-neg amt">₹-36,799</td>
-      <td class="profit-neg">-418.1%</td>
+      <td class=" amt">₹10,903<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
+      <td class="profit-neg amt">₹-34,697</td>
+      <td class="profit-neg">-318.2%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">262000409<br><span style="font-size:10px;color:#aaa">IR#2753</span></td>
       <td><span class="rake hired">ML-47</span></td>
@@ -12577,9 +12577,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 10 Feb 2026 → 11 Mar 2026</div>
       </td>
       <td class="amt cost-total">₹62,595</td>
-      <td class=" amt">₹8,801<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
-      <td class="profit-neg amt">₹-53,794</td>
-      <td class="profit-neg">-611.2%</td>
+      <td class=" amt">₹10,903<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
+      <td class="profit-neg amt">₹-51,692</td>
+      <td class="profit-neg">-474.1%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">262002690<br><span style="font-size:10px;color:#aaa">IR#2754</span></td>
       <td><span class="rake hired">FL-62</span></td>
@@ -12611,9 +12611,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 29 Jan 2026 → 24 Feb 2026</div>
       </td>
       <td class="amt cost-total">₹3,808,983</td>
-      <td class=" amt">₹8,801<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
-      <td class="profit-neg amt">₹-3,800,182</td>
-      <td class="profit-neg">-43177.2%</td>
+      <td class="no-data amt"><em class="nr">Not linked</em></td>
+      <td class="profit-neg amt">N/A</td>
+      <td class="profit-neg">N/A</td>
     </tr><tr class="rr-row">
       <td class="rr-num">261000020<br><span style="font-size:10px;color:#aaa">IR#2752</span></td>
       <td><span class="rake hired">MT-21</span></td>
@@ -12628,9 +12628,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 10 Feb 2026 → 16 Feb 2026</div>
       </td>
       <td class="amt cost-total">₹49,400</td>
-      <td class=" amt">₹8,801<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
-      <td class="profit-neg amt">₹-40,599</td>
-      <td class="profit-neg">-461.3%</td>
+      <td class=" amt">₹10,903<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
+      <td class="profit-neg amt">₹-38,497</td>
+      <td class="profit-neg">-353.1%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">⚠️ 282000028<br><span style="font-size:10px;color:#aaa">IR#2751</span></td>
       <td><span class="rake own">IVCLL03</span></td>
@@ -12645,9 +12645,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 29 Jan 2026 → 10 Feb 2026</div>
       </td>
       <td class="amt cost-total">₹2,761,515</td>
-      <td class=" amt">₹8,801<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
-      <td class="profit-neg amt">₹-2,752,714</td>
-      <td class="profit-neg">-31276.0%</td>
+      <td class="no-data amt"><em class="nr">Not linked</em></td>
+      <td class="profit-neg amt">N/A</td>
+      <td class="profit-neg">N/A</td>
     </tr><tr class="rr-row">
       <td class="rr-num">261000019<br><span style="font-size:10px;color:#aaa">IR#2749</span></td>
       <td><span class="rake hired">MT-20</span></td>
@@ -12662,9 +12662,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 10 Feb 2026 → 16 Feb 2026</div>
       </td>
       <td class="amt cost-total">₹53,200</td>
-      <td class=" amt">₹8,801<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
-      <td class="profit-neg amt">₹-44,399</td>
-      <td class="profit-neg">-504.5%</td>
+      <td class=" amt">₹10,903<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
+      <td class="profit-neg amt">₹-42,297</td>
+      <td class="profit-neg">-387.9%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">262001984<br><span style="font-size:10px;color:#aaa">IR#2748</span></td>
       <td><span class="rake hired">BT-54</span></td>
@@ -12713,9 +12713,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 10 Feb 2026 → 13 Mar 2026</div>
       </td>
       <td class="amt cost-total">₹53,500</td>
-      <td class=" amt">₹6,646<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
-      <td class="profit-neg amt">₹-46,854</td>
-      <td class="profit-neg">-705.0%</td>
+      <td class=" amt">₹8,279<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
+      <td class="profit-neg amt">₹-45,221</td>
+      <td class="profit-neg">-546.2%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">⚠️ 282000034<br><span style="font-size:10px;color:#aaa">IR#2745</span></td>
       <td><span class="rake own">IVCLL05</span></td>
@@ -12747,9 +12747,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 10 Feb 2026 → 13 Mar 2026</div>
       </td>
       <td class="amt cost-total">₹63,370</td>
-      <td class=" amt">₹1,073<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
-      <td class="profit-neg amt">₹-62,297</td>
-      <td class="profit-neg">-5804.6%</td>
+      <td class=" amt">₹1,380<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
+      <td class="profit-neg amt">₹-61,990</td>
+      <td class="profit-neg">-4492.5%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">262001977<br><span style="font-size:10px;color:#aaa">IR#2744</span></td>
       <td><span class="rake hired">BT-53</span></td>
@@ -12832,9 +12832,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 25 Jan 2026 → 25 Jan 2026</div>
       </td>
       <td class="amt cost-total">₹99,792</td>
-      <td class=" amt">₹1,696,597<br><span style="font-size:10px;color:#888">22 CNs · est.</span></td>
-      <td class="profit-pos amt">₹1,596,805</td>
-      <td class="profit-pos">94.1%</td>
+      <td class="no-data amt"><em class="nr">Not linked</em></td>
+      <td class="profit-neg amt">N/A</td>
+      <td class="profit-neg">N/A</td>
     </tr><tr class="rr-row">
       <td class="rr-num">262000395<br><span style="font-size:10px;color:#aaa">IR#2740</span></td>
       <td><span class="rake hired">ML-44</span></td>
@@ -12849,9 +12849,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 10 Feb 2026 → 11 Mar 2026</div>
       </td>
       <td class="amt cost-total">₹61,425</td>
-      <td class=" amt">₹1,073<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
-      <td class="profit-neg amt">₹-60,352</td>
-      <td class="profit-neg">-5623.4%</td>
+      <td class=" amt">₹1,380<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
+      <td class="profit-neg amt">₹-60,045</td>
+      <td class="profit-neg">-4351.5%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">⚠️ 282000539<br><span style="font-size:10px;color:#aaa">IR#2743</span></td>
       <td><span class="rake own">IVCLL07</span></td>
@@ -12866,9 +12866,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 25 Jan 2026 → 25 Jan 2026</div>
       </td>
       <td class="amt cost-total">₹14,794,396</td>
-      <td class=" amt">₹9,469,062<br><span style="font-size:10px;color:#888">78 CNs · est.</span></td>
-      <td class="profit-neg amt">₹-5,325,334</td>
-      <td class="profit-neg">-56.2%</td>
+      <td class=" amt">₹7,098,547<br><span style="font-size:10px;color:#888">58 CNs · est.</span></td>
+      <td class="profit-neg amt">₹-7,695,849</td>
+      <td class="profit-neg">-108.4%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">262000398<br><span style="font-size:10px;color:#aaa">IR#2732</span></td>
       <td><span class="rake hired">ML-45</span></td>
@@ -12883,9 +12883,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 31 Jan 2026 → 10 Feb 2026</div>
       </td>
       <td class="amt cost-total">₹59,085</td>
-      <td class=" amt">₹1,073<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
-      <td class="profit-neg amt">₹-58,012</td>
-      <td class="profit-neg">-5405.4%</td>
+      <td class=" amt">₹1,380<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
+      <td class="profit-neg amt">₹-57,705</td>
+      <td class="profit-neg">-4182.0%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">262001974<br><span style="font-size:10px;color:#aaa">IR#2733</span></td>
       <td><span class="rake hired">BL-36</span></td>
@@ -12934,9 +12934,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 24 Jan 2026 → 13 Mar 2026</div>
       </td>
       <td class="amt cost-total">₹3,698,128</td>
-      <td class=" amt">₹1,073<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
-      <td class="profit-neg amt">₹-3,697,055</td>
-      <td class="profit-neg">-344481.8%</td>
+      <td class="no-data amt"><em class="nr">Not linked</em></td>
+      <td class="profit-neg amt">N/A</td>
+      <td class="profit-neg">N/A</td>
     </tr><tr class="rr-row">
       <td class="rr-num">⚠️ 282000040<br><span style="font-size:10px;color:#aaa">IR#2742</span></td>
       <td><span class="rake own">IVCLL08</span></td>
@@ -12985,9 +12985,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 31 Jan 2026 → 16 Feb 2026</div>
       </td>
       <td class="amt cost-total">₹69,100</td>
-      <td class=" amt">₹1,073<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
-      <td class="profit-neg amt">₹-68,027</td>
-      <td class="profit-neg">-6338.6%</td>
+      <td class=" amt">₹1,380<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
+      <td class="profit-neg amt">₹-67,720</td>
+      <td class="profit-neg">-4907.8%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">282000367<br><span style="font-size:10px;color:#aaa">IR#2731</span></td>
       <td><span class="rake own">IVCLL05</span></td>
@@ -13036,9 +13036,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 22 Jan 2026 → 26 Feb 2026</div>
       </td>
       <td class="amt cost-total">₹3,821,359</td>
-      <td class=" amt">₹5,538,903<br><span style="font-size:10px;color:#888">42 CNs · est.</span></td>
-      <td class="profit-pos amt">₹1,717,544</td>
-      <td class="profit-pos">31.0%</td>
+      <td class=" amt">₹4,478,441<br><span style="font-size:10px;color:#888">34 CNs · est.</span></td>
+      <td class="profit-pos amt">₹657,082</td>
+      <td class="profit-pos">14.7%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">282000216<br><span style="font-size:10px;color:#aaa">IR#2724</span></td>
       <td><span class="rake own">IVCLL08</span></td>
@@ -13121,9 +13121,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 21 Jan 2026 → 21 Jan 2026</div>
       </td>
       <td class="amt cost-total">₹99,792</td>
-      <td class=" amt">₹1,696,597<br><span style="font-size:10px;color:#888">22 CNs · est.</span></td>
-      <td class="profit-pos amt">₹1,596,805</td>
-      <td class="profit-pos">94.1%</td>
+      <td class="no-data amt"><em class="nr">Not linked</em></td>
+      <td class="profit-neg amt">N/A</td>
+      <td class="profit-neg">N/A</td>
     </tr><tr class="rr-row">
       <td class="rr-num">262000390<br><span style="font-size:10px;color:#aaa">IR#2726</span></td>
       <td><span class="rake hired">ML-43</span></td>
@@ -13291,9 +13291,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 19 Jan 2026 → 26 Feb 2026</div>
       </td>
       <td class="amt cost-total">₹2,527,831</td>
-      <td class=" amt">₹2,778,670<br><span style="font-size:10px;color:#888">19 CNs · est.</span></td>
-      <td class="profit-pos amt">₹250,839</td>
-      <td class="profit-pos">9.0%</td>
+      <td class=" amt">₹2,546,555<br><span style="font-size:10px;color:#888">17 CNs · est.</span></td>
+      <td class="profit-pos amt">₹18,724</td>
+      <td class="profit-pos">0.7%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">262002667<br><span style="font-size:10px;color:#aaa">IR#2713</span></td>
       <td><span class="rake hired">FL-59</span></td>
@@ -13342,9 +13342,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 18 Jan 2026 → 18 Jan 2026</div>
       </td>
       <td class="amt cost-total">₹3,698,599</td>
-      <td class=" amt">₹2,544,868<br><span style="font-size:10px;color:#888">17 CNs · est.</span></td>
-      <td class="profit-neg amt">₹-1,153,731</td>
-      <td class="profit-neg">-45.3%</td>
+      <td class=" amt">₹2,371,204<br><span style="font-size:10px;color:#888">16 CNs · est.</span></td>
+      <td class="profit-neg amt">₹-1,327,396</td>
+      <td class="profit-neg">-56.0%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">281000028<br><span style="font-size:10px;color:#aaa">IR#2710</span></td>
       <td><span class="rake own">IVCLL06</span></td>
@@ -13359,9 +13359,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 17 Jan 2026 → 17 Jan 2026</div>
       </td>
       <td class="amt cost-total">₹99,792</td>
-      <td class=" amt">₹1,168,206<br><span style="font-size:10px;color:#888">15 CNs · est.</span></td>
-      <td class="profit-pos amt">₹1,068,414</td>
-      <td class="profit-pos">91.5%</td>
+      <td class="no-data amt"><em class="nr">Not linked</em></td>
+      <td class="profit-neg amt">N/A</td>
+      <td class="profit-neg">N/A</td>
     </tr><tr class="rr-row">
       <td class="rr-num">282000534<br><span style="font-size:10px;color:#aaa">IR#2702</span></td>
       <td><span class="rake hired">PA-12</span></td>
@@ -13376,9 +13376,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 17 Jan 2026 → 26 Feb 2026</div>
       </td>
       <td class="amt cost-total">₹2,237,671</td>
-      <td class=" amt">₹2,838,637<br><span style="font-size:10px;color:#888">20 CNs · est.</span></td>
-      <td class="profit-pos amt">₹600,966</td>
-      <td class="profit-pos">21.2%</td>
+      <td class=" amt">₹2,616,012<br><span style="font-size:10px;color:#888">18 CNs · est.</span></td>
+      <td class="profit-pos amt">₹378,340</td>
+      <td class="profit-pos">14.5%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">262000382<br><span style="font-size:10px;color:#aaa">IR#2700</span></td>
       <td><span class="rake hired">ML-42</span></td>
@@ -13393,9 +13393,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 31 Jan 2026 → 10 Feb 2026</div>
       </td>
       <td class="amt cost-total">₹59,000</td>
-      <td class=" amt">₹26,285<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
-      <td class="profit-neg amt">₹-32,715</td>
-      <td class="profit-neg">-124.5%</td>
+      <td class=" amt">₹37,550<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
+      <td class="profit-neg amt">₹-21,450</td>
+      <td class="profit-neg">-57.1%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">282000364<br><span style="font-size:10px;color:#aaa">IR#2703</span></td>
       <td><span class="rake own">IVCLL01</span></td>
@@ -13427,9 +13427,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 17 Jan 2026 → 13 Mar 2026</div>
       </td>
       <td class="amt cost-total">₹3,882,923</td>
-      <td class=" amt">₹26,285<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
-      <td class="profit-neg amt">₹-3,856,638</td>
-      <td class="profit-neg">-14672.5%</td>
+      <td class="no-data amt"><em class="nr">Not linked</em></td>
+      <td class="profit-neg amt">N/A</td>
+      <td class="profit-neg">N/A</td>
     </tr><tr class="rr-row">
       <td class="rr-num">262002661<br><span style="font-size:10px;color:#aaa">IR#2699</span></td>
       <td><span class="rake hired">FL-58</span></td>
@@ -13461,9 +13461,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 16 Jan 2026 → 26 Feb 2026</div>
       </td>
       <td class="amt cost-total">₹3,821,359</td>
-      <td class=" amt">₹3,552,011<br><span style="font-size:10px;color:#888">26 CNs · est.</span></td>
-      <td class="profit-neg amt">₹-269,348</td>
-      <td class="profit-neg">-7.6%</td>
+      <td class=" amt">₹3,186,710<br><span style="font-size:10px;color:#888">23 CNs · est.</span></td>
+      <td class="profit-neg amt">₹-634,649</td>
+      <td class="profit-neg">-19.9%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">261000013<br><span style="font-size:10px;color:#aaa">IR#2698</span></td>
       <td><span class="rake hired">MT-13</span></td>
@@ -13478,9 +13478,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 30 Jan 2026 → 13 Mar 2026</div>
       </td>
       <td class="amt cost-total">₹139,350</td>
-      <td class=" amt">₹44,364<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
-      <td class="profit-neg amt">₹-94,986</td>
-      <td class="profit-neg">-214.1%</td>
+      <td class=" amt">₹61,655<br><span style="font-size:10px;color:#888">1 CNs · est.</span></td>
+      <td class="profit-neg amt">₹-77,695</td>
+      <td class="profit-neg">-126.0%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">⚠️ 282000084<br><span style="font-size:10px;color:#aaa">IR#2691</span></td>
       <td><span class="rake hired">Zc-21</span></td>
@@ -13512,9 +13512,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 05 Feb 2026 → 13 Mar 2026</div>
       </td>
       <td class="amt cost-total">₹48,300</td>
-      <td class=" amt">₹44,364<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
-      <td class="profit-neg amt">₹-3,936</td>
-      <td class="profit-neg">-8.9%</td>
+      <td class=" amt">₹61,655<br><span style="font-size:10px;color:#888">1 CNs · est.</span></td>
+      <td class="profit-pos amt">₹13,355</td>
+      <td class="profit-pos">21.7%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">⚠️ 261000081<br><span style="font-size:10px;color:#aaa">IR#2696</span></td>
       <td><span class="rake hired">FT-77</span></td>
@@ -13546,9 +13546,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 15 Jan 2026 → 15 Jan 2026</div>
       </td>
       <td class="amt cost-total">₹99,792</td>
-      <td class=" amt">₹439,986<br><span style="font-size:10px;color:#888">6 CNs · est.</span></td>
-      <td class="profit-pos amt">₹340,194</td>
-      <td class="profit-pos">77.3%</td>
+      <td class="no-data amt"><em class="nr">Not linked</em></td>
+      <td class="profit-neg amt">N/A</td>
+      <td class="profit-neg">N/A</td>
     </tr><tr class="rr-row">
       <td class="rr-num">262002656<br><span style="font-size:10px;color:#aaa">IR#2701</span></td>
       <td><span class="rake hired">FL-57</span></td>
@@ -13614,9 +13614,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 31 Jan 2026 → 10 Feb 2026</div>
       </td>
       <td class="amt cost-total">₹59,585</td>
-      <td class=" amt">₹44,364<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
-      <td class="profit-neg amt">₹-15,221</td>
-      <td class="profit-neg">-34.3%</td>
+      <td class=" amt">₹61,655<br><span style="font-size:10px;color:#888">1 CNs · est.</span></td>
+      <td class="profit-pos amt">₹2,070</td>
+      <td class="profit-pos">3.4%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">282000362<br><span style="font-size:10px;color:#aaa">IR#2692</span></td>
       <td><span class="rake own">IVCLL05</span></td>
@@ -13648,9 +13648,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 14 Jan 2026 → 13 Mar 2026</div>
       </td>
       <td class="amt cost-total">₹3,883,423</td>
-      <td class=" amt">₹44,364<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
-      <td class="profit-neg amt">₹-3,839,059</td>
-      <td class="profit-neg">-8653.6%</td>
+      <td class="no-data amt"><em class="nr">Not linked</em></td>
+      <td class="profit-neg amt">N/A</td>
+      <td class="profit-neg">N/A</td>
     </tr><tr class="rr-row">
       <td class="rr-num">262002654<br><span style="font-size:10px;color:#aaa">IR#2694</span></td>
       <td><span class="rake hired">FR-28</span></td>
@@ -13682,9 +13682,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 10 Jan 2026 → 24 Feb 2026</div>
       </td>
       <td class="amt cost-total">₹500,689</td>
-      <td class="no-data amt"><em class="nr">Not linked</em></td>
-      <td class="profit-neg amt">N/A</td>
-      <td class="profit-neg">N/A</td>
+      <td class=" amt">₹61,655<br><span style="font-size:10px;color:#888">1 CNs · est.</span></td>
+      <td class="profit-neg amt">₹-439,034</td>
+      <td class="profit-neg">-712.1%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">282000532<br><span style="font-size:10px;color:#aaa">IR#2690</span></td>
       <td><span class="rake hired">PA-11</span></td>
@@ -13699,9 +13699,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 12 Jan 2026 → 26 Feb 2026</div>
       </td>
       <td class="amt cost-total">₹2,527,831</td>
-      <td class=" amt">₹6,051,032<br><span style="font-size:10px;color:#888">49 CNs · est.</span></td>
-      <td class="profit-pos amt">₹3,523,201</td>
-      <td class="profit-pos">58.2%</td>
+      <td class=" amt">₹4,736,713<br><span style="font-size:10px;color:#888">38 CNs · est.</span></td>
+      <td class="profit-pos amt">₹2,208,882</td>
+      <td class="profit-pos">46.6%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">⚠️ 282000033<br><span style="font-size:10px;color:#aaa">IR#2686</span></td>
       <td><span class="rake own">IVCLL02</span></td>
@@ -13750,9 +13750,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 17 Jan 2026 → 16 Feb 2026</div>
       </td>
       <td class="amt cost-total">₹84,050</td>
-      <td class=" amt">₹44,364<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
-      <td class="profit-neg amt">₹-39,686</td>
-      <td class="profit-neg">-89.5%</td>
+      <td class=" amt">₹61,655<br><span style="font-size:10px;color:#888">1 CNs · est.</span></td>
+      <td class="profit-neg amt">₹-22,395</td>
+      <td class="profit-neg">-36.3%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">⚠️ 282000037<br><span style="font-size:10px;color:#aaa">IR#2682</span></td>
       <td><span class="rake own">IVCLL09</span></td>
@@ -13801,9 +13801,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 29 Dec 2025 → 17 Jan 2026</div>
       </td>
       <td class="amt cost-total">₹365,309</td>
-      <td class="no-data amt"><em class="nr">Not linked</em></td>
-      <td class="profit-neg amt">N/A</td>
-      <td class="profit-neg">N/A</td>
+      <td class=" amt">₹4,775,395<br><span style="font-size:10px;color:#888">39 CNs · est.</span></td>
+      <td class="profit-pos amt">₹4,410,086</td>
+      <td class="profit-pos">92.4%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">262002644<br><span style="font-size:10px;color:#aaa">IR#2684</span></td>
       <td><span class="rake hired">FN-28</span></td>
@@ -13852,9 +13852,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 17 Jan 2026 → 16 Feb 2026</div>
       </td>
       <td class="amt cost-total">₹49,850</td>
-      <td class=" amt">₹68,215<br><span style="font-size:10px;color:#888">1 CNs · est.</span></td>
-      <td class="profit-pos amt">₹18,365</td>
-      <td class="profit-pos">26.9%</td>
+      <td class=" amt">₹97,433<br><span style="font-size:10px;color:#888">1 CNs · est.</span></td>
+      <td class="profit-pos amt">₹47,583</td>
+      <td class="profit-pos">48.8%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">282000360<br><span style="font-size:10px;color:#aaa">IR#2679</span></td>
       <td><span class="rake own">IVCLL04</span></td>
@@ -13886,9 +13886,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 09 Jan 2026 → 26 Feb 2026</div>
       </td>
       <td class="amt cost-total">₹3,885,783</td>
-      <td class=" amt">₹97,227<br><span style="font-size:10px;color:#888">1 CNs · est.</span></td>
-      <td class="profit-neg amt">₹-3,788,556</td>
-      <td class="profit-neg">-3896.6%</td>
+      <td class="no-data amt"><em class="nr">Not linked</em></td>
+      <td class="profit-neg amt">N/A</td>
+      <td class="profit-neg">N/A</td>
     </tr><tr class="rr-row">
       <td class="rr-num">262002637<br><span style="font-size:10px;color:#aaa">IR#2676</span></td>
       <td><span class="rake hired">FL56</span></td>
@@ -13954,9 +13954,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 07 Jan 2026 → 26 Feb 2026</div>
       </td>
       <td class="amt cost-total">₹3,883,683</td>
-      <td class=" amt">₹97,227<br><span style="font-size:10px;color:#888">1 CNs · est.</span></td>
-      <td class="profit-neg amt">₹-3,786,456</td>
-      <td class="profit-neg">-3894.4%</td>
+      <td class="no-data amt"><em class="nr">Not linked</em></td>
+      <td class="profit-neg amt">N/A</td>
+      <td class="profit-neg">N/A</td>
     </tr><tr class="rr-row">
       <td class="rr-num">282000288<br><span style="font-size:10px;color:#aaa">IR#2672</span></td>
       <td><span class="rake own">IVCLL05</span></td>
@@ -14005,9 +14005,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 04 Jan 2026 → 26 Feb 2026</div>
       </td>
       <td class="amt cost-total">₹3,822,159</td>
-      <td class=" amt">₹13,995,973<br><span style="font-size:10px;color:#888">118 CNs · est.</span></td>
-      <td class="profit-pos amt">₹10,173,814</td>
-      <td class="profit-pos">72.7%</td>
+      <td class=" amt">₹12,662,312<br><span style="font-size:10px;color:#888">107 CNs · est.</span></td>
+      <td class="profit-pos amt">₹8,840,153</td>
+      <td class="profit-pos">69.8%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">282000530<br><span style="font-size:10px;color:#aaa">IR#2670</span></td>
       <td><span class="rake own">IVCLL09</span></td>
@@ -14022,9 +14022,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 02 Jan 2026 → 26 Feb 2026</div>
       </td>
       <td class="amt cost-total">₹3,832,059</td>
-      <td class=" amt">₹13,221,390<br><span style="font-size:10px;color:#888">114 CNs · est.</span></td>
-      <td class="profit-pos amt">₹9,389,331</td>
-      <td class="profit-pos">71.0%</td>
+      <td class=" amt">₹12,029,228<br><span style="font-size:10px;color:#888">104 CNs · est.</span></td>
+      <td class="profit-pos amt">₹8,197,169</td>
+      <td class="profit-pos">68.1%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">⚠️ 282000036<br><span style="font-size:10px;color:#aaa">IR#2669</span></td>
       <td><span class="rake own">IVCLL08</span></td>
@@ -14192,9 +14192,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 22 Dec 2025 → 26 Feb 2026</div>
       </td>
       <td class="amt cost-total">₹3,883,083</td>
-      <td class=" amt">₹59,303<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
-      <td class="profit-neg amt">₹-3,823,780</td>
-      <td class="profit-neg">-6447.9%</td>
+      <td class=" amt">₹88,589<br><span style="font-size:10px;color:#888">1 CNs · est.</span></td>
+      <td class="profit-neg amt">₹-3,794,494</td>
+      <td class="profit-neg">-4283.3%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">⚠️ 282000080<br><span style="font-size:10px;color:#aaa">IR#2656</span></td>
       <td><span class="rake own">IVCLL01</span></td>
@@ -14277,9 +14277,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 22 Dec 2025 → 16 Feb 2026</div>
       </td>
       <td class="amt cost-total">₹50,825</td>
-      <td class=" amt">₹59,303<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
-      <td class="profit-pos amt">₹8,478</td>
-      <td class="profit-pos">14.3%</td>
+      <td class=" amt">₹88,589<br><span style="font-size:10px;color:#888">1 CNs · est.</span></td>
+      <td class="profit-pos amt">₹37,764</td>
+      <td class="profit-pos">42.6%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">⚠️ 282000034<br><span style="font-size:10px;color:#aaa">IR#2653</span></td>
       <td><span class="rake own">IVCLL09</span></td>
@@ -14311,9 +14311,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 22 Dec 2025 → 24 Feb 2026</div>
       </td>
       <td class="amt cost-total">₹3,823,293</td>
-      <td class=" amt">₹59,303<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
-      <td class="profit-neg amt">₹-3,763,990</td>
-      <td class="profit-neg">-6347.0%</td>
+      <td class=" amt">₹88,589<br><span style="font-size:10px;color:#888">1 CNs · est.</span></td>
+      <td class="profit-neg amt">₹-3,734,704</td>
+      <td class="profit-neg">-4215.8%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">262002616<br><span style="font-size:10px;color:#aaa">IR#2652</span></td>
       <td><span class="rake hired">FL-53</span></td>
@@ -14396,9 +14396,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 22 Dec 2025 → 17 Jan 2026</div>
       </td>
       <td class="amt cost-total">₹501,954</td>
-      <td class="no-data amt"><em class="nr">Not linked</em></td>
-      <td class="profit-neg amt">N/A</td>
-      <td class="profit-neg">N/A</td>
+      <td class=" amt">₹4,458<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
+      <td class="profit-neg amt">₹-497,496</td>
+      <td class="profit-neg">-11159.6%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">282000284<br><span style="font-size:10px;color:#aaa">IR#2642</span></td>
       <td><span class="rake own">IVCLL05</span></td>
@@ -14515,9 +14515,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 22 Dec 2025 → 17 Jan 2026</div>
       </td>
       <td class="amt cost-total">₹59,450</td>
-      <td class=" amt">₹6,439<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
-      <td class="profit-neg amt">₹-53,011</td>
-      <td class="profit-neg">-823.2%</td>
+      <td class=" amt">₹4,458<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
+      <td class="profit-neg amt">₹-54,992</td>
+      <td class="profit-neg">-1233.6%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">⚠️ 282000017<br><span style="font-size:10px;color:#aaa">IR#2641</span></td>
       <td><span class="rake own">IVCLL04</span></td>
@@ -14532,9 +14532,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 13 Dec 2025 → 17 Jan 2026</div>
       </td>
       <td class="amt cost-total">₹501,684</td>
-      <td class="no-data amt"><em class="nr">Not linked</em></td>
-      <td class="profit-neg amt">N/A</td>
-      <td class="profit-neg">N/A</td>
+      <td class=" amt">₹4,458<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
+      <td class="profit-neg amt">₹-497,226</td>
+      <td class="profit-neg">-11153.6%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">281000024<br><span style="font-size:10px;color:#aaa">IR#2640</span></td>
       <td><span class="rake own">IVCLL08</span></td>
@@ -14668,9 +14668,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 22 Dec 2025 → 17 Jan 2026</div>
       </td>
       <td class="amt cost-total">₹60,620</td>
-      <td class=" amt">₹6,439<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
-      <td class="profit-neg amt">₹-54,181</td>
-      <td class="profit-neg">-841.4%</td>
+      <td class=" amt">₹4,458<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
+      <td class="profit-neg amt">₹-56,162</td>
+      <td class="profit-neg">-1259.8%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">262001896<br><span style="font-size:10px;color:#aaa">IR#2633</span></td>
       <td><span class="rake hired">BT-52</span></td>
@@ -14736,9 +14736,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 22 Dec 2025 → 17 Jan 2026</div>
       </td>
       <td class="amt cost-total">₹52,725</td>
-      <td class=" amt">₹6,439<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
-      <td class="profit-neg amt">₹-46,286</td>
-      <td class="profit-neg">-718.8%</td>
+      <td class=" amt">₹4,458<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
+      <td class="profit-neg amt">₹-48,267</td>
+      <td class="profit-neg">-1082.7%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">242002964<br><span style="font-size:10px;color:#aaa">IR#2628</span></td>
       <td><span class="rake hired">FK-20</span></td>
@@ -14821,9 +14821,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 13 Dec 2025 → 22 Dec 2025</div>
       </td>
       <td class="amt cost-total">₹502,234</td>
-      <td class="no-data amt"><em class="nr">Not linked</em></td>
-      <td class="profit-neg amt">N/A</td>
-      <td class="profit-neg">N/A</td>
+      <td class=" amt">₹4,458<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
+      <td class="profit-neg amt">₹-497,776</td>
+      <td class="profit-neg">-11165.9%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">262001887<br><span style="font-size:10px;color:#aaa">IR#2624</span></td>
       <td><span class="rake hired">BN-08</span></td>
@@ -14889,9 +14889,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 14 Dec 2025 → 17 Jan 2026</div>
       </td>
       <td class="amt cost-total">₹3,810,183</td>
-      <td class=" amt">₹22,469<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
-      <td class="profit-neg amt">₹-3,787,714</td>
-      <td class="profit-neg">-16857.4%</td>
+      <td class=" amt">₹18,022<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
+      <td class="profit-neg amt">₹-3,792,161</td>
+      <td class="profit-neg">-21042.2%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">281000022<br><span style="font-size:10px;color:#aaa">IR#2618</span></td>
       <td><span class="rake own">IVCLL09</span></td>
@@ -14923,9 +14923,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 13 Dec 2025 → 22 Dec 2025</div>
       </td>
       <td class="amt cost-total">₹3,745,203</td>
-      <td class=" amt">₹22,469<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
-      <td class="profit-neg amt">₹-3,722,734</td>
-      <td class="profit-neg">-16568.2%</td>
+      <td class=" amt">₹18,022<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
+      <td class="profit-neg amt">₹-3,727,181</td>
+      <td class="profit-neg">-20681.6%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">⚠️ 282000015<br><span style="font-size:10px;color:#aaa">IR#2615</span></td>
       <td><span class="rake own">IVCLL04</span></td>
@@ -14940,9 +14940,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 13 Dec 2025 → 22 Dec 2025</div>
       </td>
       <td class="amt cost-total">₹502,834</td>
-      <td class="no-data amt"><em class="nr">Not linked</em></td>
-      <td class="profit-neg amt">N/A</td>
-      <td class="profit-neg">N/A</td>
+      <td class=" amt">₹18,022<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
+      <td class="profit-neg amt">₹-484,812</td>
+      <td class="profit-neg">-2690.2%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">262002579<br><span style="font-size:10px;color:#aaa">IR#2616</span></td>
       <td><span class="rake hired">FN-27</span></td>
@@ -14974,9 +14974,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 22 Dec 2025 → 17 Jan 2026</div>
       </td>
       <td class="amt cost-total">₹51,250</td>
-      <td class=" amt">₹22,469<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
-      <td class="profit-neg amt">₹-28,781</td>
-      <td class="profit-neg">-128.1%</td>
+      <td class=" amt">₹18,022<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
+      <td class="profit-neg amt">₹-33,228</td>
+      <td class="profit-neg">-184.4%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">262001870<br><span style="font-size:10px;color:#aaa">IR#2612</span></td>
       <td><span class="rake hired">BL-33</span></td>
@@ -15127,9 +15127,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 22 Dec 2025 → 17 Jan 2026</div>
       </td>
       <td class="amt cost-total">₹48,425</td>
-      <td class=" amt">₹16,030<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
-      <td class="profit-neg amt">₹-32,395</td>
-      <td class="profit-neg">-202.1%</td>
+      <td class=" amt">₹13,564<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
+      <td class="profit-neg amt">₹-34,861</td>
+      <td class="profit-neg">-257.0%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">⚠️ 281000021<br><span style="font-size:10px;color:#aaa">IR#2605</span></td>
       <td><span class="rake own">IVCLL07</span></td>
@@ -15263,9 +15263,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 22 Dec 2025 → 17 Jan 2026</div>
       </td>
       <td class="amt cost-total">₹49,874</td>
-      <td class=" amt">₹16,030<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
-      <td class="profit-neg amt">₹-33,844</td>
-      <td class="profit-neg">-211.1%</td>
+      <td class=" amt">₹13,564<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
+      <td class="profit-neg amt">₹-36,310</td>
+      <td class="profit-neg">-267.7%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">⚠️ 282000018<br><span style="font-size:10px;color:#aaa">IR#2595</span></td>
       <td><span class="rake own">IVCLL09</span></td>
@@ -15280,9 +15280,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 06 Dec 2025 → 06 Dec 2025</div>
       </td>
       <td class="amt cost-total">₹3,744,003</td>
-      <td class=" amt">₹16,030<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
-      <td class="profit-neg amt">₹-3,727,973</td>
-      <td class="profit-neg">-23256.5%</td>
+      <td class=" amt">₹13,564<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
+      <td class="profit-neg amt">₹-3,730,439</td>
+      <td class="profit-neg">-27503.1%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">282000516<br><span style="font-size:10px;color:#aaa">IR#2596</span></td>
       <td><span class="rake hired">PF-24</span></td>
@@ -15331,9 +15331,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 13 Dec 2025 → 17 Jan 2026</div>
       </td>
       <td class="amt cost-total">₹55,875</td>
-      <td class=" amt">₹16,030<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
-      <td class="profit-neg amt">₹-39,845</td>
-      <td class="profit-neg">-248.6%</td>
+      <td class=" amt">₹13,564<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
+      <td class="profit-neg amt">₹-42,311</td>
+      <td class="profit-neg">-311.9%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">282000208<br><span style="font-size:10px;color:#aaa">IR#2599</span></td>
       <td><span class="rake own">IVCLL06</span></td>
@@ -15382,9 +15382,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 04 Dec 2025 → 04 Dec 2025</div>
       </td>
       <td class="amt cost-total">₹3,744,003</td>
-      <td class=" amt">₹16,030<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
-      <td class="profit-neg amt">₹-3,727,973</td>
-      <td class="profit-neg">-23256.5%</td>
+      <td class=" amt">₹13,564<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
+      <td class="profit-neg amt">₹-3,730,439</td>
+      <td class="profit-neg">-27503.1%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">282000348<br><span style="font-size:10px;color:#aaa">IR#2588</span></td>
       <td><span class="rake own">IVCLL01</span></td>
@@ -15518,9 +15518,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 22 Dec 2025 → 17 Jan 2026</div>
       </td>
       <td class="amt cost-total">₹57,830</td>
-      <td class=" amt">₹16,030<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
-      <td class="profit-neg amt">₹-41,800</td>
-      <td class="profit-neg">-260.8%</td>
+      <td class=" amt">₹13,564<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
+      <td class="profit-neg amt">₹-44,266</td>
+      <td class="profit-neg">-326.4%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">262000314<br><span style="font-size:10px;color:#aaa">IR#2586</span></td>
       <td><span class="rake hired">Mk-01</span></td>
@@ -15535,9 +15535,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 13 Dec 2025 → 17 Jan 2026</div>
       </td>
       <td class="amt cost-total">₹79,765</td>
-      <td class=" amt">₹16,030<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
-      <td class="profit-neg amt">₹-63,735</td>
-      <td class="profit-neg">-397.6%</td>
+      <td class=" amt">₹13,564<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
+      <td class="profit-neg amt">₹-66,201</td>
+      <td class="profit-neg">-488.1%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">⚠️ 282000080<br><span style="font-size:10px;color:#aaa">IR#2579</span></td>
       <td><span class="rake hired">ZC-17</span></td>
@@ -15654,9 +15654,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 29 Nov 2025 → 29 Nov 2025</div>
       </td>
       <td class="amt cost-total">₹99,792</td>
-      <td class=" amt">₹302,049<br><span style="font-size:10px;color:#888">3 CNs · est.</span></td>
-      <td class="profit-pos amt">₹202,257</td>
-      <td class="profit-pos">67.0%</td>
+      <td class="no-data amt"><em class="nr">Not linked</em></td>
+      <td class="profit-neg amt">N/A</td>
+      <td class="profit-neg">N/A</td>
     </tr><tr class="rr-row">
       <td class="rr-num">⚠️ 282000014<br><span style="font-size:10px;color:#aaa">IR#2572</span></td>
       <td><span class="rake own">IVCLL03</span></td>
@@ -15671,9 +15671,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 28 Nov 2025 → 22 Dec 2025</div>
       </td>
       <td class="amt cost-total">₹501,234</td>
-      <td class="no-data amt"><em class="nr">Not linked</em></td>
-      <td class="profit-neg amt">N/A</td>
-      <td class="profit-neg">N/A</td>
+      <td class=" amt">₹13,564<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
+      <td class="profit-neg amt">₹-487,670</td>
+      <td class="profit-neg">-3595.4%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">262001846<br><span style="font-size:10px;color:#aaa">IR#2568</span></td>
       <td><span class="rake hired">BL-32</span></td>
@@ -15739,26 +15739,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 13 Dec 2025 → 31 Dec 2025</div>
       </td>
       <td class="amt cost-total">₹67,725</td>
-      <td class=" amt">₹16,030<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
-      <td class="profit-neg amt">₹-51,695</td>
-      <td class="profit-neg">-322.5%</td>
-    </tr><tr class="rr-row">
-      <td class="rr-num">⚠️ 281000019<br><span style="font-size:10px;color:#aaa">IR#2567</span></td>
-      <td><span class="rake own">IVCLL06</span></td>
-      <td class="route">Dodballapur<br><span class="arr">↓</span><br>Penukonda</td>
-      <td class="dt-cell">
-        <span class="dl">Indent:</span> 27 Nov 2025<br>
-        <span class="dl">Loaded:</span> <strong>27 Nov 2025 · 14:00</strong><br>
-        <span class="dl">Arrived:</span> —<br>
-        <span class="dl">POD:</span> —
-      </td>
-      <td class="cost-cell">
-        <div class="dl">Bills: — → —</div>
-      </td>
-      <td class="amt cost-total">—</td>
-      <td class=" amt">₹302,049<br><span style="font-size:10px;color:#888">3 CNs · est.</span></td>
-      <td class="profit-pos amt">₹302,049</td>
-      <td class="profit-pos">100.0%</td>
+      <td class=" amt">₹13,564<br><span style="font-size:10px;color:#888">0 CNs · est.</span></td>
+      <td class="profit-neg amt">₹-54,161</td>
+      <td class="profit-neg">-399.3%</td>
     </tr><tr class="rr-row">
       <td class="rr-num">⚠️ 281000019<br><span style="font-size:10px;color:#aaa">IR#2566</span></td>
       <td><span class="rake own">IVCLL06</span></td>
@@ -15773,9 +15756,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 27 Nov 2025 → 27 Nov 2025</div>
       </td>
       <td class="amt cost-total">₹99,792</td>
-      <td class=" amt">₹302,049<br><span style="font-size:10px;color:#888">3 CNs · est.</span></td>
-      <td class="profit-pos amt">₹202,257</td>
-      <td class="profit-pos">67.0%</td>
+      <td class="no-data amt"><em class="nr">Not linked</em></td>
+      <td class="profit-neg amt">N/A</td>
+      <td class="profit-neg">N/A</td>
     </tr><tr class="rr-row">
       <td class="rr-num">262002516<br><span style="font-size:10px;color:#aaa">IR#2562</span></td>
       <td><span class="rake hired">FT-18</span></td>
@@ -16011,9 +15994,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 23 Nov 2025 → 23 Nov 2025</div>
       </td>
       <td class="amt cost-total">₹99,792</td>
-      <td class=" amt">₹302,049<br><span style="font-size:10px;color:#888">3 CNs · est.</span></td>
-      <td class="profit-pos amt">₹202,257</td>
-      <td class="profit-pos">67.0%</td>
+      <td class="no-data amt"><em class="nr">Not linked</em></td>
+      <td class="profit-neg amt">N/A</td>
+      <td class="profit-neg">N/A</td>
     </tr><tr class="rr-row">
       <td class="rr-num">251000002<br><span style="font-size:10px;color:#aaa">IR#2555</span></td>
       <td><span class="rake hired">FT-75</span></td>
@@ -16079,9 +16062,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 21 Nov 2025 → 10 Feb 2026</div>
       </td>
       <td class="amt cost-total">₹1,555,535</td>
-      <td class=" amt">₹302,049<br><span style="font-size:10px;color:#888">3 CNs · est.</span></td>
-      <td class="profit-neg amt">₹-1,253,486</td>
-      <td class="profit-neg">-415.0%</td>
+      <td class="no-data amt"><em class="nr">Not linked</em></td>
+      <td class="profit-neg amt">N/A</td>
+      <td class="profit-neg">N/A</td>
     </tr><tr class="rr-row">
       <td class="rr-num">262000294<br><span style="font-size:10px;color:#aaa">IR#2550</span></td>
       <td><span class="rake hired">ML-34</span></td>
@@ -16181,9 +16164,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 20 Nov 2025 → 20 Nov 2025</div>
       </td>
       <td class="amt cost-total">₹99,792</td>
-      <td class=" amt">₹302,049<br><span style="font-size:10px;color:#888">3 CNs · est.</span></td>
-      <td class="profit-pos amt">₹202,257</td>
-      <td class="profit-pos">67.0%</td>
+      <td class="no-data amt"><em class="nr">Not linked</em></td>
+      <td class="profit-neg amt">N/A</td>
+      <td class="profit-neg">N/A</td>
     </tr><tr class="rr-row">
       <td class="rr-num">262001824<br><span style="font-size:10px;color:#aaa">IR#2539</span></td>
       <td><span class="rake hired">BL-31</span></td>
@@ -16300,9 +16283,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 19 Nov 2025 → 23 Dec 2025</div>
       </td>
       <td class="amt cost-total">₹2,005,276</td>
-      <td class=" amt">₹302,049<br><span style="font-size:10px;color:#888">3 CNs · est.</span></td>
-      <td class="profit-neg amt">₹-1,703,227</td>
-      <td class="profit-neg">-563.9%</td>
+      <td class="no-data amt"><em class="nr">Not linked</em></td>
+      <td class="profit-neg amt">N/A</td>
+      <td class="profit-neg">N/A</td>
     </tr><tr class="rr-row">
       <td class="rr-num">⚠️ 282000030<br><span style="font-size:10px;color:#aaa">IR#2532</span></td>
       <td><span class="rake own">IVCLL04</span></td>
@@ -16929,9 +16912,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 08 Nov 2025 → 08 Nov 2025</div>
       </td>
       <td class="amt cost-total">₹99,792</td>
-      <td class=" amt">₹1,321,825<br><span style="font-size:10px;color:#888">18 CNs · est.</span></td>
-      <td class="profit-pos amt">₹1,222,033</td>
-      <td class="profit-pos">92.5%</td>
+      <td class="no-data amt"><em class="nr">Not linked</em></td>
+      <td class="profit-neg amt">N/A</td>
+      <td class="profit-neg">N/A</td>
     </tr><tr class="rr-row">
       <td class="rr-num">⚠️ 281000015<br><span style="font-size:10px;color:#aaa">IR#2496</span></td>
       <td><span class="rake own">IVCLL06</span></td>
@@ -16946,9 +16929,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 07 Nov 2025 → 07 Nov 2025</div>
       </td>
       <td class="amt cost-total">₹99,792</td>
-      <td class=" amt">₹1,321,825<br><span style="font-size:10px;color:#888">18 CNs · est.</span></td>
-      <td class="profit-pos amt">₹1,222,033</td>
-      <td class="profit-pos">92.5%</td>
+      <td class="no-data amt"><em class="nr">Not linked</em></td>
+      <td class="profit-neg amt">N/A</td>
+      <td class="profit-neg">N/A</td>
     </tr><tr class="rr-row">
       <td class="rr-num">⚠️ 282000028<br><span style="font-size:10px;color:#aaa">IR#2497</span></td>
       <td><span class="rake own">IVCLL03</span></td>
@@ -17405,9 +17388,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 01 Nov 2025 → 01 Nov 2025</div>
       </td>
       <td class="amt cost-total">₹99,792</td>
-      <td class=" amt">₹1,321,825<br><span style="font-size:10px;color:#888">18 CNs · est.</span></td>
-      <td class="profit-pos amt">₹1,222,033</td>
-      <td class="profit-pos">92.5%</td>
+      <td class="no-data amt"><em class="nr">Not linked</em></td>
+      <td class="profit-neg amt">N/A</td>
+      <td class="profit-neg">N/A</td>
     </tr><tr class="rr-row">
       <td class="rr-num">⚠️ 261000071<br><span style="font-size:10px;color:#aaa">IR#2470</span></td>
       <td><span class="rake hired">FT-70</span></td>
@@ -17830,9 +17813,9 @@ tr:hover td{background:#fafbfc}
         <div class="dl">Bills: 15 Oct 2025 → 15 Oct 2025</div>
       </td>
       <td class="amt cost-total">₹99,792</td>
-      <td class=" amt">₹34,318,274<br><span style="font-size:10px;color:#888">316 CNs · est.</span></td>
-      <td class="profit-pos amt">₹34,218,482</td>
-      <td class="profit-pos">99.7%</td>
+      <td class="no-data amt"><em class="nr">Not linked</em></td>
+      <td class="profit-neg amt">N/A</td>
+      <td class="profit-neg">N/A</td>
     </tr><tr class="rr-row">
       <td class="rr-num">⚠️ 262000819<br><span style="font-size:10px;color:#aaa">IR#2419</span></td>
       <td><span class="rake own">IVCLL-04</span></td>
@@ -17956,7 +17939,7 @@ tr:hover td{background:#fafbfc}
 </table>
 </div>
 <div class="footer">
-  IVC Logistics · Railway P&L · 1050 dispatches · ₹104.76 Cr total cost · Oct 2024 – Aug 2026
+  IVC Logistics · Railway P&L · 1049 dispatches · ₹104.76 Cr total cost · Oct 2024 – Aug 2026
 </div>
 <script>
 function f(){
