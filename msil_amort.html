@@ -310,23 +310,26 @@ td{padding:10px 16px;border-bottom:1px solid #e8eef8}
           <td class="train-total">₹1,65,900</td>
           <td>122</td>
         </tr>
-        <tr style="background:#e8eaf6">
-          <td><strong>Nov 2025 – Aug 2026 ← Current</strong></td>
-          <td colspan="2">
-            <strong style="color:#1a237e">Rail-tagged CNs absent from CNMaster — but trains are running</strong>
-            <br><span style="font-size:11px;color:#3949ab">
-            Sabarmati office shows weekly IVCLL dispatches throughout 2026 (confirmed from
-            IndentRequest + IncidentalExpense bills). The amortisation billing was restructured
-            after Oct 2025 — most likely one of:<br>
-            &nbsp;1. Included in a revised base rate contract (not separately itemised)<br>
-            &nbsp;2. Billed via direct invoice outside the CN system<br>
-            &nbsp;3. SurCharge field is 0 but charge is embedded in Freight field of regular CNs<br>
-            Last confirmed amortisation rate in CN system: <strong>₹1,659/car</strong> (Jul 2025)
+        <tr style="background:#e8f5e9">
+          <td><strong>Dec 2025 – Aug 2026 ← Current</strong></td>
+          <td>
+            BCH-prefix CNs<br>
+            <span style="font-size:11px;color:#1b5e20">BillingPartyID=968129<br>
+            ConsignorName = <em>blank</em><br>(old -Rail tag dropped)</span>
+          </td>
+          <td>
+            <strong style="color:#1b5e20">Still charged — format changed, not discontinued</strong>
+            <br><span style="font-size:11px;color:#388e3c">
+            SurCharge IS still present but ConsignorName is now blank (no "-Rail" tag).
+            Identified via BillingPartyID=968129 = "Maruti Suzuki India Ltd. (BCH)".
+            Rate became <strong>route-dependent</strong> — multiple tiers per dispatch:
+            ₹606, ₹872, ₹892, ₹939, ₹1,082, ₹1,136, ₹1,216, ₹1,265, ₹1,885, ₹2,217, ₹3,056/car.
+            <br>Aug 2026 current rates: ₹1,136 and ₹2,217/car.
             </span>
           </td>
-          <td>—</td>
-          <td>—</td>
-          <td>0 (in CN system)</td>
+          <td><span class="rate-badge mid">₹606–₹3,056</span></td>
+          <td class="train-total">₹1,60,000–₹8,07,000<br><small>(route-dependent)</small></td>
+          <td>Thousands/month</td>
         </tr>
         <tr>
           <td>Aug 2025</td>
