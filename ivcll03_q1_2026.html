@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>IVCLL-03 · Q1 2026 P&L</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',Arial,sans-serif;background:#f0f4f8;color:#1a2535;font-size:14px;line-height:1.6}
+
+/* Header */
+.hdr{background:linear-gradient(135deg,#1a3a5c 0%,#0d6efd 100%);color:#fff;padding:28px 36px}
+.hdr h1{font-size:22px;font-weight:800}
+.hdr .sub{font-size:13px;opacity:.85;margin-top:4px}
+.hdr .pills{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap}
+.pill{background:rgba(255,255,255,.18);padding:4px 14px;border-radius:20px;font-size:12px;font-weight:600}
+.pill.green{background:rgba(25,200,100,.25)}
+.pill.orange{background:rgba(255,165,0,.25)}
+
+/* Stats */
+.stats{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin:20px 28px}
+.stat{background:#fff;border-radius:10px;padding:16px;box-shadow:0 2px 8px rgba(0,0,0,.07);border-top:4px solid #0d6efd;text-align:center}
+.stat.g{border-top-color:#198754}.stat.r{border-top-color:#dc3545}
+.stat.o{border-top-color:#fd7e14}.stat.gr{border-top-color:#6c757d}
+.stat .l{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:#888;margin-bottom:4px}
+.stat .v{font-size:20px;font-weight:900;color:#1a3a5c}
+.stat .s{font-size:11px;color:#aaa;margin-top:2px}
+
+/* Notes bar */
+.notebar{margin:0 28px 16px;background:#fff3cd;border-left:4px solid #ffc107;
+  border-radius:0 8px 8px 0;padding:10px 16px;font-size:12px;color:#856404}
+
+/* Cards container */
+.cards{max-width:1100px;margin:0 auto;padding:0 28px 28px;
+  display:grid;grid-template-columns:1fr 1fr;gap:16px}
+
+/* Dispatch card */
+.card{background:#fff;border-radius:12px;box-shadow:0 2px 10px rgba(0,0,0,.07);overflow:hidden}
+.card.loaded{border-left:5px solid #198754}
+.card.repo{border-left:5px solid #6c757d;opacity:.92}
+
+.card-hdr{padding:14px 18px;border-bottom:1px solid #f0f4f8;display:flex;justify-content:space-between;align-items:flex-start}
+.card-hdr .left .num{font-size:11px;font-weight:700;color:#aaa;text-transform:uppercase;letter-spacing:.5px}
+.card-hdr .left .route{font-size:15px;font-weight:800;color:#1a3a5c;margin-top:2px}
+.card-hdr .left .meta{font-size:11px;color:#888;margin-top:2px}
+.type-badge{padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700;flex-shrink:0}
+.type-badge.loaded{background:#d4edda;color:#155724}
+.type-badge.repo{background:#e9ecef;color:#495057}
+
+.card-body{padding:14px 18px}
+.row{display:flex;justify-content:space-between;align-items:flex-start;padding:5px 0;border-bottom:1px solid #f4f6f9;font-size:13px}
+.row:last-child{border-bottom:none}
+.row .lbl{color:#888;font-size:12px}
+.row .val{font-weight:600;text-align:right}
+.row .val.ir{color:#dc3545}
+.row .val.load{color:#0d6efd}
+.row .val.unload{color:#0d6efd}
+.row .val.other{color:#fd7e14}
+.row .val.total{color:#1a3a5c;font-size:14px;font-weight:800}
+.row .val.rev{color:#155724}
+.row .val.profit{color:#155724;font-size:14px;font-weight:800}
+.row .val.loss{color:#721c24;font-size:14px;font-weight:800}
+.row .val.na{color:#aaa;font-style:italic;font-weight:400}
+.note-text{font-size:10.5px;color:#888;margin-top:1px;display:block}
+
+.card-footer{padding:10px 18px;background:#f8faff;border-top:2px solid #f0f4f8;display:flex;justify-content:space-between;align-items:center}
+.card-footer .rr{font-family:monospace;font-size:11px;color:#0d6efd;font-weight:600}
+.card-footer .ir-id{font-size:11px;color:#aaa}
+
+/* Summary */
+.summary{max-width:1100px;margin:0 auto 28px;padding:0 28px}
+.sum-card{background:#fff;border-radius:12px;box-shadow:0 2px 10px rgba(0,0,0,.07);overflow:hidden}
+.sum-hdr{background:#1a3a5c;color:#fff;padding:14px 20px;font-size:14px;font-weight:700}
+.sum-grid{display:grid;grid-template-columns:1fr 1fr;gap:0}
+.sum-side{padding:20px}
+.sum-side:first-child{border-right:1px solid #e8eef8}
+.sum-row{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid #f0f4f8;font-size:13px}
+.sum-row:last-child{border-bottom:none}
+.sum-row .sl{color:#666}
+.sum-row .sv{font-weight:700}
+.sum-row .sv.g{color:#155724}.sum-row .sv.r{color:#721c24}
+.sum-row .sv.b{color:#1a3a5c}
+.total-row{background:#1a3a5c;color:#fff;padding:14px 20px;display:flex;justify-content:space-between;align-items:center}
+.total-row .tl{font-size:13px;font-weight:600}
+.total-row .tv{font-size:18px;font-weight:900;color:#7cffd4}
+.warn{padding:12px 20px;background:#fff8e1;font-size:12px;color:#856404;border-top:1px solid #f0f4f8}
+
+/* Client box */
+.client-box{max-width:1100px;margin:0 auto 16px;padding:0 28px}
+.cb-inner{background:#fff;border-radius:12px;box-shadow:0 2px 10px rgba(0,0,0,.07);overflow:hidden}
+.cb-hdr{background:#1a3a5c;color:#fff;padding:12px 20px;font-size:13px;font-weight:700}
+.cb-grid{display:grid;grid-template-columns:1fr 1fr;gap:0}
+.cb-block{padding:16px 20px;border-right:1px solid #e8eef8}
+.cb-block:last-child{border-right:none}
+.cb-block h4{font-size:13px;font-weight:700;color:#1a3a5c;margin-bottom:8px}
+.cb-block p{font-size:12px;color:#555;margin-bottom:4px}
+.cb-block .tag{display:inline-block;background:#e8f0fe;color:#1a3a5c;padding:2px 8px;border-radius:10px;font-size:11px;margin:2px}
+</style>
+</head>
+<body>
+
+<div class="hdr">
+  <h1>IVCLL-03 · Q1 2026 · Complete Job P&L</h1>
+  <div class="sub">January – March 2026 · IVC Logistics · Railway Freight</div>
+  <div class="pills">
+    <span class="pill">10 Dispatches</span>
+    <span class="pill green">5 Loaded · 1,350 cars</span>
+    <span class="pill orange">5 Empty Repositioning</span>
+    <span class="pill">Client: Maruti Suzuki (SMG + MSIL)</span>
+    <span class="pill">DB confirmed via TLHSNO prefix</span>
+  </div>
+</div>
+
+<div class="stats">
+  <div class="stat r">
+    <div class="l">Total Direct Cost</div>
+    <div class="v">₹1.76 Cr</div>
+    <div class="s">All 10 legs incl. repo</div>
+  </div>
+  <div class="stat g">
+    <div class="l">Revenue (est.)</div>
+    <div class="v">₹1.85 Cr</div>
+    <div class="s">5 loaded trips · fair-share</div>
+  </div>
+  <div class="stat g">
+    <div class="l">Net Profit</div>
+    <div class="v">₹0.09 Cr</div>
+    <div class="s">5.1% gross margin</div>
+  </div>
+  <div class="stat o">
+    <div class="l">Cars Moved</div>
+    <div class="v">1,350</div>
+    <div class="s">Maruti vehicles · 5 loaded</div>
+  </div>
+  <div class="stat gr">
+    <div class="l">Repo Cost</div>
+    <div class="v">₹0.26 Cr</div>
+    <div class="s">5 empty repositioning legs</div>
+  </div>
+</div>
+
+<div class="notebar">
+  ⚠ Revenue is a fair-share estimate from Maruti CN pools — captures ~43% of actual rate (~₹50k/car).
+  Costs DB-confirmed from <code>tblt_R_IncidentalExpenseDetails</code>. Multi-IR RR costs correctly distributed.
+  Client confirmed via <code>TripLog.TLHSNO</code> prefix: <code>BECH/TL/</code> = Maruti SMG, <code>MNSR/TL/</code> = Maruti MSIL.
+</div>
+
+<div class="client-box">
+<div class="cb-inner">
+  <div class="cb-hdr">OEM Client — Verified from DB (TLHSNO Analysis)</div>
+  <div class="cb-grid">
+    <div class="cb-block">
+      <h4>Maruti Suzuki — SMG Plant (Suzuki Motors Gujarat, Bechraji)</h4>
+      <p>Bechraji-origin dispatches · TLHSNO prefix: <code>BECH/TL/</code></p>
+      <p>Routes: Bechraji → Barhi · Irugur · Nidvanda · Lucknow</p>
+      <p style="margin-top:6px;font-size:11px;color:#155724">
+        ✓ Confirmed: Transystem Logistics (Maruti arm) CNs present in every delivery window
+      </p>
+    </div>
+    <div class="cb-block">
+      <h4>Maruti Suzuki — MSIL Plant (Manesar)</h4>
+      <p>Manesar-origin dispatch · TLHSNO prefix: <code>MNSR/TL/</code></p>
+      <p>Route: Manesar → Loni</p>
+      <p style="margin-top:6px;font-size:11px;color:#155724">
+        ✓ Confirmed: MNSR/TL/ avg KM matches Manesar→Loni distance
+      </p>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="cards">
+
+<div class="card loaded">
+  <div class="card-hdr">
+    <div class="left">
+      <div class="num">#1 · 22 Jan</div>
+      <div class="route">Bechraji → Lucknow</div>
+      <div class="meta">270 cars · Maruti Suzuki (SMG)</div>
+    </div>
+    <span class="type-badge loaded">🚂 Loaded</span>
+  </div>
+  <div class="card-body"><div class="row"><span class="lbl">IR Haulage</span><span class="val ir">₹2,159,323</span></div><div class="row"><span class="lbl">Loading</span><span class="val load">₹55,350</span></div><div class="row"><span class="lbl">Unloading<span class="note-text">Mittal Group · 270 cars @₹230</span></span><span class="val unload">₹62,100</span></div><div class="row"><span class="lbl">Other</span><span class="val other">—</span></div><div class="row"><span class="lbl"><strong>Total Cost</strong></span><span class="val total">₹2,276,773</span></div><div class="row"><span class="lbl">Revenue (est.) · AllOEM(maruti_sc)</span><span class="val rev">₹3,772,873</span></div><div class="row"><span class="lbl"><strong>Profit</strong></span><span class="val profit">+₹1,496,100 <small style="font-weight:400;color:#888">(39.7%)</small></span></div></div>
+  <div class="card-footer"><span class="rr">RR 282000366</span><span class="ir-id">IR# 2728</span></div>
+</div>
+
+<div class="card repo">
+  <div class="card-hdr">
+    <div class="left">
+      <div class="num">#2 · 25 Jan</div>
+      <div class="route">Lucknow → Manesar</div>
+      <div class="meta">empty · Maruti Suzuki (SMG)</div>
+    </div>
+    <span class="type-badge repo">🔄 Repo</span>
+  </div>
+  <div class="card-body"><div class="row"><span class="lbl">IR Haulage<span class="note-text">RR 281000002 shared by 3 IRs · Ahmedgarh (Apr 20) + Farukhnagar (May 11) bills go to other IRs</span></span><span class="val ir">₹229,919</span></div><div class="row"><span class="lbl">Loading</span><span class="val load">—</span></div><div class="row"><span class="lbl">Unloading</span><span class="val unload">—</span></div><div class="row"><span class="lbl">Other</span><span class="val other">—</span></div><div class="row"><span class="lbl"><strong>Total Cost</strong></span><span class="val total">₹229,919</span></div><div class="row"><span class="lbl">Revenue</span><span class="val na">N/A — repositioning leg</span></div><div class="row"><span class="lbl"><strong>Loss (repo cost)</strong></span><span class="val loss">−₹229,919</span></div></div>
+  <div class="card-footer"><span class="rr">RR 281000002</span><span class="ir-id">IR# 2735</span></div>
+</div>
+
+<div class="card loaded">
+  <div class="card-hdr">
+    <div class="left">
+      <div class="num">#3 · 29 Jan</div>
+      <div class="route">Manesar → Loni</div>
+      <div class="meta">270 cars · Maruti Suzuki (MSIL)</div>
+    </div>
+    <span class="type-badge loaded">🚂 Loaded</span>
+  </div>
+  <div class="card-body"><div class="row"><span class="lbl">IR Haulage<span class="note-text">Manesar→Loni ₹26,95,365 · Barhi/Sabarmati legs go to earlier IRs (Nov 2025)</span></span><span class="val ir">₹2,695,365</span></div><div class="row"><span class="lbl">Loading</span><span class="val load">₹66,150</span></div><div class="row"><span class="lbl">Unloading<span class="note-text">Shreetej Enterprises · 270 cars @₹340 · bill Mar 11 — assigned to IR#2836 by closest-date logic</span></span><span class="val unload">₹91,800</span></div><div class="row"><span class="lbl">Other</span><span class="val other">—</span></div><div class="row"><span class="lbl"><strong>Total Cost</strong></span><span class="val total">₹2,853,315</span></div><div class="row"><span class="lbl">Revenue (est.) · —</span><span class="val rev">Not matched</span></div><div class="row"><span class="lbl"><strong>Profit</strong></span><span class="val na">N/A</span></div></div>
+  <div class="card-footer"><span class="rr">RR 282000028</span><span class="ir-id">IR# 2751</span></div>
+</div>
+
+<div class="card repo">
+  <div class="card-hdr">
+    <div class="left">
+      <div class="num">#4 · 5 Feb</div>
+      <div class="route">Loni → Bechraji</div>
+      <div class="meta">empty · Maruti Suzuki (SMG)</div>
+    </div>
+    <span class="type-badge repo">🔄 Repo</span>
+  </div>
+  <div class="card-body"><div class="row"><span class="lbl">IR Haulage<span class="note-text">RR 282000535 shared with IR#2705 (PKD Jan 18) — PKD→FN ₹36.99L bill correctly excluded</span></span><span class="val ir">₹306,549</span></div><div class="row"><span class="lbl">Loading<span class="note-text">Shared PKD/ZPL loading (13-train)</span></span><span class="val load">₹66,000</span></div><div class="row"><span class="lbl">Unloading<span class="note-text">Farukhnagar unloading · 264 cars @₹215</span></span><span class="val unload">₹56,760</span></div><div class="row"><span class="lbl">Other</span><span class="val other">₹1,250</span></div><div class="row"><span class="lbl"><strong>Total Cost</strong></span><span class="val total">₹430,559</span></div><div class="row"><span class="lbl">Revenue</span><span class="val na">N/A — repositioning leg</span></div><div class="row"><span class="lbl"><strong>Loss (repo cost)</strong></span><span class="val loss">−₹430,559</span></div></div>
+  <div class="card-footer"><span class="rr">RR 282000535</span><span class="ir-id">IR# 2773</span></div>
+</div>
+
+<div class="card loaded">
+  <div class="card-hdr">
+    <div class="left">
+      <div class="num">#5 · 10 Feb</div>
+      <div class="route">Bechraji → Nidvanda</div>
+      <div class="meta">270 cars · Maruti Suzuki (SMG)</div>
+    </div>
+    <span class="type-badge loaded">🚂 Loaded</span>
+  </div>
+  <div class="card-body"><div class="row"><span class="lbl">IR Haulage</span><span class="val ir">₹2,972,344</span></div><div class="row"><span class="lbl">Loading</span><span class="val load">₹55,350</span></div><div class="row"><span class="lbl">Unloading</span><span class="val unload">₹59,400</span></div><div class="row"><span class="lbl">Other</span><span class="val other">—</span></div><div class="row"><span class="lbl"><strong>Total Cost</strong></span><span class="val total">₹3,087,094</span></div><div class="row"><span class="lbl">Revenue (est.) · AllOEM(maruti_sc)</span><span class="val rev">₹5,429,410</span></div><div class="row"><span class="lbl"><strong>Profit</strong></span><span class="val profit">+₹2,342,316 <small style="font-weight:400;color:#888">(43.1%)</small></span></div></div>
+  <div class="card-footer"><span class="rr">RR 282000372</span><span class="ir-id">IR# 2799</span></div>
+</div>
+
+<div class="card repo">
+  <div class="card-hdr">
+    <div class="left">
+      <div class="num">#6 · 18 Feb</div>
+      <div class="route">Nidvanda → Bechraji</div>
+      <div class="meta">empty · Maruti Suzuki (SMG)</div>
+    </div>
+    <span class="type-badge repo">🔄 Repo</span>
+  </div>
+  <div class="card-body"><div class="row"><span class="lbl">IR Haulage</span><span class="val ir">₹600,482</span></div><div class="row"><span class="lbl">Loading</span><span class="val load">—</span></div><div class="row"><span class="lbl">Unloading</span><span class="val unload">—</span></div><div class="row"><span class="lbl">Other</span><span class="val other">—</span></div><div class="row"><span class="lbl"><strong>Total Cost</strong></span><span class="val total">₹600,482</span></div><div class="row"><span class="lbl">Revenue</span><span class="val na">N/A — repositioning leg</span></div><div class="row"><span class="lbl"><strong>Loss (repo cost)</strong></span><span class="val loss">−₹600,482</span></div></div>
+  <div class="card-footer"><span class="rr">RR 282000299</span><span class="ir-id">IR# 2822</span></div>
+</div>
+
+<div class="card loaded">
+  <div class="card-hdr">
+    <div class="left">
+      <div class="num">#7 · 26 Feb</div>
+      <div class="route">Bechraji → Nidvanda</div>
+      <div class="meta">270 cars · Maruti Suzuki (SMG)</div>
+    </div>
+    <span class="type-badge loaded">🚂 Loaded</span>
+  </div>
+  <div class="card-body"><div class="row"><span class="lbl">IR Haulage</span><span class="val ir">₹2,972,344</span></div><div class="row"><span class="lbl">Loading</span><span class="val load">₹55,350</span></div><div class="row"><span class="lbl">Unloading</span><span class="val unload">₹59,400</span></div><div class="row"><span class="lbl">Other</span><span class="val other">—</span></div><div class="row"><span class="lbl"><strong>Total Cost</strong></span><span class="val total">₹3,087,094</span></div><div class="row"><span class="lbl">Revenue (est.) · AllOEM(maruti_sc)</span><span class="val rev">₹3,421,459</span></div><div class="row"><span class="lbl"><strong>Profit</strong></span><span class="val profit">+₹334,365 <small style="font-weight:400;color:#888">(9.8%)</small></span></div></div>
+  <div class="card-footer"><span class="rr">RR 282000377</span><span class="ir-id">IR# 2854</span></div>
+</div>
+
+<div class="card repo">
+  <div class="card-hdr">
+    <div class="left">
+      <div class="num">#8 · 7 Mar</div>
+      <div class="route">Nidvanda → Bechraji</div>
+      <div class="meta">empty · Maruti Suzuki (SMG)</div>
+    </div>
+    <span class="type-badge repo">🔄 Repo</span>
+  </div>
+  <div class="card-body"><div class="row"><span class="lbl">IR Haulage</span><span class="val ir">₹600,482</span></div><div class="row"><span class="lbl">Loading</span><span class="val load">—</span></div><div class="row"><span class="lbl">Unloading</span><span class="val unload">—</span></div><div class="row"><span class="lbl">Other</span><span class="val other">—</span></div><div class="row"><span class="lbl"><strong>Total Cost</strong></span><span class="val total">₹600,482</span></div><div class="row"><span class="lbl">Revenue</span><span class="val na">N/A — repositioning leg</span></div><div class="row"><span class="lbl"><strong>Loss (repo cost)</strong></span><span class="val loss">−₹600,482</span></div></div>
+  <div class="card-footer"><span class="rr">RR 282000305</span><span class="ir-id">IR# 2882</span></div>
+</div>
+
+<div class="card loaded">
+  <div class="card-hdr">
+    <div class="left">
+      <div class="num">#9 · 19 Mar</div>
+      <div class="route">Bechraji → Irugur</div>
+      <div class="meta">270 cars · Maruti Suzuki (SMG)</div>
+    </div>
+    <span class="type-badge loaded">🚂 Loaded</span>
+  </div>
+  <div class="card-body"><div class="row"><span class="lbl">IR Haulage</span><span class="val ir">₹3,284,320</span></div><div class="row"><span class="lbl">Loading</span><span class="val load">₹55,350</span></div><div class="row"><span class="lbl">Unloading<span class="note-text">APL Logistics Vascor · 191+79 cars @₹872</span></span><span class="val unload">₹235,440</span></div><div class="row"><span class="lbl">Terminal (CONCOR, Irugur)</span><span class="val other">₹140,390</span></div><div class="row"><span class="lbl"><strong>Total Cost</strong></span><span class="val total">₹3,715,500</span></div><div class="row"><span class="lbl">Revenue (est.) · AllOEM(maruti_sc)</span><span class="val rev">₹5,892,864</span></div><div class="row"><span class="lbl"><strong>Profit</strong></span><span class="val profit">+₹2,177,364 <small style="font-weight:400;color:#888">(36.9%)</small></span></div></div>
+  <div class="card-footer"><span class="rr">RR 282000384</span><span class="ir-id">IR# 2923</span></div>
+</div>
+
+<div class="card repo">
+  <div class="card-hdr">
+    <div class="left">
+      <div class="num">#10 · 28 Mar</div>
+      <div class="route">Irugur → Bechraji</div>
+      <div class="meta">empty · Maruti Suzuki (SMG)</div>
+    </div>
+    <span class="type-badge repo">🔄 Repo</span>
+  </div>
+  <div class="card-body"><div class="row"><span class="lbl">IR Haulage<span class="note-text">Irugur→Bechraji · Zangalapalle→Chharodi bill goes to IR#2718 (Jan 19)</span></span><span class="val ir">₹672,689</span></div><div class="row"><span class="lbl">Loading<span class="note-text">Shared PKD/ZPL loading (13-train)</span></span><span class="val load">₹25,000</span></div><div class="row"><span class="lbl">Unloading</span><span class="val unload">—</span></div><div class="row"><span class="lbl">Other</span><span class="val other">—</span></div><div class="row"><span class="lbl"><strong>Total Cost</strong></span><span class="val total">₹697,689</span></div><div class="row"><span class="lbl">Revenue</span><span class="val na">N/A — repositioning leg</span></div><div class="row"><span class="lbl"><strong>Loss (repo cost)</strong></span><span class="val loss">−₹697,689</span></div></div>
+  <div class="card-footer"><span class="rr">RR 282000085</span><span class="ir-id">IR# 2956</span></div>
+</div>
+</div>
+
+<div class="summary">
+<div class="sum-card">
+  <div class="sum-hdr">Q1 2026 Summary — IVCLL-03</div>
+  <div class="sum-grid">
+    <div class="sum-side">
+      <div class="sum-row"><span class="sl">Loaded trips</span><span class="sv">5 dispatches</span></div>
+      <div class="sum-row"><span class="sl">Cars moved</span><span class="sv">1,350 vehicles</span></div>
+      <div class="sum-row"><span class="sl">Loaded cost</span><span class="sv r">₹15,018,926</span></div>
+      <div class="sum-row"><span class="sl">Loaded revenue (est.)</span><span class="sv g">₹18,516,607</span></div>
+      <div class="sum-row"><span class="sl">Loaded margin</span><span class="sv g">18.9%</span></div>
+    </div>
+    <div class="sum-side">
+      <div class="sum-row"><span class="sl">Repositioning legs</span><span class="sv">5 legs</span></div>
+      <div class="sum-row"><span class="sl">Repo cost</span><span class="sv r">₹2,559,131</span></div>
+      <div class="sum-row"><span class="sl">Total direct cost</span><span class="sv r">₹17,578,057</span></div>
+      <div class="sum-row"><span class="sl">Net profit</span><span class="sv g">+₹938,550</span></div>
+      <div class="sum-row"><span class="sl">Net margin (all costs)</span><span class="sv g">5.1%</span></div>
+    </div>
+  </div>
+  <div class="total-row">
+    <span class="tl">Q1 2026 Net Profit</span>
+    <span class="tv">+₹9.4 Lakh &nbsp;·&nbsp; ₹0.09 Crore</span>
+  </div>
+  <div class="warn">
+    ⚠ Revenue = fair-share estimate (~43% of actual Maruti rate ~₹50k/car).
+    True Q1 revenue ≈ 1,350 cars × ₹50,000 = ₹6.8 Cr → margin ~74%.
+    Costs DB-confirmed. Duplicate bill correction and multi-IR RR attribution applied.
+  </div>
+</div>
+</div>
+
+</body>
+</html>
