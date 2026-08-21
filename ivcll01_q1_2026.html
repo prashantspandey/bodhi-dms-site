@@ -106,7 +106,7 @@ body{font-family:'Segoe UI',Arial,sans-serif;background:#f0f4f8;color:#1a2535;fo
     <span class="pill">12 Dispatches</span>
     <span class="pill green">6 Loaded · 1,362 cars</span>
     <span class="pill orange">6 Empty Repositioning</span>
-    <span class="pill">Client: Maruti Suzuki (primary) + possibly Escorts/Honda/Hero on #12</span>
+    <span class="pill">Client: Maruti Suzuki (CONFIRMED 100% — TLHSNO analysis)</span>
     <span class="pill">Data: IVC.dbo confirmed from DB</span>
   </div>
 </div>
@@ -164,22 +164,22 @@ body{font-family:'Segoe UI',Arial,sans-serif;background:#f0f4f8;color:#1a2535;fo
           <span><strong>Maruti BCH BillingParty (968129)</strong></span>
           <span>38 CNs · ₹28k · 729 km · 11 w/ SurCharge</span>
         </div>
-        <div style="display:flex;justify-content:space-between;padding:3px 6px;margin:2px 0">
-          <span>Tata Motors Passenger Vehicles (Pune)</span>
-          <span>11 CNs · ₹14k · 1,170 km · No SurCharge</span>
+        <div style="display:flex;justify-content:space-between;padding:3px 6px;color:#aaa;margin:2px 0">
+          <span>Tata Motors Pune <code style="font-size:10px">PUN/TL/</code> — road from Pune</span>
+          <span>11 CNs · 1,170 km · <strong>Road only ✗</strong></span>
         </div>
         <div style="display:flex;justify-content:space-between;padding:3px 6px;color:#aaa;margin:2px 0">
-          <span>Tata Motors (Sanand) — road only</span><span>38 CNs · 502 km</span>
+          <span>Tata Motors Sanand <code style="font-size:10px">SAN/TL/</code> — road from Sanand</span><span>38 CNs · 502 km · Road only ✗</span>
         </div>
         <div style="display:flex;justify-content:space-between;padding:3px 6px;color:#aaa;margin:2px 0">
-          <span>Tata Passenger EV (Sanand) — road only</span><span>35 CNs · 637 km</span>
+          <span>Tata Passenger EV Sanand <code style="font-size:10px">SAN/TL/</code></span><span>35 CNs · 637 km · Road only ✗</span>
         </div>
         <div style="display:flex;justify-content:space-between;padding:3px 6px;color:#aaa;margin:2px 0">
-          <span>Bajaj Auto (Waluj) — 1 stray road CN</span><span>1 CN · 981 km</span>
+          <span>Bajaj Auto <code style="font-size:10px">AUBD/TL/</code> — road from Aurangabad</span><span>1 CN · 981 km · Road only ✗</span>
         </div>
       </div>
       <p style="margin-top:8px;font-size:11px;background:#e8f5e9;padding:6px 10px;border-radius:6px;color:#155724">
-        <strong>Verdict:</strong> Maruti Suzuki confirmed as primary. Tata Motors (Pune) has longer-KM CNs that could indicate railway but has no SurCharge and no CBUChallan link. Tata Sanand and Bajaj are road-only — not on this rake.
+        <strong>Verdict: 100% Maruti Suzuki.</strong> TLHSNO prefix analysis is definitive — <code>BECH/TL/</code> = Bechraji railway origin (Maruti/Transystem only). <code>SAN/TL/</code> = Sanand road origin (Tata), <code>PUN/TL/</code> = Pune road origin (Tata), <code>AUBD/TL/</code> = Aurangabad road origin (Bajaj). Tata and Bajaj CNs at Bechraji are ROAD trips from their own plants — LoadBranchID=48 is administrative billing only, not actual loading point. No non-Maruti OEM on IVCLL-01 in Q1 2026.
       </p>
     </div>
     <div class="cb-block">
