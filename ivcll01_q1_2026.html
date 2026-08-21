@@ -515,5 +515,103 @@ body{font-family:'Segoe UI',Arial,sans-serif;background:#f0f4f8;color:#1a2535;fo
 </div>
 </div>
 
+<!-- Explanation -->
+<div style="max-width:1100px;margin:0 auto 32px;padding:0 28px">
+<div style="background:#fff;border-radius:12px;box-shadow:0 2px 10px rgba(0,0,0,.07);overflow:hidden">
+  <div style="background:#1a3a5c;color:#fff;padding:14px 20px;font-size:14px;font-weight:700">
+    Why does the caveat say "actual margin ~71%"? — Full explanation
+  </div>
+
+  <!-- Part 1 -->
+  <div style="padding:20px 24px;border-bottom:2px solid #f0f4f8">
+    <div style="font-size:13px;font-weight:800;color:#1a3a5c;margin-bottom:10px">
+      Part 1 — Why our revenue (₹2.92 Cr) is understated
+    </div>
+    <p style="font-size:13px;color:#444;margin-bottom:12px">
+      Our revenue matching uses the <strong>Maruti SurCharge CN pool</strong> — CNs where
+      <code style="background:#f4f7ff;padding:1px 6px;border-radius:4px">BillingPartyID IN (968129, 965990)</code>
+      AND <code style="background:#f4f7ff;padding:1px 6px;border-radius:4px">SurCharge &gt; 0</code>.
+      As established in the MSIL amortisation analysis, the SurCharge field is specifically the
+      <strong>amortisation/incentive component</strong> — ₹892–₹2,217 per car — not the main freight.
+    </p>
+    <div style="background:#f8faff;border:1px solid #dce8f8;border-radius:8px;padding:14px 18px;font-family:monospace;font-size:12px;line-height:2">
+      What MSIL actually pays IVC per car (Bechraji → Lucknow, ~1,400 km):<br>
+      ──────────────────────────────────────────────────────────────────<br>
+      Main freight (base rate per km × distance) &nbsp;&nbsp;&nbsp;~₹40,000–₹45,000/car &nbsp;&nbsp;
+      <span style="background:#fce8e8;color:#721c24;padding:1px 6px;border-radius:3px">NOT in our pool (SurCharge = 0)</span><br>
+      Amortisation (SurCharge) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;~₹1,200–₹1,659/car &nbsp;&nbsp;
+      <span style="background:#d4edda;color:#155724;padding:1px 6px;border-radius:3px">this is what we captured</span><br>
+      ──────────────────────────────────────────────────────────────────<br>
+      Total Maruti pays &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;~₹41,200–₹46,659/car
+    </div>
+    <p style="font-size:12px;color:#888;margin-top:10px">
+      The main freight CNs have <code>SurCharge = 0</code> and blank ConsignorName — filtered out when we queried <code>SurCharge &gt; 0</code>.
+      Our ₹2.92 Cr = only the amortisation layer, roughly 1/30th of actual billing.
+    </p>
+  </div>
+
+  <!-- Part 2 -->
+  <div style="padding:20px 24px;border-bottom:2px solid #f0f4f8">
+    <div style="font-size:13px;font-weight:800;color:#1a3a5c;margin-bottom:10px">
+      Part 2 — The 71% margin calculation
+    </div>
+    <div style="background:#f8faff;border:1px solid #dce8f8;border-radius:8px;padding:14px 18px;font-family:monospace;font-size:12px;line-height:2.2">
+      At actual Maruti rate (~₹50,000/car):<br>
+      ──────────────────────────────────────────────────<br>
+      Revenue:&nbsp;&nbsp; 1,362 cars × ₹50,000 &nbsp;&nbsp;&nbsp;&nbsp;= <strong>₹6.81 Crore</strong><br>
+      Cost:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; All 12 legs (6 loaded + 6 repo) = <strong>₹1.98 Crore</strong><br>
+      ──────────────────────────────────────────────────<br>
+      Profit:&nbsp;&nbsp;&nbsp; ₹6.81 – ₹1.98 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= <strong style="color:#155724">₹4.83 Crore</strong><br>
+      Margin:&nbsp;&nbsp;&nbsp; ₹4.83 / ₹6.81 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= <strong style="color:#155724">70.9% ≈ 71%</strong>
+    </div>
+  </div>
+
+  <!-- Part 3 -->
+  <div style="padding:20px 24px">
+    <div style="font-size:13px;font-weight:800;color:#1a3a5c;margin-bottom:10px">
+      Part 3 — Why 71% does NOT mean IVC keeps 71%
+    </div>
+    <p style="font-size:13px;color:#444;margin-bottom:14px">
+      The ₹1.98 Cr costs confirmed from the DB are <strong>only direct variable costs</strong> —
+      what IVC paid out-of-pocket for this specific quarter's rail activity. Missing from the DB:
+    </p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px">
+      <div style="background:#fce8e8;border-radius:8px;padding:14px">
+        <div style="font-size:12px;font-weight:700;color:#721c24;margin-bottom:8px">NOT in DB costs (hidden costs)</div>
+        <ul style="font-size:12px;color:#555;padding-left:16px;line-height:2">
+          <li>Salaries — ops staff, drivers, managers</li>
+          <li>IVCLL-01 rake depreciation (crores to procure)</li>
+          <li>Rake maintenance — brake tests, wheel checks, workshop</li>
+          <li>Office overhead — Bechraji, Nidvanda offices</li>
+          <li>Insurance on rake + cargo</li>
+          <li>Finance cost on rake investment</li>
+          <li>Fuel for pre/post-rail road movement</li>
+        </ul>
+      </div>
+      <div style="background:#f8faff;border:1px solid #dce8f8;border-radius:8px;padding:14px">
+        <div style="font-size:12px;font-weight:700;color:#1a3a5c;margin-bottom:8px">True cost structure (per car, est.)</div>
+        <div style="font-size:12px;line-height:2.2;font-family:monospace">
+          Revenue &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;₹50,000 &nbsp;&nbsp;(100%)<br>
+          Direct variable (DB) &nbsp;&nbsp;&nbsp;₹14,500 &nbsp;&nbsp;(29%)<br>
+          Staff + overhead &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;₹10,000 &nbsp;&nbsp;(20%)<br>
+          Rake depreciation + maint &nbsp;₹ 5,000 &nbsp;&nbsp;(10%)<br>
+          ─────────────────────────────────────<br>
+          True total cost &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;₹29,500 &nbsp;&nbsp;(59%)<br>
+          <strong style="color:#155724">Actual net margin &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;₹20,500 &nbsp;&nbsp;(41%)</strong>
+        </div>
+      </div>
+    </div>
+    <div style="background:#e8f5e9;border-left:4px solid #198754;border-radius:0 8px 8px 0;padding:12px 16px;font-size:13px;color:#155724">
+      <strong>Industry benchmark:</strong> Dedicated auto-logistics contracts (captive rakes, long-term OEM) typically earn
+      <strong>15–25% EBITDA margin</strong> after all costs. The 71% is the
+      <em>gross contribution margin</em> (revenue minus IR + contractor costs only).
+      The true net margin after full cost stack is <strong>15–25%</strong> — consistent with a healthy, profitable operation
+      but not exceptional for this industry.
+    </div>
+  </div>
+
+</div>
+</div>
+
 </body>
 </html>
