@@ -106,7 +106,7 @@ body{font-family:'Segoe UI',Arial,sans-serif;background:#f0f4f8;color:#1a2535;fo
     <span class="pill">12 Dispatches</span>
     <span class="pill green">6 Loaded · 1,362 cars</span>
     <span class="pill orange">6 Empty Repositioning</span>
-    <span class="pill">Client: Maruti Suzuki (SMG + MSIL)</span>
+    <span class="pill">Client: Maruti Suzuki (primary) + possibly Escorts/Honda/Hero on #12</span>
     <span class="pill">Data: IVC.dbo confirmed from DB</span>
   </div>
 </div>
@@ -147,21 +147,52 @@ body{font-family:'Segoe UI',Arial,sans-serif;background:#f0f4f8;color:#1a2535;fo
 <!-- Client -->
 <div class="client-box">
 <div class="cb-inner">
-  <div class="cb-hdr">OEM Client Breakdown</div>
+  <div class="cb-hdr">OEM Client Breakdown — DB Evidence</div>
   <div class="cb-grid">
     <div class="cb-block">
-      <h4>Maruti Suzuki — SMG Plant (Suzuki Motors Gujarat, Bechraji)</h4>
+      <h4>Dispatches #1–10 (Bechraji origin) · Confirmed: Maruti Suzuki</h4>
       <p>5 loaded dispatches · 1,350 cars · Jan–Mar 2026</p>
       <p><strong>Routes:</strong> Bechraji → Loni · Nidvanda · Irugur · Lucknow</p>
-      <p><strong>Models:</strong></p>
+      <p style="margin-top:8px;font-size:12px;background:#e8f5e9;padding:6px 10px;border-radius:6px;color:#155724">
+        <strong>DB proof:</strong> <em>Transystem Logistics Intl. (Bechraji)</em> CNs appear in the revenue window for every Bechraji dispatch.
+        Transystem is Maruti Suzuki's dedicated in-house logistics company — its presence confirms these are Maruti vehicles.
+      </p>
+      <p style="margin-top:6px"><strong>Models (SMG plant):</strong></p>
       <span class="tag">Baleno</span><span class="tag">S-Cross</span><span class="tag">Ertiga</span><span class="tag">Vitara Brezza</span><span class="tag">Ciaz</span>
     </div>
     <div class="cb-block">
-      <h4>Maruti Suzuki — MSIL Plant (Manesar)</h4>
+      <h4>Dispatch #12 · 28 Mar · Manesar → Rangapani · Mixed OEMs possible</h4>
       <p>1 loaded dispatch · 282 cars · 28 Mar 2026</p>
-      <p><strong>Routes:</strong> Manesar → Rangapani (Assam)</p>
-      <p><strong>Models:</strong></p>
-      <span class="tag">Swift</span><span class="tag">Dzire</span><span class="tag">Alto</span><span class="tag">WagonR</span>
+      <p style="margin-top:8px;font-size:12px;background:#fff3cd;padding:6px 10px;border-radius:6px;color:#856404">
+        <strong>Cannot confirm client precisely</strong> — CBUChallan vehicle records not populated for this IR.
+        Manesar yard serves multiple OEMs simultaneously.
+      </p>
+      <p style="margin-top:6px;font-size:12px"><strong>OEMs active in the revenue window (4–21 days post-load):</strong></p>
+      <div style="font-size:11px;margin-top:6px">
+        <div style="display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid #f0f4f8">
+          <span style="color:#1a3a5c;font-weight:600">Blank ConsignorName (Maruti BillingParty)</span>
+          <span>100 CNs · avg 2,531 km · <span style="color:#155724;font-weight:600">likely Rangapani</span></span>
+        </div>
+        <div style="display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid #f0f4f8">
+          <span>Escorts Kubota Limited</span><span>28 CNs · avg 841 km</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid #f0f4f8">
+          <span>Honda MCSIL</span><span>14 CNs · avg 1,306 km</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid #f0f4f8">
+          <span>Honda Motorcycle (Dharuhera)</span><span>7 CNs · avg 605 km</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid #f0f4f8">
+          <span>Hero Motocorp (Gurgaon)</span><span>4 CNs · avg 700 km</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;padding:3px 0">
+          <span>Mahindra (M&amp;M)</span><span>4 CNs · avg 1,268 km</span>
+        </div>
+      </div>
+      <p style="font-size:11px;color:#888;margin-top:6px">
+        The blank ConsignorName CNs (avg 2,531 km = Manesar→Rangapani distance) most likely represent Maruti Suzuki vehicles.
+        Escorts/Honda/Hero CNs show shorter avg KM — likely regional deliveries, not this rake's Rangapani run.
+      </p>
     </div>
   </div>
 </div>
@@ -454,7 +485,7 @@ body{font-family:'Segoe UI',Arial,sans-serif;background:#f0f4f8;color:#1a2535;fo
     <div class="left">
       <div class="num"># 12 · 28 Mar 2026</div>
       <div class="route">Manesar → Rangapani</div>
-      <div class="meta">282 cars · Maruti Suzuki (MSIL)</div>
+      <div class="meta">282 cars · Client unconfirmed (Maruti likely · Escorts/Honda/Hero possible)</div>
     </div>
     <span class="type-badge loaded">🚂 Loaded</span>
   </div>
@@ -472,7 +503,11 @@ body{font-family:'Segoe UI',Arial,sans-serif;background:#f0f4f8;color:#1a2535;fo
       <span class="val other">₹61,025</span>
     </div>
     <div class="row"><span class="lbl"><strong>Total Cost</strong></span><span class="val total">₹28,21,328</span></div>
-    <div class="row"><span class="lbl">Revenue (est.) · AllOEM (MNSR pool)</span><span class="val rev">₹57,22,425</span></div>
+    <div class="row">
+      <span class="lbl">Revenue (est.) · AllOEM (MNSR pool — Maruti + Escorts + Honda + Hero)
+        <span class="note-text">Pool includes all high-freight CNs from Manesar yard. Cannot split by OEM without CBUChallan data.</span></span>
+      <span class="val rev">₹57,22,425</span>
+    </div>
     <div class="row"><span class="lbl"><strong>Profit</strong></span><span class="val profit">+₹29,01,097 &nbsp;<small style="font-weight:400;color:#888">(50.7%)</small></span></div>
   </div>
   <div class="card-footer"><span class="rr">RR 282000042</span><span class="ir-id">IR# 2957</span></div>
